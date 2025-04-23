@@ -7,6 +7,9 @@
 \usepackage{graphicx}
 \usepackage{textcomp}
 \usepackage{xcolor}
+\usepackage[backend=bibtex]{biblatex}
+\addbibresource{references.bib}
+
 \def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 \begin{document}
@@ -48,15 +51,66 @@ component, formatting, style, styling, insert
 \end{IEEEkeywords}
 
 \section{Introduction}
-This document is a model and instructions for \LaTeX.
-Please observe the conference page limits. 
+Modern industrial automation is changing fast. As production systems grow more complex and dynamic, manufacturers demand higher flexibility, better scalability, and tighter control. Traditional centralized architectures where a few controllers handled all decisions worked fine in simpler setups. But with today’s large scale operations involving thousands of devices, those systems fall short in responsiveness, scalability, and reliability.
+
+This has led to a shift toward decentralized or distributed control systems. Instead of relying on one brain, intelligence is spread across the network. Devices like sensors, actuators, and PLCs now communicate directly, thanks to industrial fieldbus networks. These networks make it possible to exchange data in real time, which is critical for keeping modern production lines running smoothly.
+
+Early fieldbus protocols such as PROFIBUS, Modbus, DeviceNet, and CANopen set the standard for reliable industrial communication. PROFIBUS, in particular, became widely used for its dependable serial RS-485 performance and deterministic timing. But as factories started integrating with IT systems and cloud services a hallmark of Industry 4.0 limitations of serial protocols became clear. They struggled with bandwidth, diagnostics, and interoperability, and couldn’t leverage modern Ethernet infrastructure.
+
+To address these gaps, PROFINET was developed by PROFIBUS and PROFINET International (PI). Built on standard Ethernet (IEEE 802.3), PROFINET extends Ethernet’s capabilities to support the deterministic, real time communication needed in industrial settings. It allows IT and OT systems to share a unified infrastructure for control, diagnostics, and data transfer making it a backbone technology for smart factories and the Industrial Internet of Things (IIoT) \cite{galloway2012industrial}, \cite{neumann2007communication}.
+
+\subsection{Communication Classes in PROFINET} 
+A major strength of PROFINET is its support for three communication classes, tailored for different use cases:
+
+Non-Real-Time (NRT): Uses TCP/IP or UDP protocols for non critical tasks like configuration, diagnostics, and file transfer. This class operates like standard Ethernet traffic, making it easy to integrate with existing IT systems.
+
+Real-Time (RT): Designed for fast, cyclic data exchange between controllers and field devices. RT bypasses the full TCP/IP stack to reduce latency and jitter, achieving cycle times around 1–10 ms good enough for most control applications.
+
+Isochronous Real-Time (IRT): Used where timing is critical, like robotics or motion control. IRT relies on IEEE 1588 Precision Time Protocol (PTP) for tight time sync across the network. It delivers update rates as fast as 250 us, with jitter under 1 us \cite{ferrari2004profinet}, \cite{schumacher2008profinet}.
+
+\subsection{Real-Time Communication and PROFINET IO} 
+PROFINET IO uses a provider/consumer model to exchange data cyclically between IO controllers (PLCs) and IO devices (e.g., sensors, actuators). Timing is predictable and performance is reliable.
+
+According to Ferrari et al. \cite{ferrari2004profinet}, PROFINET achieves this by:
+
+Skipping TCP/IP layers in RT/IRT modes, using Ethernet type-length fields for identifying real-time frames.
+
+Time Division Multiplexing (TDM) to reserve time slots for specific traffic types.
+
+Dynamic Frame Packing (DFP) to combine multiple messages into a single frame, saving bandwidth.
+
+Precision Time Protocol (PTP) to keep all nodes in sync within sub microsecond accuracy.
+
+Together, these features ensure high determinism essential for applications in automotive, packaging, and materials handling.
+
+\subsection{Network Architecture and the OSI Model} 
+PROFINET aligns with the OSI model, though it streamlines some layers for performance. For instance, it often bypasses the session and presentation layers, focusing instead on fast, direct communication at the application level.
+
+Physical Layer: Uses off-the-shelf Ethernet hardware (e.g., Cat5e/6 cables, switches).
+
+Data Link Layer: Handles MAC addressing, frame control, and error checking.
+
+Application Layer: Manages tasks like device discovery and diagnostics using GSDML files \cite{patzke1998fieldbus}.
+
+\subsection{Additional Features and Industrial Benefits}
+PROFINET goes beyond just fast communication. It includes:
+
+PROFIsafe for integrating safety features into the same network, removing the need for separate safety systems.
+
+PROFIenergy for energy-saving modes during downtime, supporting sustainable operations.
+
+PROFIdrive to standardize control of drives and motion systems across vendors \cite{galloway2012industrial}, \cite{jasperneite2007limits}.
+
+It also supports a variety of network topologies line, star, ring, tree and builtin redundancy (MRP, S2) for high availability, which is vital in mission-critical environments.
 
 \section{Application Areas}
-\section{ProfiSAFE}
+Rubayet write about profisafe, cause it covers application areas imo. I will waflle on comparison, and when i.m editing maybe i can find a new sub section
 \section{Comparison}
+Hi, Fifo. Ok I will do so. Best regards, Rubayet
 \section{Conclusion}
 
+Zusammen später
 
-
+\printbibliography
 
 \end{document}
