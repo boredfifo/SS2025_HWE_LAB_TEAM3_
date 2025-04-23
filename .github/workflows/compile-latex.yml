@@ -37,18 +37,27 @@ jobs:
             latexmk -c
           done
           shopt -u nullglob
-
-      - name: Compile LaTeX files in "Hardware Engineering"
+      - name: Install LaTeX dependencies
         run: |
-          mkdir -p "Hardware Engineering/Compiled PDF"
-          cd "Hardware Engineering"
-          shopt -s nullglob
-          for tex_file in *.tex; do
-            latexmk -pdf -interaction=nonstopmode "$tex_file"
-            mv "${tex_file%.tex}.pdf" "Compiled PDF/"
-            latexmk -c
-          done
-          shopt -u nullglob
+          sudo apt-get update
+          sudo apt-get install -y \
+            texlive-latex-recommended \
+            texlive-fonts-recommended \
+            texlive-publishers \
+            texlive-science \
+            texlive-bibtex-extra \
+            latexmk
+            - name: Compile LaTeX files in "Hardware Engineering"
+              run: |
+                mkdir -p "Hardware Engineering/Compiled PDF"
+                cd "Hardware Engineering"
+                shopt -s nullglob
+                for tex_file in *.tex; do
+                  latexmk -pdf -interaction=nonstopmode "$tex_file"
+                  mv "${tex_file%.tex}.pdf" "Compiled PDF/"
+                  latexmk -c
+                done
+                shopt -u nullglob
 
       - name: Commit and push PDFs
         run: |
