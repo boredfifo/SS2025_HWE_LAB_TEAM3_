@@ -39,7 +39,13 @@ jobs:
           cd "Advanced Embedded Engineering"
           shopt -s nullglob
           for tex_file in *.tex; do
-            latexmk -pdf -interaction=nonstopmode -shell-escape -use-biber "$tex_file"
+            if grep -q "addbibresource" "$tex_file"; then
+              latexmk -pdf -interaction=nonstopmode "$tex_file"
+              biber "${tex_file%.tex}"
+              latexmk -pdf -interaction=nonstopmode "$tex_file"
+            else
+              latexmk -pdf -interaction=nonstopmode "$tex_file"
+            fi
             mv "${tex_file%.tex}.pdf" "Compiled PDF/"
             latexmk -c
           done
@@ -51,7 +57,13 @@ jobs:
           cd "Hardware Engineering"
           shopt -s nullglob
           for tex_file in *.tex; do
-            latexmk -pdf -interaction=nonstopmode -shell-escape -use-biber "$tex_file"
+            if grep -q "addbibresource" "$tex_file"; then
+              latexmk -pdf -interaction=nonstopmode "$tex_file"
+              biber "${tex_file%.tex}"
+              latexmk -pdf -interaction=nonstopmode "$tex_file"
+            else
+              latexmk -pdf -interaction=nonstopmode "$tex_file"
+            fi
             mv "${tex_file%.tex}.pdf" "Compiled PDF/"
             latexmk -c
           done
