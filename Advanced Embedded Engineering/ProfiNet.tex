@@ -63,7 +63,7 @@ To address these gaps, PROFINET was developed by PROFIBUS and PROFINET Internati
 A major strength of PROFINET is its support for three communication classes, tailored for different use cases:
 
 Non-Real-Time (NRT): Uses TCP/IP or UDP protocols for non critical tasks like configuration, diagnostics, and file transfer. This class operates like standard Ethernet traffic, making it easy to integrate with existing IT systems.
-
+a
 Real-Time (RT): Designed for fast, cyclic data exchange between controllers and field devices. RT bypasses the full TCP/IP stack to reduce latency and jitter, achieving cycle times around 1–10 ms good enough for most control applications.
 
 Isochronous Real-Time (IRT): Used where timing is critical, like robotics or motion control. IRT relies on IEEE 1588 Precision Time Protocol (PTP) for tight time sync across the network. It delivers update rates as fast as 250 us, with jitter under 1 us \cite{ferrari2004profinet}, \cite{schumacher2008profinet}.
