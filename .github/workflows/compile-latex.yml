@@ -4,7 +4,9 @@ on:
   push:
     paths:
       - 'Advanced Embedded Engineering/**/*.tex'
+      - 'Advanced Embedded Engineering/**/*.bib'
       - 'Hardware Engineering/**/*.tex'
+      - 'Hardware Engineering/**/*.bib'
 
 jobs:
   compile-latex:
@@ -39,7 +41,7 @@ jobs:
           cd "Advanced Embedded Engineering"
           shopt -s nullglob
           for tex_file in *.tex; do
-            latexmk -pdf -interaction=nonstopmode "$tex_file"
+            latexmk -pdf -bibtex -interaction=nonstopmode "$tex_file"
             mv "${tex_file%.tex}.pdf" "Compiled PDF/"
             latexmk -c
           done
@@ -51,7 +53,7 @@ jobs:
           cd "Hardware Engineering"
           shopt -s nullglob
           for tex_file in *.tex; do
-            latexmk -pdf -interaction=nonstopmode "$tex_file"
+            latexmk -pdf -bibtex -interaction=nonstopmode "$tex_file"
             mv "${tex_file%.tex}.pdf" "Compiled PDF/"
             latexmk -c
           done
