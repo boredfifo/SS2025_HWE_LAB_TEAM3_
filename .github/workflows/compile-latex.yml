@@ -21,29 +21,10 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           persist-credentials: true
 
-      - name: Cache LaTeX dependencies
-        uses: actions/cache@v3
-        with:
-          path: |
-            /usr/local/texlive
-            ~/.texlive
-            ~/.cache/biber
-          key: ${{ runner.os }}-latex-${{ hashFiles('**/*.tex') }}
-          restore-keys: |
-            ${{ runner.os }}-latex-
-
       - name: Install LaTeX dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y \
-            texlive-latex-recommended \
-            texlive-fonts-recommended \
-            texlive-publishers \
-            texlive-science \
-            texlive-bibtex-extra \
-            biber \
-            latexmk \
-            texlive-full
+          sudo apt-get install -y texlive-latex-recommended texlive-fonts-recommended texlive-publishers texlive-science latexmk
 
       - name: Compile LaTeX files in "Advanced Embedded Engineering"
         run: |
@@ -51,25 +32,8 @@ jobs:
           cd "Advanced Embedded Engineering"
           shopt -s nullglob
           for tex_file in *.tex; do
-            # First LaTeX pass to generate .bcf, .aux, and other files
             latexmk -pdf -interaction=nonstopmode "$tex_file"
-            
-            # Ensure .bcf file is generated before running Biber
-            if [ ! -f "${tex_file%.tex}.bcf" ]; then
-              echo "Error: .bcf file not found for $tex_file"
-              exit 1
-            fi
-            
-            # Run Biber to process bibliography
-            biber "${tex_file%.tex}"
-            
-            # Second LaTeX pass to resolve references after Biber
-            latexmk -pdf -interaction=nonstopmode "$tex_file"
-            
-            # Move the generated PDF to the "Compiled PDF" folder
             mv "${tex_file%.tex}.pdf" "Compiled PDF/"
-            
-            # Clean auxiliary files
             latexmk -c
           done
           shopt -u nullglob
@@ -80,25 +44,8 @@ jobs:
           cd "Hardware Engineering"
           shopt -s nullglob
           for tex_file in *.tex; do
-            # First LaTeX pass to generate .bcf, .aux, and other files
             latexmk -pdf -interaction=nonstopmode "$tex_file"
-            
-            # Ensure .bcf file is generated before running Biber
-            if [ ! -f "${tex_file%.tex}.bcf" ]; then
-              echo "Error: .bcf file not found for $tex_file"
-              exit 1
-            fi
-            
-            # Run Biber to process bibliography
-            biber "${tex_file%.tex}"
-            
-            # Second LaTeX pass to resolve references after Biber
-            latexmk -pdf -interaction=nonstopmode "$tex_file"
-            
-            # Move the generated PDF to the "Compiled PDF" folder
             mv "${tex_file%.tex}.pdf" "Compiled PDF/"
-            
-            # Clean auxiliary files
             latexmk -c
           done
           shopt -u nullglob
