@@ -40,7 +40,9 @@ jobs:
           cd "Advanced Embedded Engineering"
           shopt -s nullglob
           for tex_file in *.tex; do
-            latexmk -pdf -interaction=nonstopmode -use-biber "$tex_file"
+            latexmk -pdf -interaction=nonstopmode "$tex_file"
+            biber "${tex_file%.tex}"  # Run Biber explicitly after LaTeX
+            latexmk -pdf -interaction=nonstopmode "$tex_file"  # Run LaTeX again to resolve citations
             mv "${tex_file%.tex}.pdf" "Compiled PDF/"
             latexmk -c
           done
@@ -52,7 +54,9 @@ jobs:
           cd "Hardware Engineering"
           shopt -s nullglob
           for tex_file in *.tex; do
-            latexmk -pdf -interaction=nonstopmode -use-biber "$tex_file"
+            latexmk -pdf -interaction=nonstopmode "$tex_file"
+            biber "${tex_file%.tex}"  # Run Biber explicitly after LaTeX
+            latexmk -pdf -interaction=nonstopmode "$tex_file"  # Run LaTeX again to resolve citations
             mv "${tex_file%.tex}.pdf" "Compiled PDF/"
             latexmk -c
           done
