@@ -21,6 +21,17 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           persist-credentials: true
 
+      - name: Cache LaTeX dependencies
+        uses: actions/cache@v3
+        with:
+          path: |
+            /usr/local/texlive
+            ~/.texlive
+            ~/.cache/biber
+          key: ${{ runner.os }}-latex-${{ hashFiles('**/*.tex') }}
+          restore-keys: |
+            ${{ runner.os }}-latex-
+
       - name: Install LaTeX dependencies
         run: |
           sudo apt-get update
