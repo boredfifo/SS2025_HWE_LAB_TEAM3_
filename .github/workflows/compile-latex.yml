@@ -24,8 +24,14 @@ jobs:
       - name: Install LaTeX dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y texlive-latex-recommended texlive-fonts-recommended texlive-publishers texlive-science latexmk
-          sudo apt-get install -y texlive-full
+          sudo apt-get install -y \
+            texlive-latex-recommended \
+            texlive-fonts-recommended \
+            texlive-publishers \
+            texlive-science \
+            texlive-bibtex-extra \
+            biber \
+            latexmk
 
       - name: Compile LaTeX files in "Advanced Embedded Engineering"
         run: |
@@ -33,32 +39,23 @@ jobs:
           cd "Advanced Embedded Engineering"
           shopt -s nullglob
           for tex_file in *.tex; do
-            latexmk -pdf -interaction=nonstopmode "$tex_file"
+            latexmk -pdf -interaction=nonstopmode -shell-escape -use-biber "$tex_file"
             mv "${tex_file%.tex}.pdf" "Compiled PDF/"
             latexmk -c
           done
           shopt -u nullglob
-      - name: Install LaTeX dependencies
+
+      - name: Compile LaTeX files in "Hardware Engineering"
         run: |
-          sudo apt-get update
-          sudo apt-get install -y \
-            texlive-latex-recommended \
-            texlive-fonts-recommended \
-            texlive-publishers \
-            texlive-science \
-            texlive-bibtex-extra \
-            latexmk
-            - name: Compile LaTeX files in "Hardware Engineering"
-              run: |
-                mkdir -p "Hardware Engineering/Compiled PDF"
-                cd "Hardware Engineering"
-                shopt -s nullglob
-                for tex_file in *.tex; do
-                  latexmk -pdf -interaction=nonstopmode "$tex_file"
-                  mv "${tex_file%.tex}.pdf" "Compiled PDF/"
-                  latexmk -c
-                done
-                shopt -u nullglob
+          mkdir -p "Hardware Engineering/Compiled PDF"
+          cd "Hardware Engineering"
+          shopt -s nullglob
+          for tex_file in *.tex; do
+            latexmk -pdf -interaction=nonstopmode -shell-escape -use-biber "$tex_file"
+            mv "${tex_file%.tex}.pdf" "Compiled PDF/"
+            latexmk -c
+          done
+          shopt -u nullglob
 
       - name: Commit and push PDFs
         run: |
