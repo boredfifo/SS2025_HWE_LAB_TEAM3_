@@ -42,7 +42,7 @@ mofifoluwa-ipadeola.akinwande@stud.hshl.de}
 \maketitle
 
 \begin{abstract}
-Real-time communication between devices and systems in industrial automation is crucial. In the past, industries relied on fieldbus communications and serial communications to achieve this. However, the integration of Ethernet-based protocols to these communications served as a turning point as they offered more potential, like higher bandwidth, faster switching technology, and easier access. Among these protocols, PROFINET, the successor of PROFIBUS,vvv has emerged as one of the most widely used protocols in the industry, enabling efficient, scalable, and deterministic data exchange. In this paper, we explore the capabilities of PROFINET, compare it to other existing protocols, and highlight why it is the best industrial communication protocol.
+Real-time communication between devices and systems in industrial automation is crucial. In the past, industries relied on fieldbus communications and serial communications to achieve this. However, the integration of Ethernet-based protocols to these communications served as a turning point as they offered more potential, like higher bandwidth, faster switching technology, and easier access. Among these protocols, PROFINET, the successor of PROFIBUS, has emerged as one of the most widely used protocols in the industry, enabling efficient, scalable, and deterministic data exchange. In this paper, we explore the capabilities of PROFINET, compare it to other existing protocols, and highlight why it is the best industrial communication protocol.
 
 \end{abstract}
 
@@ -55,14 +55,14 @@ Modern industrial automation is changing fast. As production systems grow more c
 
 This has led to a shift toward decentralized or distributed control systems. Instead of relying on one brain, intelligence is spread across the network. Devices like sensors, actuators, and PLCs now communicate directly, thanks to industrial fieldbus networks. These networks make it possible to exchange data in real time, which is critical for keeping modern production lines running smoothly.
 
-Early fieldbus protocols such as PROFIBUS, Modbus, DeviceNet, and CANopen set the standard for reliable industrial communication. PROFIBUS, in particular, became widely used for its dependable serial RS-485 performance and deterministic timing. But as factories started integrating with IT systems and ddcloud services a hallmark of Industry 4.aaa limitations of serial protocols became clear. They struggled with bandwidth, diagnostics, and interoperability, and couldn’t leverage modern Ethernet infrastructure.
+Early fieldbus protocols such as PROFIBUS, Modbus, DeviceNet, and CANopen set the standard for reliable industrial communication. PROFIBUS, in particular, became widely used for its dependable serial RS-485 performance and deterministic timing. But as factories started integrating with IT systems and cloud services a hallmark of Industry 4.0 limitations of serial protocols became clear. They struggled with bandwidth, diagnostics, and interoperability, and couldn’t leverage modern Ethernet infrastructure.
 
 To address these gaps, PROFINET was developed by PROFIBUS and PROFINET International (PI). Built on standard Ethernet (IEEE 802.3), PROFINET extends Ethernet’s capabilities to support the deterministic, real time communication needed in industrial settings. It allows IT and OT systems to share a unified infrastructure for control, diagnostics, and data transfer making it a backbone technology for smart factories and the Industrial Internet of Things (IIoT) \cite{galloway2012industrial}, \cite{neumann2007communication}.
 
 \subsection{Communication Classes in PROFINET} 
 A major strength of PROFINET is its support for three communication classes, tailored for different use cases:
 
-Non-Real-Time (NRT): Uses TCP/IP or UDP proaaaatocols for non critical tasks like configuration, diagnostics, and file transfer. This class operates like standard Ethernet traffic, making it easy to integrate with existing IT systems.
+Non-Real-Time (NRT): Uses TCP/IP or UDP protocols for non critical tasks like configuration, diagnostics, and file transfer. This class operates like standard Ethernet traffic, making it easy to integrate with existing IT systems.
 
 Real-Time (RT): Designed for fast, cyclic data exchange between controllers and field devices. RT bypasses the full TCP/IP stack to reduce latency and jitter, achieving cycle times around 1–10 ms good enough for most control applications.
 
