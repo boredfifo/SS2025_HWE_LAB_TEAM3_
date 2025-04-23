@@ -51,11 +51,26 @@ jobs:
           cd "Advanced Embedded Engineering"
           shopt -s nullglob
           for tex_file in *.tex; do
-            latexmk -pdf -interaction=nonstopmode "$tex_file"  # First LaTeX pass to generate .bcf
-            biber "${tex_file%.tex}"  # Run Biber after LaTeX to process citations
-            latexmk -pdf -interaction=nonstopmode "$tex_file"  # Second LaTeX pass to resolve citations
+            # First LaTeX pass to generate .bcf, .aux, and other files
+            latexmk -pdf -interaction=nonstopmode "$tex_file"
+            
+            # Ensure .bcf file is generated before running Biber
+            if [ ! -f "${tex_file%.tex}.bcf" ]; then
+              echo "Error: .bcf file not found for $tex_file"
+              exit 1
+            fi
+            
+            # Run Biber to process bibliography
+            biber "${tex_file%.tex}"
+            
+            # Second LaTeX pass to resolve references after Biber
+            latexmk -pdf -interaction=nonstopmode "$tex_file"
+            
+            # Move the generated PDF to the "Compiled PDF" folder
             mv "${tex_file%.tex}.pdf" "Compiled PDF/"
-            latexmk -c  # Clean up auxiliary files
+            
+            # Clean auxiliary files
+            latexmk -c
           done
           shopt -u nullglob
 
@@ -65,11 +80,26 @@ jobs:
           cd "Hardware Engineering"
           shopt -s nullglob
           for tex_file in *.tex; do
-            latexmk -pdf -interaction=nonstopmode "$tex_file"  # First LaTeX pass to generate .bcf
-            biber "${tex_file%.tex}"  # Run Biber after LaTeX to process citations
-            latexmk -pdf -interaction=nonstopmode "$tex_file"  # Second LaTeX pass to resolve citations
+            # First LaTeX pass to generate .bcf, .aux, and other files
+            latexmk -pdf -interaction=nonstopmode "$tex_file"
+            
+            # Ensure .bcf file is generated before running Biber
+            if [ ! -f "${tex_file%.tex}.bcf" ]; then
+              echo "Error: .bcf file not found for $tex_file"
+              exit 1
+            fi
+            
+            # Run Biber to process bibliography
+            biber "${tex_file%.tex}"
+            
+            # Second LaTeX pass to resolve references after Biber
+            latexmk -pdf -interaction=nonstopmode "$tex_file"
+            
+            # Move the generated PDF to the "Compiled PDF" folder
             mv "${tex_file%.tex}.pdf" "Compiled PDF/"
-            latexmk -c  # Clean up auxiliary files
+            
+            # Clean auxiliary files
+            latexmk -c
           done
           shopt -u nullglob
 
