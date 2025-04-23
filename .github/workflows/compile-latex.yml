@@ -51,11 +51,11 @@ jobs:
           cd "Advanced Embedded Engineering"
           shopt -s nullglob
           for tex_file in *.tex; do
-            latexmk -pdf -interaction=nonstopmode "$tex_file"
-            biber "${tex_file%.tex}"  # Run Biber explicitly after LaTeX
-            latexmk -pdf -interaction=nonstopmode "$tex_file"  # Run LaTeX again to resolve citations
+            latexmk -pdf -interaction=nonstopmode "$tex_file"  # First LaTeX pass to generate .bcf
+            biber "${tex_file%.tex}"  # Run Biber after LaTeX to process citations
+            latexmk -pdf -interaction=nonstopmode "$tex_file"  # Second LaTeX pass to resolve citations
             mv "${tex_file%.tex}.pdf" "Compiled PDF/"
-            latexmk -c
+            latexmk -c  # Clean up auxiliary files
           done
           shopt -u nullglob
 
@@ -65,11 +65,11 @@ jobs:
           cd "Hardware Engineering"
           shopt -s nullglob
           for tex_file in *.tex; do
-            latexmk -pdf -interaction=nonstopmode "$tex_file"
-            biber "${tex_file%.tex}"  # Run Biber explicitly after LaTeX
-            latexmk -pdf -interaction=nonstopmode "$tex_file"  # Run LaTeX again to resolve citations
+            latexmk -pdf -interaction=nonstopmode "$tex_file"  # First LaTeX pass to generate .bcf
+            biber "${tex_file%.tex}"  # Run Biber after LaTeX to process citations
+            latexmk -pdf -interaction=nonstopmode "$tex_file"  # Second LaTeX pass to resolve citations
             mv "${tex_file%.tex}.pdf" "Compiled PDF/"
-            latexmk -c
+            latexmk -c  # Clean up auxiliary files
           done
           shopt -u nullglob
 
