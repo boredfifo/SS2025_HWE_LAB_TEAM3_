@@ -1,7 +1,7 @@
 \documentclass[conference]{IEEEtran}
 \IEEEoverridecommandlockouts
 % The preceding line is only needed to identify funding in the first footnote. If that is unneeded, please comment it out.
-\usepackage{cite}
+%\usepackage{cite}
 \usepackage{amsmath,amssymb,amsfonts}
 \usepackage{algorithmic}
 \usepackage{graphicx}
@@ -14,11 +14,11 @@
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 \begin{document}
 
-\title{ProfiNet\\
-{\footnotesize \textsuperscript{*}Note: Sub-titles are not captured in Xplore and
-should not be used}
-\thanks{Identify applicable funding agency here. If none, delete this.}
-}
+\title{ProfiNet\\}
+% {\footnotesize \textsuperscript{*}Note: Sub-titles are not captured in Xplore and
+% should not be used}
+% \thanks{Identify applicable funding agency here. If none, delete this.}
+% }
 
 \author{\IEEEauthorblockN{1\textsuperscript{st} Rubayet Kamal}
 \IEEEauthorblockA{\textit{Electronic Engineering} \\
@@ -42,7 +42,7 @@ mofifoluwa-ipadeola.akinwande@stud.hshl.de}
 \maketitle
 
 \begin{abstract}
-Real-time communication between devices and systems in industrial automation is crucial. In the past, industries relied on fieldbus communications and serial communications to achieve this. However, the integration of Ethernet-based protocols to these communications served as a turning point as they offered more potential, like higher bandwidth, faster switching technology, and easier access. Among these protocols, PROFINET, the successor of PROFIBUS, has emerged as one aaaaof the most widely used protocols in the industry, enabling efficient, scalable, and deterministic data exchange. In this paper, we explore the capabilities of PROFINET, compare it to other existing protocols, and highlight why it is the best inaaadustrial communication protocol.
+Real-time communication between devices and systems in industrial automation is crucial. In the past, industries relied on fieldbus communications and serial communications to achieve this. However, the integration of Ethernet-based protocols to these communications served as a turning point as they offered more potential, like higher bandwidth, faster switching technology, and easier access. Among these protocols, PROFINET, the successor of PROFIBUS, has emerged as one of the most widely used protocols in the industry, enabling efficient, scalable, and deterministic data exchange. In this paper, we explore the capabilities of PROFINET, compare it to other existing protocols, and highlight why it is the best industrial communication protocol.
 
 \end{abstract}
 
@@ -55,7 +55,7 @@ Modern industrial automation is changing fast. As production systems grow more c
 
 This has led to a shift toward decentralized or distributed control systems. Instead of relying on one brain, intelligence is spread across the network. Devices like sensors, actuators, and PLCs now communicate directly, thanks to industrial fieldbus networks. These networks make it possible to exchange data in real time, which is critical for keeping modern production lines running smoothly.
 
-Early fieldbus protocols such as PROFIBUS, Modbus, DeviceNet, and CANopen set the standard for reliable industrial communication. PROFIBUS, in particular, became widely used for its dependavvffble serial RS-485 performance and deterministic timing. But as factories started integrating with IT systems and cloud services a hallmark of Industry 4.0 limitations of serial protocols became clear. They struggled with bandwidth, diagnostics, and interoperability, and couldn’t leverage modern Ethernet infrastructure.
+Early fieldbus protocols such as PROFIBUS, Modbus, DeviceNet, and CANopen set the standard for reliable industrial communication. PROFIBUS, in particular, became widely used for its dependable serial RS-485 performance and deterministic timing. But as factories started integrating with IT systems and cloud services a hallmark of Industry 4.0 limitations of serial protocols became clear. They struggled with bandwidth, diagnostics, and interoperability, and couldn’t leverage modern Ethernet infrastructure.
 
 To address these gaps, PROFINET was developed by PROFIBUS and PROFINET International (PI). Built on standard Ethernet (IEEE 802.3), PROFINET extends Ethernet’s capabilities to support the deterministic, real time communication needed in industrial settings. It allows IT and OT systems to share a unified infrastructure for control, diagnostics, and data transfer making it a backbone technology for smart factories and the Industrial Internet of Things (IIoT) \cite{galloway2012industrial}, \cite{neumann2007communication}.
 
@@ -63,7 +63,7 @@ To address these gaps, PROFINET was developed by PROFIBUS and PROFINET Internati
 A major strength of PROFINET is its support for three communication classes, tailored for different use cases:
 
 Non-Real-Time (NRT): Uses TCP/IP or UDP protocols for non critical tasks like configuration, diagnostics, and file transfer. This class operates like standard Ethernet traffic, making it easy to integrate with existing IT systems.
-a
+
 Real-Time (RT): Designed for fast, cyclic data exchange between controllers and field devices. RT bypasses the full TCP/IP stack to reduce latency and jitter, achieving cycle times around 1–10 ms good enough for most control applications.
 
 Isochronous Real-Time (IRT): Used where timing is critical, like robotics or motion control. IRT relies on IEEE 1588 Precision Time Protocol (PTP) for tight time sync across the network. It delivers update rates as fast as 250 us, with jitter under 1 us \cite{ferrari2004profinet}, \cite{schumacher2008profinet}.
@@ -93,7 +93,7 @@ Data Link Layer: Handles MAC addressing, frame control, and error checking.
 Application Layer: Manages tasks like device discovery and diagnostics using GSDML files \cite{patzke1998fieldbus}.
 
 \subsection{Additional Features and Industrial Benefits}
-PROFINET goes beyond just a fast communication. It includes:
+PROFINET goes beyond just fast communication. It includes:
 
 PROFIsafe for integrating safety features into the same network, removing the need for separate safety systems.
 
@@ -104,9 +104,160 @@ PROFIdrive to standardize control of drives and motion systems across vendors \c
 It also supports a variety of network topologies line, star, ring, tree and builtin redundancy (MRP, S2) for high availability, which is vital in mission-critical environments.
 
 \section{Application Areas}
-Rubayet write about profisafe, cause it covers application areas imo. I will waflle on comparison, and when i.m editing maybe i can find a new sub section aaaaa
+PROFINET Application Profiles (APs) are versatile standards that enchance device consistency across manufacturers. They're applied to PROFINET devices, unifying behavior across brands and industries.
+While the PROFINET  specification itself has been stable for many years, work still continues on APs and they consist of:
+\begin{itemize}
+    \item PROFIsafe with respect to functional safety
+    \item PROFIenergy in energy management
+    \item PROFIdrive  for drives and motors
+    \item PA Profile for continuous processes  
+\end{itemize}
+They are all APs. APs are an agreement within  a family of devices, a particular industry, or an integration, on how to use PROFINET data.  The device family might be robots or encoders. The industry might be laboratories or trains. And  an integration might be HART or IO-Link. In all, there are two-dozen Application Profiles. Each  specifies the syntax of data and parameters exchanged between nodes. They exist above the physical and communication layers as  shown in fig. XXX. While the PROFINET specification ensures devices are  inter-connectable, APs ensure not only interoperability but that devices from  different vendors can be interchangeable. That being said, APs only standardize  core properties, allowing additional optional vendor-specific properties so as allow for  technical innovations and market adjustments. Application Profiles are optional enhancements, not obligatory for all PROFINET devices. When implemented, they prescribe specific features for consistent performance. General and Specific Profiles cater to various applications, from safety to energy management. Subsections \ref{subsec: profisafe}, \ref{subsec: PROFIenergy}, \ref{subsec: PROFIdrive} and \ref{subsec: pAProfile} discuss some  APs.
+
+\subsection{ProfiSafe}
+\label{subsec: profisafe}
+Safety has become an integral part of Automation Systems.There is hardly any machine or piece of equipment anymore which does not feature some sort emergency stop or other means of safety device.
+PROFIsafe is the leading technology for discrete manufacturing and process automation when exchanging functional safety-relevant data. With several million nodes installed, PROFIsafe technology has proven itself in the market as leading technology for functional safety communication. Functional safety is the protection of people and asset from hazard caused by incorrect functioning. Protectionism is achieved by halting and putting a manufacturing system into a safe state and preventing subsequent intended or unintended operations until a failure has been corrected and acknowledged. Previously, many wires would be run from safety contactors  (think emergency stop buttons or light curtains) to safety relays. PROFIsafe allows a single  cable to replace many wires and a safety logic controller to replace many relays. Fig. XXX shows a comparison between with and without PROFIsafe.Now  in order for the fieldbus communication to be safety certified there are some conditions  for which we must account. There could be: message repetition, deletion, insertion,  re-sequencing, data corruption, delay, masquerading, or first-in-first-out failures.  With Consecutive Numbering, Time-Outs, Codenames for authenticity, and Data Consistency  Checks, PROFIsafe as a protocol layer on top of the fieldbus mitigates these conditions. It  treats the fieldbus as a "black channel", a concept pioneered by PI. In this way,  PROFIsafe ensures that data transmitted from one end of a safety circuit to another  is correct. We don't care about the underlying transport or physical layers. PROFIsafe  can be used with PROFIBUS or PROFINET, wired or wirelessly with safety data  and standard I/O data residing on the same cable. PROFIsafe has become an international standard (IEC 61784-3-3) and has been evaluated positively by German notified bodies such as IFA and TÜV.
+
+PROFIsafe is independent of the communication method and provides cost-effective and flexible functional safety. It covers the entire communication path from the sensor over the controller to the actuator and integrates safety and standard communication on one cable (black channel principle). 
+
+PROFIsafe technology was developed as an additional layer above PROFINET (or PROFIBUS), but can also be used internally on the device ("backplane bus"). It can be used to reduce the probability of errors during data transfers between an F-Host (safety controller) and an F-Device to a level required by the standards, or below. The technology is easy to implement in software (PROFIsafe driver) and covers the complete spectrum of safety applications in process and manufacturing automation. Due to the "Black Chanel" approach, PROFIsafe can also be used together with wireless transmission technologies. 
+
+The PROFIsafe Policy provides a set of rules for the PROFIBUS/PROFINET community in order to define a high quality level of PROFIsafe products and services through:
+ 
+ \begin{itemize}
+     \item Consistent public relations regarding the PROFIsafe technology by manufacturers, integrators, distributors, competence centers and consultants
+     \item Careful implementation in safety products
+     \item A high degree of reputation on the market and its perpetuation (image)
+     \item Responsible handling of the safety aspects to avoid risk and harm or damage for people, environment and assets
+High-quality training and seminars.
+     \end{itemize}
+
+As a general rule, it is not possible to turn a standard device into a safety device (F-device) just by implementing the PROFIsafe protocol: The final SIL of the device is defined by the architecture of the safety technology of the device together with the protocol and the manner in which both are implemented. Even though PROFIsafe is suitable for safety functions up to SIL3, it may not be necessary to design and develop the F-Device also for SIL3. 
+
+Because of the “Black-Channel” principle, the PROFIsafe layer (located above the standard protocol) has no impact on the standard bus protocols and is independent from the base transmission channels. This makes implementation of the PROFIsafe driver software in devices and hosts quite easy. The following choices exist:
+
+\begin{itemize}
+    \item Development of the software according to the specification or
+    \item For interfacing PROFIsafe technology any of the available ASICs and layer stacks are suitable; the PROFIsafe driver software must only be adapted to the specific device needs.
+    \item Use of a PROFIsafe starter kit available on the market from different technology providers. The advantage of a starter kit is obvious: pre-certified PROFIsafe driver software, additional valuable information and tools, and technical support.
+\end{itemize}
+
+Examples of application areas of PROFIsafe are: 
+
+With its numerous installations, PROFIsafe has posted striking evidence of its leading role in fieldbus-based safe communication systems. At present there are 6.95 million PROFIsafe nodes installed. PROFIsafe is suitable for various Fieldbus networks without impacts on these existing fieldbus standards. It is possible to transmit safety messages on the existing standard bus cables in coexistence with the standard messages.
+
+
+
+\subsection{PROFIenergy}
+\label{subsec: PROFIenergy}
+PROFIenergy offers interoperable interfaces and standardized information models for Power Consumption Management in production.
+
+Automation users worldwide are driven to minimize energy consumption, to cut costs and comply with increasingly stringent ‘green’ obligations. Methods range from switching off equipment manually to installing semi-automated shut-down systems. These are crude, expensive or hard to manage.
+
+What is needed is a standardized way to manage energy consuming devices over production networks, eliminating the need for external systems and delivering a solution that can be configured intelligently using existing automation equipment.
+
+The PROFIenergy Profile enables control devices (e.g. PLCs) to send commands to Energy Consuming Units (ECU), to signal pauses such as lunch breaks, holidays, random line stoppages or even peak load conditions. On receipt of the PROFIenergy commands, software ‘agents’ in the ECU firmware initiate pre-defined ‘sleep’ modes for the duration of the pause.
+
+PROFIenergy live in application\_EN
+Standards and regulations are increasingly putting the focus on environmental protection and more effective energy management. Industry has the goal of saving energy and actively reducing CO2 emissions. In production environments, it is also important to reduce costs through energy savings, thereby assuring a lasting competitive advantage.
+PROFIenergy contributes actively to environmental protection.
+
+
+The PROFIenergy Profile can be implemented on every PROFINET device which is capable to offer Power Consumption measurement values, Standby Modes or supports power off with switch on by Wake on LAN (WOL). PROFIenergy as a PROFINET profile provides an interoperable interface via PROFINET for access to these Power Management Functions. PROFIenergy can be combined with all other PROFINET application profiles. 
+
+PROFIenergy can be used as interface to Power Metering and Monitoring Devices (PDM) but also could be an addition to all classes of PROFINET devices (e.g. roboter, drives, actuators, power supplies) for access to available PDM data and/or standby management functions. The offered Power Metering and Monitoring data is according to IEC 61557-12. The standby management offers all standy mode related data and manages actively the switching to an optimal standby mode if the pause duration is advertised to the device. 
+
+In addition to the PROFIenergy Profile on PROFINET, the PROFIenergy functions are also available as standardized information model on OPC UA as Part 30141. This makes Power Consumption Management functions also available in the IT level of production and satisfies the need for IT-OT integration. OPC UA Part 30141 can be implemented on an OPC UA server of the PROFINET device, at an edge device for proxying PE PN devices or as an standardized Power Management information model in the IT level of production. For the PROFIenergy profile a certification is available at the PI Testlabs.
+
+Many companies have noticed that even  when their factory is Nnot producing goods, energy is still being consumed by the robots,  machines, and drives. Until now, if a factory wanted to save energy, a custom solution with  a separate energy controller and switches at each component had to be used. In addition, to  switch off devices in a very specific order, PLC logic needed to be written. With PROFIenergy,  the PLC manages the energy usage through the existing automation network automatically, in  this case PROFINET. No extra hardware is required, and if necessary only certain function  blocks of a device can be powered down. A great analogy is the sleep function on your  laptop. Then, when production is resumed, the PLC knows the behavior of the devices and  turns them back on in the correct sequence. There are four use cases for PROFIenergy: 1)  brief pauses, up to an hour; 2) longer pauses, that last hours or days; 3) unscheduled pauses;  and 4) load measuring. Combined, these efforts reduce energy consumption during downtime by  80\%, cutting utility bills by up to a third.
+
+Benefits of PROFIenergy are as follows:
+\begin{itemize}
+    \item Helps to fulfill ISO 50001 and EN 17267
+    \item Offers Standby Management and Power Off functions for active control of Power Consumption
+    \item Is available on OT level for all PROFINET devices
+    \text Is available on IT level as OPC UA part 30141
+\end{itemize}
+
+With PROFIenergy, PROFIBUS \& PROFINET International (PI) is now making its own contribution to environmental protection through the careful management of automation resources. This standardization of an energy saving profile for automation – the first to be accomplished anywhere in the world – involved field device manufacturers, machine builders, and plant operators as an integral unit, all of whom will benefit from its deployment. Based on the international communication standard PROFINET, PROFIenergy commands can be used to switch PROFINET field devices into energy saving modes in a coordinated manner – and do so across vendors independently of device types. At the conclusion of the pause, the field devices are again available and ready for operation on a reliable basis.
+
+\subsection{PROFIdrive}
+\label{subsec: PROFIdrive}
+PROFIdrive is a powerful and mature drive control profile for any kind of application and industry usage.
+
+In modern  manufacturing, it's rare to find automation that does not employ drives or motors. Drives  today, are complex systems in their own right with many parameters. PROFIdrive standardizes and  organizes all of these parameters consistently, simplifying communications between drive and  controller on either PROFIBUS or PROFINET. But, the requirements vary from one application  to the next. Some are simply a single open-loop drive with fixed or variable speed. For example:  pumps, fans, or conveyors. Slightly more complex applications like single axis positioning  require some closed-loop feedback. And finally in packaging machines and robots, highly  synchronized multi-axis motion control is needed. These applications may also require shorter  cycle times, which are no problem for PROFINET: from milliseconds all the way to microseconds.  Drives often have the potential to produce hazardous motion and can consume a majority of the  energy in an automation environment. Therefore, PROFIdrive also brings in functional safety  and energy management by incorporating the PROFIsafe and PROFIenergy profiles. To help  device vendors to implement PROFIdrive, a community project has been set up  to make the technology open-source.
+
+This profile is standardized in IEC 61800-7 (Generic interface and use of profiles for power drive systems) as well as GB/T 25740 and hosted by Profibus \& Profinet International (PI), which guarantees professional support around the globe.
+
+Due to its modular structure and manufacturer-independent device profile, PROFIdrive is easy to integrate, highly scalable by its granular six-level structure, and defined to achieve the utmost interoperability level. PROFIdrive is safeguarded by well-defined certification tests, global technology support and easy implementation procedures.
+ 
+Another huge advantage is the complete upper OSI layer implementation (level 5-7), which makes this profile futureproof and independent from any changes in the lower technology layers.
+
+By its nature, PROFIdrive always comes along with perfect interplay of all other PROFINET profiles like PROFIsafe and PROFIenergy.
+
+The supported VIK/NAMUR drive interface - according to VE34/NE122 - offers the advantage of a "device exchange without engineering interaction" based on a specifically defined and provided VIK/NAMUR GSD file. This feature underscores the general architecture and vendor independent nature of the PROFIdrive architecture and communication structure.
+
+PI offers a wide range of options for implementation support, interoperability testing, and certification options. Further, PI invites all companies to participate in future PROFIdrive profile enhancements and on-going standardization work.
+
+Benefits of PROFIdrive:
+\begin{itemize}
+    \item Full interoperability and exchangeability - including safety functionality
+    \item PROFIdrive is futureproof due to high level OSI layer realization.
+    \item Internationally estalblished by following drive standards - IEC 61800-7 and GB/T 25740
+    \text Is supported worldwide
+\end{itemize}
+
+\subsection{PA Profile }
+\label{subsec: pAProfile}
+PI provides different PROFINET profiles for Process Automation, such as PA Profile 4 and RIO for PA (Remote IO).
+
+Quickly, process applications are characterized by: longer cycle times, higher  requirements for reliability, changes performed while the system is in production, the number  of I/O signals typically range in the tens of thousands, and more complex sensors. A Process  Automation Profile was specified containing four main features to address these requirements.  The first is fieldbus integration using the Proxy concept of PROFINET. A proxy is like a gateway  in that data can be passed seamlessly from one communication protocol to another. This  allows networks in intrinsically safe zones, like PROFIBUS PA, to integrate transparently. The  second feature is known as Configuration in Run. It provides a means to perform a bumpless change  of configuration while the system is running without shutting down to do so. This is done  by creating a second Application Relation, in addition to the primary Application Relation,  and then switching over. A major benefit to using Industrial Ethernet is the ease with  which Redundancy can be implemented. This can be done through redundant networks, redundant  controllers, or even redundant devices. Finally, time synchronization and time stamping allow for  precise process monitoring, sequencing of events, and trend displays. Here, all controllers and  devices are synchronized to a master clock.
+
+With PA Profile 4 - PROFIprocess further simplification and faster management of field devices for example during commissioning, maintenance and device replacement will be achieved. Therefore, ‘core-parameters’(NE131) as they have been defined trough NAMUR for example be considered. These are extraordinary important parameters and default values of the most common used measuring- and actuator devices. 
+
+PA Profiles specify important parameters and functions manufacturing-independently. This leads to identical workflows for field devices and similar behavior of them during engineering and operations if PA Profiles are implemented, independent of supplier and device type. It results in increased efficiency in planning, procurement, and maintenance.
+
+
+For PA Profile 4, parameters, as they are defined in NAMUR recommendation NE131 have been considered and specified in unified way. 
+Target of NE131 is to simplify and speed-up commissioning, operations, and device replacement of field devices. 
+NE131 describes both general and specific requirements for flow, level, pressure, temperature, and actuators. These requirements apply to field devices for operating functions and safety instrumented functions.
+
+
+Furthermore, PA Profile 4 covers diagnostic information in a harmonized way as it is defined in NE107 for the different field instruments. The specification for PA Profile 4 considers category and message, which is displayed for the diagnostic information. 
+
+Benefits of PA Profile 4:
+\begin{itemize}
+    \item Consideration of main customer requests
+    \item Reduces training effort for field devices
+    \item Promotion through PNO and their member companies
+    \item Reputation of Profiles
+    \item High quality training and seminars
+\end{itemize}
+
+
 \section{Comparison}
-Hi, Fifo. Ok I will do so. Best regards, Rubayet
+The selection of an industrial communication protocol is informed by the specific needs and goals of an organization or manufacturer, given the wide array of options available. Among these protocols, ProfiNET emerges as a widely accepted choice. This section aims to provide a comparison between ProfiNET and other leading protocols, emphasizing ProfiNET's strengths and exploring areas of vulnerability. 
+
+\subsection{ProfiNET vs Ethernet/IP}
+Ethernet/IP, like ProfiNET, was born out of the desire to integrate the Ethernet network, due to its high popularity and accessibility, with existing communication standards — adapting it with additional layers to make it suitable for control applications. Like ProfiNET, it uses the standard Ethernet with an additional application layer for industrial automation. Ethernet/IP uses standard Ethernet protocols like TCP/IP with an industrial application layer called Control and Information Protocol (CIP). This layer can provide real-time and other informational message structures tailored for industrial automation environments. An advantage of CIP is that it is also used by other protocols like DeviceNet and ControlNet, enabling interoperability by sharing libraries and profiles with devices that use these protocols\cite{Acromag2020EthernetIP}. In its basic operation, Ethernet/IP utilizes the full OSI model, including the network (IP) and transport layers (TCP/UDP), making it compatible with existing Ethernet hardware, etc. While it can offer real-time capabilities, its determinism can vary based on its implementation over UDP/IP or TCP/IP.
+
+ProfiNET, on the other hand, stands out over Ethernet/IP in data transmission efficiency and determinism. ProfiNET offers two modes for real-time communication - ProfiNET RT (Real-Time) and ProfiNET IRT (Isochronous Real-Time). These modes were designed to optimize communication determinism by bypassing some of the layers (network and transport) in the OSI model\cite{ProfinetCommunicationChannels}. This architecture allows the cycle time of ProfiNET to be more precise in applications that require high real-time performance.For example, in standard real-time data exchange,  bus cycle times are typically less than 10ms, while in ProfiNET IRT data, exchanges can occur within a few dozen microseconds\cite{Eitel2020EtherNetVsPROFINET}.
+
+In terms of global usage, ProfiNET sees widespread adoption in Europe, driven by Siemens and its integration into many European automation platforms. Ethernet/IP, developed by Rockwell Automation, is more common in North America. This divergence simply reflects regional standardization practices.
+
+
+\subsection{ProfiNET vs EtherCAT}
+EtherCAT(Ethernet for Control Automation Technology) also builds on the Ethernet protocol. It sets the standard for high-speed, real-time Ethernet applications\cite{Rostan2010EtherCAT}, because it effectively uses the Ethernet´s physical and data-link layers while bypassing the overhead of the higher OSI model layers. Its most notable feature is in the way Ethernet packet frames are sent between devices. In EtherCAT, a "processing on the fly" method where in a network of devices, the EtherCAT master node sends one frame each cycle that addresses and contains data for all devices on the network. As the frame passes through each device (or slave), it reads the data addressed to it while simultaneously writing the response before passing it along to another device\cite{DewesoftEtherCAT2023}. This method allows all devices in the network to be addressed in one cycle, ensuring minimal latency and enabling ultra-fast communication, often with bus cycle times in the microsecond range\cite{Rostan2010EtherCAT}.
+ProfiNET, by contrast, follows a more conventional Ethernet communication model. It uses standard Ethernet frames to exchange data between devices, typically communicating with one device at a time. Each message is sent directly from the controller to the individual device, and the device responds in turn. This method of comunication does not allow the kind of parallel data handling that EtherCAT achieves. While ProfiNET IRT can achieve as high a precision as EtherCAT, configuring it usually requires additional hardware and careful newtork configuration \cite{WuXie2019} which can potentially increase costs.
+Therefore, while both protocols can reach high-performance levels, EtherCAT inherently supports faster, more efficient communication patterns, particularly suited for critical real time-systems like robotics and motion control\cite{BeckhoffETG2023}. ProfiNET, although more traditional in its frame handling, integrates well within Siemens automation ecosystems and is widely used in broader industrial settings\cite{Eitel2020EtherNetVsPROFINET}.
+
+\subsection{ProfiNET vs Sercos III}
+Sercos III (Serial Real-time Communication System, version 3) is another Ethernet-based protocol developed to meet the strict real-time requirements of motion control systems. It also utilizes a similar feature to the "processing on the fly" employed by EtherCAT , where the slave processes the packet by inputting and outputting data on the "fly". However, it uses two frames for input and output. This method means it can achieve cycle times as low as 31 microseconds which is similar to that attainable by EtherCAT.
+Only line topology plus ring for redundancy are possible. Sercos 3 works without hubs and switches
+ProfiNET IRT is at least one order of magnitude slower than sercos 3
+
+\section{further developments to profinet, time sensitive networking}
 \section{Conclusion}
 
 Zusammen später
