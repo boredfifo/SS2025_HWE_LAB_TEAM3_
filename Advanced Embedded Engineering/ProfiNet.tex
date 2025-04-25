@@ -42,7 +42,7 @@ mofifoluwa-ipadeola.akinwande@stud.hshl.de}
 \maketitle
 
 \begin{abstract}
-Real-time communication between devices and systems in industrial automation is crucial. In the past, industries relied on fieldbus communications and serial communications to achieve this. However, the integration of Ethernet-based protocols to these communications served as a turning point as they offered more potential, like higher bandwidth, faster switching technology, and easier access. Among these protocols, PROFINET, the successor of PROFIBUS, has emerged as one of the most widely used protocols in the industry, enabling efficient, scalable, and deterministic data exchange. In this paper, we explore the capabilities of PROFINET, compare it to other existing protocols, and highlight why it is the best industrial communication protocol.
+Real-time communication between devices and systems in industrial automation is crucial. In the past, industries relied on fieldbus communications and serial communications to achieve this. However, the integration of Ethernet-based protocols to these communications served as a turning point as they offered more potential, like higher bandwidth, faster switching technology, and easier access. Among these protocols, PROFINET, the successor of PROFIBUS, has emerged as one of the most widely adopted protocols in the industry, enabling efficient, scalable, and deterministic data exchange. In this paper, we explore the capabilities of PROFINET, compare it to other existing protocols, and highlight the factors contributing to its widespread acceptance in modern automation environments.
 
 \end{abstract}
 
@@ -95,11 +95,16 @@ Application Layer: Manages tasks like device discovery and diagnostics using GSD
 \subsection{Additional Features and Industrial Benefits}
 PROFINET goes beyond just fast communication. It includes:
 
-PROFIsafe for integrating safety features into the same network, removing the need for separate safety systems.
+\begin{itemize}
+    \item PROFIsafe for integrating safety features into the same network, removing the need for separate safety systems.
+    \item PROFIenergy for energy-saving modes during downtime, supporting sustainable operations.
+    \item PROFIdrive to standardize control of drives and motion systems across vendors 
+\end{itemize}
 
-PROFIenergy for energy-saving modes during downtime, supporting sustainable operations.
 
-PROFIdrive to standardize control of drives and motion systems across vendors \cite{galloway2012industrial}, \cite{jasperneite2007limits}.
+
+
+\cite{galloway2012industrial}, \cite{jasperneite2007limits}.
 
 It also supports a variety of network topologies line, star, ring, tree and builtin redundancy (MRP, S2) for high availability, which is vital in mission-critical environments.
 
@@ -259,7 +264,7 @@ Additionally, \textbf{PA Profile 4} aligns with \textbf{NAMUR NE107}, which stan
 
 
 \section{Comparison}
-The selection of an industrial communication protocol is informed by the specific needs and goals of an organization or manufacturer, given the wide array of options available. Among these protocols, ProfiNET emerges as a widely accepted choice. This section aims to provide a comparison between ProfiNET and other leading protocols, emphasizing ProfiNET's strengths and exploring areas of vulnerability. 
+The selection of an industrial communication protocol is informed by the specific needs and goals of an organization or manufacturer, given the wide array of options available - including both open and proprietary standards. Among these protocols, ProfiNET emerges as a widely accepted choice. This section aims to provide a comparison between ProfiNET and other leading protocols, emphasizing ProfiNET's strengths and exploring areas of vulnerability. 
 
 \subsection{ProfiNET vs Ethernet/IP}
 Ethernet/IP, like ProfiNET, was born out of the desire to integrate the Ethernet network, due to its high popularity and accessibility, with existing communication standards — adapting it with additional layers to make it suitable for control applications. Like ProfiNET, it uses the standard Ethernet with an additional application layer for industrial automation. Ethernet/IP uses standard Ethernet protocols like TCP/IP with an industrial application layer called Control and Information Protocol (CIP). This layer can provide real-time and other informational message structures tailored for industrial automation environments. An advantage of CIP is that it is also used by other protocols like DeviceNet and ControlNet, enabling interoperability by sharing libraries and profiles with devices that use these protocols\cite{Acromag2020EthernetIP}. In its basic operation, Ethernet/IP utilizes the full OSI model, including the network (IP) and transport layers (TCP/UDP), making it compatible with existing Ethernet hardware, etc. While it can offer real-time capabilities, its determinism can vary based on its implementation over UDP/IP or TCP/IP.
@@ -271,13 +276,14 @@ In terms of global usage, ProfiNET sees widespread adoption in Europe, driven by
 
 \subsection{ProfiNET vs EtherCAT}
 EtherCAT(Ethernet for Control Automation Technology) also builds on the Ethernet protocol. It sets the standard for high-speed, real-time Ethernet applications\cite{Rostan2010EtherCAT}, because it effectively uses the Ethernet´s physical and data-link layers while bypassing the overhead of the higher OSI model layers. Its most notable feature is in the way Ethernet packet frames are sent between devices. In EtherCAT, a "processing on the fly" method where in a network of devices, the EtherCAT master node sends one frame each cycle that addresses and contains data for all devices on the network. As the frame passes through each device (or slave), it reads the data addressed to it while simultaneously writing the response before passing it along to another device\cite{DewesoftEtherCAT2023}. This method allows all devices in the network to be addressed in one cycle, ensuring minimal latency and enabling ultra-fast communication, often with bus cycle times in the microsecond range\cite{Rostan2010EtherCAT}.
-ProfiNET, by contrast, follows a more conventional Ethernet communication model. It uses standard Ethernet frames to exchange data between devices, typically communicating with one device at a time. Each message is sent directly from the controller to the individual device, and the device responds in turn. This method of comunication does not allow the kind of parallel data handling that EtherCAT achieves. While ProfiNET IRT can achieve as high a precision as EtherCAT, configuring it usually requires additional hardware and careful newtork configuration \cite{WuXie2019} which can potentially increase costs.
+
+ProfiNET, by contrast, follows a more conventional Ethernet communication model. It uses standard Ethernet frames to exchange data between devices, typically communicating with one device at a time. Each message is sent directly from the controller to the individual device, and the device responds in turn. This method of communication does not allow the kind of parallel data handling that EtherCAT achieves. While ProfiNET IRT can achieve as high a precision as EtherCAT, configuring it usually requires additional hardware and careful newtork configuration \cite{WuXie2019} which can potentially increase costs.
 Therefore, while both protocols can reach high-performance levels, EtherCAT inherently supports faster, more efficient communication patterns, particularly suited for critical real time-systems like robotics and motion control\cite{BeckhoffETG2023}. ProfiNET, although more traditional in its frame handling, integrates well within Siemens automation ecosystems and is widely used in broader industrial settings\cite{Eitel2020EtherNetVsPROFINET}.
 
 \subsection{ProfiNET vs Sercos III}
-Sercos III (Serial Real-time Communication System, version 3) is another Ethernet-based protocol developed to meet the strict real-time requirements of motion control systems. It also utilizes a similar feature to the "processing on the fly" employed by EtherCAT , where the slave processes the packet by inputting and outputting data on the "fly". However, it uses two frames for input and output. This method means it can achieve cycle times as low as 31 microseconds which is similar to that attainable by EtherCAT.
-Only line topology plus ring for redundancy are possible. Sercos 3 works without hubs and switches
-ProfiNET IRT is at least one order of magnitude slower than sercos 3
+Sercos III (Serial Real-time Communication System, version 3) is another Ethernet-based protocol developed to meet the strict real-time requirements of motion control and automation systems. Like EtherCAT, it also uses the  "processing on the fly" method , where devices input and output data into a frame on the "fly". However, unlike EtherCAT (which uses one frame for all devices), it uses two frames, one for sending data from the master to slaves and another for receiving data input. This method means it can also achieve cycle times as low as 31 microseconds\cite{hibbard2010sercos} which is similar to that attainable by EtherCAT.
+
+Network topology, another important consideration, describes how devices in a network are arranged and connected. Ethernet based protocols can typically support multiple topologies such as ring, line and star. ProfiNET is flexible in this regard and can support all of these depending on the applications need and amount of resources available\cite{pi2019topology}. However, Sercos III is particularly optimized for ring topology, where devices are connected in a close loop. Unlike most Ethernet-based protocols that require multiple external switches or hubs to achieve real-time capabilities , Sercos III devices feature two Ethernet ports and an Internal switch allowing them to be daisy chained without needing any additional infrastructure\cite{hibbard2010sercos}. In this configuration, Sercos III has a built-in redundancy where if a wire is disconnected or damaged communication reroutes without data loss\cite{sercosRedundancy}. In contrast, ProfiNET achieves similar redundancies by applying extra protocols such as the Media Redundancy Protocol (MRP), which have to be configured separately\cite{pi2019topology}. This means that even though ProfiNET IRT(the fastest profinet mode) can offer deterministic timing and high cycle times, according to comparative studies, it is reported that it is at least one order of magnitude slower than Sercos III\cite{kingstarEtherCAT2020}.
 
 \section{further developments to profinet, time sensitive networking}
 \section{Conclusion}
