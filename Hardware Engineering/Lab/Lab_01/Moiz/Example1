@@ -1,0 +1,64 @@
+
+entity SystemX is 
+    Port (A, B, C : in bit ;
+            F : out bit);
+end systemX;
+
+entity INV1 is 
+    Port (A : in bit ;
+            F : out bit);
+end INV1;
+
+
+architecture structural of INV1 is
+begin
+F <= not A;
+end structural;
+
+entity AND3 is 
+    Port (A, B, C : in bit ;
+            F : out bit);
+end AND3;
+
+architecture structural of AND3 is
+begin 
+F <= A and B and C;
+end structural;
+
+entity OR3 is 
+    Port (A, B, C : in bit ;
+            F : out bit);
+end OR3;
+
+architecture structural of OR3 is
+begin 
+F <= A or B or C;
+end structural;
+
+architecture Behavioural of SystemX is 
+signal An, Bn, Cn : bit;
+signal m0, m2, m6 : bit;
+
+component INV1 
+  Port (A : in bit;
+        F : out bit);
+end component;
+
+component AND3
+  Port ( A, B, C : in bit;
+         F : out bit);
+end component;
+
+component OR3
+  Port (A, B, C : in bit;
+        F : out bit);
+end component;
+
+begin 
+U1: INV1 port map (A=>A, F=>An);
+U2: INV1 port map (A=>B, F=>Bn);
+U3: INV1 port map (A=>C, F=>Cn);
+U4: AND3 port map (A=>An, B=>Bn, C=>Cn, F=>m0);
+U5: AND3 port map (A=>An, B=>B, C=>Cn, F=>m2);
+U6: AND3 port map (A=>A, B=>B, C=>Cn, F=>m6);
+U7: OR3 port map (A=>m0, B=>m2, C=>m6, F=>F);
