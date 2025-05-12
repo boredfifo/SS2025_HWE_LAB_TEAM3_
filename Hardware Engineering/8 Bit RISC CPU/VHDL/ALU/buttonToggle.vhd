@@ -4,49 +4,52 @@ use IEEE.NUMERIC_STD.ALL;
 
 entity ButtonMemory is
     Port (
-        clk : in STD_LOGIC;              -- System clock
-        rst : in STD_LOGIC;              -- Reset input
-        button_input : in STD_LOGIC;     -- Physical button input
-        remembered_presses : out STD_LOGIC  -- Button press history (now 1-bit)
-     );
+        clk : in STD_LOGIC;
+        rst : in STD_LOGIC;
+        button_input : in STD_LOGIC;
+        remembered_presses : out STD_LOGIC
+    );
 end ButtonMemory;
 
 architecture Behavioral of ButtonMemory is
-signal button_state, button_state_prev : STD_LOGIC := '0';
-signal debounce_counter : unsigned(15 downto 0) := (others => '0'); -- 16-bit counter for debouncing
-signal press_detected : STD_LOGIC := '0'; -- Signal to indicate a press was detected
-constant debounce_limit : unsigned(15 downto 0) := to_unsigned(50000, 16); -- Debounce threshold value, adjust as needed
-
+    signal debounced : STD_LOGIC := '0';
+    signal debounced_prev : STD_LOGIC := '0';
+    signal counter : unsigned(15 downto 0) := (others => '0');
+    signal press_toggle : STD_LOGIC := '0';
+    constant debounce_limit : unsigned(15 downto 0) := to_unsigned(50000, 16);
 begin
 
-process(clk, rst)
+process(clk)
 begin
-    if rst = '1' then
-        debounce_counter <= (others => '0');
-        button_state <= '0';
-        button_state_prev <= '0';
-        press_detected <= '0';  -- Reset the press_detected flag on reset
-    elsif rising_edge(clk) then
-        -- Button Debouncing
-        if button_input = button_state then
-            if debounce_counter < debounce_limit then
-                debounce_counter <= debounce_counter + 1;
+    if rising_edge(clk) then
+        if rst = '1' then
+            counter <= (others => '0');
+            debounced <= '0';
+            debounced_prev <= '0';
+            press_toggle <= '0';
+        else
+            -- Debounce logic
+            if button_input = debounced then
+                counter <= (others => '0'); -- No change
             else
-                -- Button state is stable; check for rising edge
-                if button_state = '1' and button_state /= button_state_prev then
-                    -- Button press detected; set press_detected to '1'
-                    press_detected <= '1';
+                counter <= counter + 1;
+                if counter >= debounce_limit then
+                    debounced <= button_input;  -- Accept new stable input
+                    counter <= (others => '0');
                 end if;
             end if;
-        else
-            debounce_counter <= (others => '0');
-            button_state_prev <= button_state;
-            button_state <= button_input;
+
+            -- Rising edge detection on debounced signal
+            if debounced = '1' and debounced_prev = '0' then
+                press_toggle <= not press_toggle;  -- Toggle output
+            end if;
+
+            -- Update previous debounced state
+            debounced_prev <= debounced;
         end if;
     end if;
 end process;
 
--- Output assignment
-remembered_presses <= press_detected;  -- Output is simply the press_detected signal
+remembered_presses <= press_toggle;
 
 end Behavioral;
