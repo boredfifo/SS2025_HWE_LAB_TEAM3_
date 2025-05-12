@@ -3,11 +3,12 @@ use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 
 ENTITY ALU_8bit_7SS IS 
-PORT(F0, F1,EN_B, EN_A, CarryIn, INV_A: IN STD_LOGIC;
+PORT(F0, F1, EN_A, CarryIn, INV_A: IN STD_LOGIC;
 	B, A: IN STD_LOGIC_VECTOR(7 downto 0);
 	clk, rst : IN STD_LOGIC;
 	anodes : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
-	display : OUT STD_LOGIC_VECTOR(7 DOWNTO 0));
+	display : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
+	LED : out STD_LOGIC_VECTOR (4 downto 0));
 END ALU_8bit_7SS;
 
 ARCHITECTURE structural of ALU_8bit_7SS IS
@@ -18,6 +19,10 @@ SIGNAL seg_0, seg_1, seg_2:STD_LOGIC_VECTOR(6 downto 0);
 SIGNAL rst_internal : STD_LOGIC := '1';
 SIGNAL reset_counter : integer range 0 to 15 := 0;
 
+COMPONENT controlLED is
+    Port ( BTN : in STD_LOGIC_VECTOR (4 downto 0);
+           LED : out STD_LOGIC_VECTOR (4 downto 0));
+end component;
 
 COMPONENT ALU_8bit IS
 PORT(F0, F1, CarryIn,EN_B, EN_A, INV_A: IN STD_LOGIC;
@@ -26,9 +31,9 @@ PORT(F0, F1, CarryIn,EN_B, EN_A, INV_A: IN STD_LOGIC;
 	CarryOut: OUT STD_LOGIC);
 END COMPONENT;
 
-COMPONENT binaryToBcd8 is
+COMPONENT binaryToBcd9 is
     Port (
-        binaryNumber : in STD_LOGIC_VECTOR(7 downto 0);
+        binaryNumber : in STD_LOGIC_VECTOR(8 downto 0);
         BCD_2 : out STD_LOGIC_VECTOR(3 downto 0);
         BCD_1 : out STD_LOGIC_VECTOR(3 downto 0);
         BCD_0 : out STD_LOGIC_VECTOR(3 downto 0)
@@ -76,12 +81,15 @@ end process;
 U166: ButtonMemory PORT MAP(clk=>clk, rst=>rst_internal, button_input=>F0, remembered_presses=>F0Line); 
 U167: ButtonMemory PORT MAP(clk=>clk, rst=>rst_internal, button_input=>F1, remembered_presses=>F1Line); 
 U168: ButtonMemory PORT MAP(clk=>clk, rst=>rst_internal, button_input=>EN_A, remembered_presses=>ENALine); 
-U169: ButtonMemory PORT MAP(clk=>clk, rst=>rst_internal, button_input=>EN_B, remembered_presses=>ENBLine); 
+--U169: ButtonMemory PORT MAP(clk=>clk, rst=>rst_internal, button_input=>EN_B, remembered_presses=>ENBLine); 
+ENBLine<=ENALine;
 U170: ButtonMemory PORT MAP(clk=>clk, rst=>rst_internal, button_input=>INV_A, remembered_presses=>InvLine); 
 U171: ButtonMemory PORT MAP(clk=>clk, rst=>rst_internal, button_input=>CarryIn, remembered_presses=>CarryLine); 
+U172: controlLED PORT MAP(BTN(0)=>F0Line,BTN(1)=>F1Line,BTN(2)=>ENALine,BTN(3)=>InvLine,BTN(4)=>CarryLine,
+                            LED=>LED);
 
 U160: ALU_8bit PORT MAP(F0=>F0Line,F1=>F1Line,CarryIn=>CarryLine,EN_B=>ENBLine,EN_A=>ENALine,INV_A=>InvLine,B=>B,A=>A,Output => outBits,CarryOut=>carry );
-U161: binaryToBcd8 PORT MAP(binaryNumber=> outBits, BCD_0=>bcd_0, BCD_1=>bcd_1, BCD_2=>bcd_2);
+U161: binaryToBcd9 PORT MAP(binaryNumber(8)=>carry,binaryNumber(7 downto 0)=> outBits, BCD_0=>bcd_0, BCD_1=>bcd_1, BCD_2=>bcd_2);
 U162: bcdTOSevensegment PORT MAP(BCD_input=>bcd_0, SEVEN_SEGMENT_OUTPUT=> seg_0);
 U163: bcdTOSevensegment PORT MAP(BCD_input=>bcd_1, SEVEN_SEGMENT_OUTPUT=> seg_1);
 U164: bcdTOSevensegment PORT MAP(BCD_input=>bcd_2, SEVEN_SEGMENT_OUTPUT=> seg_2);
