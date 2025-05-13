@@ -3,7 +3,7 @@ use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
 entity D_FLIPFLOP is
-port(d, clk, rst: IN STD_LOGIC;
+port(d, clk, rst, en: IN STD_LOGIC;
 	q: OUT STD_LOGIC);
 end D_FLIPFLOP;
 
@@ -14,8 +14,10 @@ process(clk, rst)
 begin
 if rst = '1' then
 q <= '0';
-elsif rising_edge(clk) then
+elsif rising_edge(clk) then 
+if en = '1' then
 q <= d;
+end if;
 end if;
 end process;
 end behavioral;
