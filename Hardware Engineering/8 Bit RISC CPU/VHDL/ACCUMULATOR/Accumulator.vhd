@@ -8,10 +8,11 @@ PORT(
 	dataFromUser: IN STD_LOGIC_VECTOR(7 downto 0);
 	dataFromMemory: IN STD_LOGIC_VECTOR(7 downto 0);
 	clock, load, reset: IN STD_LOGIC;
-	sourceSelector: IN STD_LOGIC_VECTOR(1 downto 0));
+	sourceSelector: IN STD_LOGIC_VECTOR(1 downto 0);
+	carryBit: IN STD_LOGIC;
 
 	dataintoALU: OUT STD_LOGIC_VECTOR(7 downto 0);
-	positiveFlag, ZeroFlag: OUT STD_LOGIC;
+	positiveFlag, ZeroFlag, carryFlag: OUT STD_LOGIC);
 END Accumulator;
 
 ARCHITECTURE BEHAVIOURAL Of Accumulator IS
@@ -47,6 +48,10 @@ WITH accumulatorDecode SELECT
 
 WITH accumulatorDecode(7) SELECT
 		positiveFlag <= '1' WHEN '0',
+				'0' WHEN OTHERS;
+
+WITH carryBit SELECT
+		carryFlag <= '1' WHEN '1',
 				'0' WHEN OTHERS;
 			
 		
