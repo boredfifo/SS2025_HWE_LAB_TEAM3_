@@ -6,7 +6,7 @@ ENTITY Accumulator IS
 PORT(	
 	datafromALU: IN STD_LOGIC_VECTOR(7 downto 0);
 	dataFromUser: IN STD_LOGIC_VECTOR(7 downto 0);
-	dataFromMemory: IN STD_LOGIC_VECTOR(7 downto 0);
+	dataFromDataUnit: IN STD_LOGIC_VECTOR(7 downto 0);
 	clock, load, reset: IN STD_LOGIC;
 	sourceSelector: IN STD_LOGIC_VECTOR(1 downto 0);
 	carryBit: IN STD_LOGIC;
