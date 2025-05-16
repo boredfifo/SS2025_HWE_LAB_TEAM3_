@@ -3,7 +3,7 @@ use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
 entity ProgramCounter is
-port(operand: IN STD_LOGIC_VECTOR (2 downto 0);
+port(operand: IN STD_LOGIC_VECTOR (4 downto 0);
 	SELE: IN STD_LOGIC_VECTOR (1 downto 0);
 	RESET, CLK, PC_LOAD: IN STD_LOGIC;
  finalpcAddr: OUT STD_LOGIC_VECTOR (7 downto 0));
@@ -31,7 +31,7 @@ end component;
 signal pcPlusOne, currPCAddress, nextPCAddress, jumpAddress: STD_LOGIC_VECTOR (7 downto 0);
 
 begin
-jumpAddress <= "00000" & operand;
+jumpAddress <= "000" & operand;
 UT20: eightBit_FullAdder port map (a=>currPCAddress, b=> "00000001", s=>pcPlusOne, c_in=>'0', c_out=>open);
 UT21: PC_MUX port map (currPC=>pcPlusOne, jumpADDR=>jumpAddress, sel=>SELE, final_PC=>nextPCAddress);
 UT22: eightBIT_DFLIPFLOP port map(a=>nextPCAddress, b=>currPCAddress, clk=>CLK, rst=>RESET, en=>PC_LOAD);
