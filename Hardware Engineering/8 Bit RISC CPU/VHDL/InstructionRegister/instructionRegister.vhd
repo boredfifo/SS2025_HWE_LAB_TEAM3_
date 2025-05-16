@@ -6,9 +6,10 @@ ENTITY IR IS
 PORT(ControlClock, Loader, ControlReset: IN STD_LOGIC;
 	AddressFromInstructionMemory: IN STD_LOGIC_VECTOR(7 downto 0);
 	OpCodeForControlUnit: OUT STD_LOGIC_VECTOR(2 downto 0);
-	OperandForJump_Data_ALU_Instruction: OUT STD_LOGIC_VECTOR(4 downto 0);
+	OperandForJump_Data_ALU_Instruction: OUT STD_LOGIC_VECTOR(4 downto 0)
 	
 );
+END IR;
 
 ARCHITECTURE behavioural OF IR IS
 SIGNAL OPCode: STD_LOGIC_VECTOR(2 downto 0);
@@ -21,8 +22,8 @@ OPCode <= "000";
 Operand<="00000";
 elsif rising_edge(ControlClock) then
 	if Loader = '1' then
-	OPCode := AddressFromInstructionMemory(7 downto 5);
-	Operand := AddressFromInstructionMemory(4 downto 0);
+	OPCode <= AddressFromInstructionMemory(7 downto 5);
+	Operand <= AddressFromInstructionMemory(4 downto 0);
 	end if;
 end if;
 end process;
