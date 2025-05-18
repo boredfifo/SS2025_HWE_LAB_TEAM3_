@@ -20,7 +20,7 @@ BEGIN
 if ControlReset = '1' then
 OPCode <= "000";
 Operand<="00000";
-elsif rising_edge(ControlClock) then
+elsif if ControlClock'event and CControlClock = '1'  then
 	if Loader = '1' then
 	OPCode <= AddressFromInstructionMemory(7 downto 5);
 	Operand <= AddressFromInstructionMemory(4 downto 0);
