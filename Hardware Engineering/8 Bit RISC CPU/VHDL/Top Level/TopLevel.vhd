@@ -11,7 +11,8 @@ END TopLevelCPU;
 
 ARCHITECTURE rtl OF TopLevelCPU IS
 
-SIGNAL
+SIGNAL ALUOperand0, ALUOperand1, CUCarryEnabler, ALUInputEnablers, BFromDataMemory, AFromAccumulator, AFromAccumulatorInverter, ALUResultToAccumulator, CarryOutToAccumulator: BIT;
+SIGNAL InstructionRegisterOperand, SelectorFromControlUnit, ResetFromControlUnit, PCLoadFromControlUnit, 
 
 COMPONENT ALU_8bit IS
 PORT(OperandFromControlUnit_0, OperandFromControlUnit_1, CarryInEnabler_CU,EN_B, EN_A, INV_A: IN BIT;
@@ -92,7 +93,15 @@ END COMPONENT;
 
 BEGIN
 
+CPU100: ALU_8bit PORT MAP (OperandFromControlUnit_0=>ALUOperand0,OperandFromControlUnit_1=>ALUOperand1,CarryInEnabler_CU=>CUCarryEnabler,EN_B=>ALUInputEnablers,EN_A=>ALUInputEnablers,
+			INV_A=>AFromAccumulatorInverter,MemoryData=>BFromDataMemory,AccumulatorData=>AFromAccumulator,OutputToAccumulator=>ALUResultToAccumulator,CarryOut=>CarryOutToAccumulator);
+CPU101: ProgramCounter PORT MAP (operand=>ALUOperand0,SELE=>ALUOperand1,RESET=>CUCarryEnabler,CLK=>globalCLK,PC_LOAD=>ALUInputEnablers,finalpcAddr=>AFromAccumulatorInverter);
 
-
+COMPONENT ProgramCounter IS
+port(operand: IN STD_LOGIC_VECTOR (4 downto 0);
+	SELE: IN STD_LOGIC_VECTOR (1 downto 0);
+	RESET, CLK, PC_LOAD: IN STD_LOGIC;
+ finalpcAddr: OUT STD_LOGIC_VECTOR (7 downto 0));
+END COMPONENT;
 
 END ARCHITECTURE;
