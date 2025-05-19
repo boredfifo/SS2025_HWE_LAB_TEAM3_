@@ -3,7 +3,7 @@ use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
 ENTITY TopLevelCPU IS
-PORT(globalCLK, RESET, WRITE_CONTROL, READ_CONTROL: IN STD_LOGIC;
+PORT(globalCLK, RESET, WRITE_CONTROL, TRIGGER_BTN: IN STD_LOGIC;
     actualData: IN STD_LOGIC_VECTOR (7 downto 0);
     dataAddress: IN STD_LOGIC_VECTOR (5 dwonto 0);
     outputOn7seg: OUT STD_LOGIC_VECTOR(7 downto 0));
