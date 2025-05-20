@@ -5,13 +5,15 @@ use ieee.numeric_std.all;
 ENTITY Accumulator IS
 PORT(	
 	datafromALU: IN STD_LOGIC_VECTOR(7 downto 0);
-	dataFromUser: IN STD_LOGIC_VECTOR(7 downto 0);
 	dataFromDataUnit: IN STD_LOGIC_VECTOR(7 downto 0);
 	clock, load, reset: IN STD_LOGIC;
 	sourceSelector: IN STD_LOGIC_VECTOR(1 downto 0);
 	carryBit: IN STD_LOGIC;
 
+    outputSelector: IN STD_LOGIC_VECTOR(1 downto 0);
 	dataintoALU: OUT STD_LOGIC_VECTOR(7 downto 0);
+	dataintoDataUnit: OUT STD_LOGIC_VECTOR(7 downto 0);
+	myOutputSignal: OUT STD_LOGIC_VECTOR(7 downto 0);
 	flagEnablerFromControlUnit: IN STD_LOGIC;
 	negativeFlag, ZeroFlag, carryFlag: OUT STD_LOGIC);
 
@@ -20,7 +22,7 @@ END Accumulator;
 
 ARCHITECTURE BEHAVIOURAL Of Accumulator IS
 
-SIGNAL accumulatorDecode: STD_LOGIC_VECTOR(7 downto 0);
+SIGNAL accumulatorDecode, accumulatorEncode: STD_LOGIC_VECTOR(7 downto 0);
 BEGIN
 
 PROCESS(clock, reset)
@@ -31,12 +33,17 @@ BEGIN
 		IF load = '1' then
                 	CASE sourceSelector is
                     		WHEN "00" => accumulatorDecode <= datafromALU;
-                    		WHEN "01" => accumulatorDecode <= dataFromDataUnit;
-                    		WHEN "10" => accumulatorDecode <= dataFromUser;
+                    		WHEN "01" => accumulatorDecode <= dataFromDataUnit; --Load
                     		WHEN OTHERS => accumulatorDecode <= (OTHERS => '0');
                 	END CASE;
+                	
+                	CASE outputSelector is
+                    		WHEN "00" => dataintoALU <= accumulatorEncode ; --Store
+                    		WHEN "01" => dataintoDataUnit <= accumulatorEncode;
+                    		WHEN OTHERS => accumulatorEncode <= (OTHERS => '0');
+                	END CASE;  	
            	 	
-			END IF;
+		  END IF;
 	
 	END IF;
 END PROCESS;
