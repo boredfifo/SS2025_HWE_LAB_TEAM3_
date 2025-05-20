@@ -3,10 +3,9 @@ use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
 ENTITY TopLevelCPU IS
-PORT(globalCLK, RESET: IN STD_LOGIC;
---    actualData: IN STD_LOGIC_VECTOR (7 downto 0);
---    dataAddress: IN STD_LOGIC_VECTOR (5 downto 0);
-    outputFor7seg: OUT STD_LOGIC_VECTOR(7 downto 0)
+PORT(globalCLK, RESET : IN STD_LOGIC;
+    outputFor7seg: OUT STD_LOGIC_VECTOR(7 downto 0);
+    carry : OUT std_logic
     );
 END TopLevelCPU;
 
@@ -27,7 +26,7 @@ SIGNAL opcodeFromInstructionRegisterForControlUnit: STD_LOGIC_VECTOR(2 downto 0)
 SIGNAL accumulatorLoaderFromControlUnit, AccumulatorFlagEnablerFromControlUnit: STD_LOGIC;
 SIGNAL accumulatorSourceSelectorFromControlUnit: STD_LOGIC_VECTOR(1 downto 0);
 SIGNAL negativeFlagFromAccumulatorToCU, carryFlagFromAccumulatorToCU, zeroFlagFromAccumulatorCU : STD_LOGIC;
-SIGNAL accumulatorOuputSelector : STD_LOGIC_VECTOR(7 downto 0);
+SIGNAL accumulatorOuputSelector : STD_LOGIC_VECTOR(1 downto 0);
 
 COMPONENT ALU_8bit IS
 PORT(OperandFromControlUnit_0, OperandFromControlUnit_1, CarryInEnabler_CU,EN_B, EN_A, INV_A: IN STD_LOGIC;
@@ -66,6 +65,7 @@ PORT(	OperandFromInstructionRegister: IN STD_LOGIC_VECTOR(4 downto 0);
 	accumulatorLoader: OUT STD_LOGIC;
 	accumulatorSelector: OUT STD_LOGIC_VECTOR(1 downto 0);
 	accumulatorFlagEnabler: OUT STD_LOGIC;
+	accumulatorOutputSelector: OUT STD_LOGIC_VECTOR(1 downto 0);
 
 	--InstructionMemoryEnable: OUT STD_LOGIC;
 
@@ -114,7 +114,6 @@ PORT(
 	flagEnablerFromControlUnit: IN STD_LOGIC;
 	negativeFlag, ZeroFlag, carryFlag: OUT STD_LOGIC);
 
-	
 END COMPONENT;
 
 BEGIN
@@ -129,7 +128,7 @@ CPU100: ALU_8bit PORT MAP (OperandFromControlUnit_0=>ALUOperand(0),
 			                 AccumulatorData=>AFromAccumulator,
 			                 OutputToAccumulator=>ALUResultToAccumulator,
 			                 CarryOut=>CarryOutToAccumulator);
-
+carry <= CarryOutToAccumulator;
 CPU101: ProgramCounter PORT MAP (operand=>InstructionRegisterOperand,
                                 SELE=>SelectorFromControlUnit,
                                 RESET=>RESET,CLK=>globalCLK,
@@ -179,7 +178,6 @@ CPU106: controlUnit PORT MAP(OperandFromInstructionRegister=>InstructionRegister
 				            accumulatorLoader=>accumulatorLoaderFromControlUnit,
 				            accumulatorSelector=>accumulatorSourceSelectorFromControlUnit,
 				            accumulatorFlagEnabler=>AccumulatorFlagEnablerFromControlUnit,
-				            --InstructionMemoryEnable=>,
 				            DataMemoryRead=>controlUnitMemoryReadController,
 				            DataMemoryWrite=>controlUnitMemoryWriteController,
 				            ALU_operand=>ALUOperand,
