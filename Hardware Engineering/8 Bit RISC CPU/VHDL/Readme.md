@@ -1,1 +1,1 @@
-![RTL-Diagram](doc/FinalSchematic_page-0001.jpg "CPU-RTL")
+![RTL-Diagram](./FinalSchematic_page-0001.jpg "CPU-RTL")
