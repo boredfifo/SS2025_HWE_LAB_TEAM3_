@@ -15,7 +15,7 @@ ARCHITECTURE behavioural OF IR IS
 SIGNAL OPCode: STD_LOGIC_VECTOR(2 downto 0);
 SIGNAL Operand: STD_LOGIC_VECTOR(4 downto 0);
 BEGIN
-PROCESS(ControlClock, Loader, ControlReset)
+PROCESS(ControlClock, ControlReset)
 BEGIN
 if ControlReset = '1' then
 OPCode <= "000";
