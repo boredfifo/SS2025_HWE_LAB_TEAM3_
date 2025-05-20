@@ -26,9 +26,7 @@ PORT(	OperandFromInstructionRegister: IN STD_LOGIC_VECTOR(4 downto 0);
 	ALU_Enabler, ALU_INVA : OUT STD_LOGIC;
 	ALU_CarryInEnabler : OUT STD_LOGIC;
 
-	positiveFlag, zeroFlag,carryFlag: IN STD_LOGIC;
-
-
+	negativeFlag, zeroFlag,carryFlag: IN STD_LOGIC
 	
 );
 END controlUnit;
@@ -80,7 +78,7 @@ BEGIN
 END PROCESS;
 
 
-PROCESS(state, userInput, OperandFromInstructionRegister, OPCodeFromInstructionRegister, zeroFlag,positiveFlag,carryFlag )
+PROCESS(state, userInput, OperandFromInstructionRegister, OPCodeFromInstructionRegister, zeroFlag,negativeFlag,carryFlag )
 BEGIN
 	CASE(state) IS
 			
