@@ -22,7 +22,7 @@ END Accumulator;
 
 ARCHITECTURE BEHAVIOURAL Of Accumulator IS
 
-SIGNAL accumulatorDecode, accumulatorEncode: STD_LOGIC_VECTOR(7 downto 0);
+SIGNAL accumulatorDecode: STD_LOGIC_VECTOR(7 downto 0);
 BEGIN
 
 PROCESS(clock, reset)
@@ -36,18 +36,17 @@ BEGIN
                     		WHEN "01" => accumulatorDecode <= dataFromDataUnit; --Load
                     		WHEN OTHERS => accumulatorDecode <= (OTHERS => '0');
                 	END CASE;
-                	
-                	CASE outputSelector is
-                    		WHEN "00" => dataintoALU <= accumulatorEncode ; --Store
-                    		WHEN "01" => dataintoDataUnit <= accumulatorEncode;
-                    		WHEN OTHERS => accumulatorEncode <= (OTHERS => '0');
-                	END CASE;  	
            	 	
 		  END IF;
 	
 	END IF;
 END PROCESS;
-		dataintoALU <= accumulatorDecode;
+
+dataintoALU<= accumulatorDecode WHEN outputSelector = "00" ELSE (OTHERS => '0');
+dataintoDataUnit<= accumulatorDecode WHEN outputSelector = "01" ELSE (OTHERS => '0'); 
+myOutputSignal <= accumulatorDecode;
+               	
+                	
 
 PROCESS(accumulatorDecode, carryBit, flagEnablerFromControlUnit)
 BEGIN
