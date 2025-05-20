@@ -107,7 +107,7 @@ BEGIN
 					WHEN "111" => nextState<=JumpPosition;	
 					WHEN OTHERS => nextState<=defaultState;
 				END CASE;
-	        WHEN OTHERS => nextState<=defaultState;
+	        WHEN OTHERS => nextState<=fetchState;
 	END CASE;
 END PROCESS;
 
@@ -125,42 +125,42 @@ BEGIN
 		WHEN fetchState => instructionRegisterLoad<='0'; 
 				programCounterLoader <= '1'; programCounterSelector<="00"; 
 				accumulatorLoader <= '0'; accumulatorSelector<= "11";
-				accumulatorFlagEnabler<='0'; accumulatorOutputSelector<= "11";
+				accumulatorFlagEnabler<='0'; accumulatorOutputSelector<= "10";
 				DataMemoryRead<= '0'; DataMemoryWrite <= '0';
 				ALU_Enabler<='0'; ALU_INVA <= '0'; ALU_CarryInEnabler <= '0'; ALU_operand<="00";
 
 		WHEN DecodeIR => instructionRegisterLoad<='1'; 
-				programCounterLoader <= '0'; programCounterSelector<="00"; 
+				programCounterLoader <= '0'; programCounterSelector<="11"; 
 				accumulatorLoader <= '0'; accumulatorSelector<= "11";
-				accumulatorFlagEna	bler<='0'; accumulatorOutputSelector<= "11";
+				accumulatorFlagEnabler<='0'; accumulatorOutputSelector<= "10";
 				DataMemoryRead<= '0'; DataMemoryWrite <= '0';
 				ALU_Enabler<='0'; ALU_INVA <= '0'; ALU_CarryInEnabler <= '0'; ALU_operand<="00";
 
 		WHEN Load =>    instructionRegisterLoad<='0';  
-				programCounterLoader <= '1'; programCounterSelector<="00";
+				programCounterLoader <= '0'; programCounterSelector<="11";
 				accumulatorLoader <= '1'; accumulatorSelector<= "01";
-				accumulatorFlagEnabler<='0'; accumulatorOutputSelector<= "00";
+				accumulatorFlagEnabler<='0'; accumulatorOutputSelector<= "10";
 				DataMemoryRead<= '1'; DataMemoryWrite <= '0';
 				ALU_Enabler<= '0'; ALU_INVA <= '0'; ALU_CarryInEnabler <= '0'; ALU_operand<="00";
 
 		WHEN Store => instructionRegisterLoad<='0'; 
-				programCounterLoader <= '1'; programCounterSelector<="00";
+				programCounterLoader <= '0'; programCounterSelector<="11";
 				accumulatorLoader <= '0'; accumulatorSelector<= "11";
 				accumulatorFlagEnabler<='0';accumulatorOutputSelector<= "01";
 				DataMemoryRead<= '0'; DataMemoryWrite <= '1';
 				ALU_Enabler<= '0'; ALU_INVA <= '0'; ALU_CarryInEnabler <= '0'; ALU_operand<="00";
 
 		WHEN SUM => instructionRegisterLoad<='0'; 
-				programCounterLoader <= '1'; programCounterSelector<="00";
-				accumulatorLoader <= '1'; accumulatorSelector<= "01";
+				programCounterLoader <= '0'; programCounterSelector<="11";
+				accumulatorLoader <= '1'; accumulatorSelector<= "00";
 				accumulatorFlagEnabler<='1';accumulatorOutputSelector<= "00";
 				DataMemoryRead<= '1'; DataMemoryWrite <= '0';
 				ALU_Enabler<='1'; ALU_INVA <= '0'; ALU_CarryInEnabler <= '0'; ALU_operand<="11";	
 	
 		WHEN SUB => instructionRegisterLoad<='0'; 
-				programCounterLoader <= '1'; programCounterSelector<="00";
-				accumulatorLoader <= '1'; accumulatorSelector<= "01";
-				accumulatorFlagEnabler<='1';accumulatorOutputSelector<= "01";
+				programCounterLoader <= '0'; programCounterSelector<="11";
+				accumulatorLoader <= '1'; accumulatorSelector<= "00";
+				accumulatorFlagEnabler<='1';accumulatorOutputSelector<= "00";
 				DataMemoryRead<= '1'; DataMemoryWrite <= '0';
 				ALU_Enabler<='1'; ALU_INVA <= '1'; ALU_CarryInEnabler <= '1'; ALU_operand<="11";	
 
@@ -169,11 +169,11 @@ BEGIN
         				programCounterLoader <= '1';
         				programCounterSelector <= "01";  
     				    ELSE
-        			        programCounterLoader <= '1';
+        			    programCounterLoader <= '1';
         				programCounterSelector <= "00";  
     				    END IF;
-				accumulatorLoader <= '0'; accumulatorSelector<= "11";
-				accumulatorFlagEnabler<='1';accumulatorOutputSelector<= "11";
+				accumulatorLoader <= '0'; accumulatorSelector<= "10";
+				accumulatorFlagEnabler<='0';accumulatorOutputSelector<= "10";
 				DataMemoryRead<= '0'; DataMemoryWrite <= '0';
 				ALU_Enabler<='0'; ALU_INVA <= '0'; ALU_CarryInEnabler <= '0'; ALU_operand<="00";
 
@@ -182,25 +182,25 @@ BEGIN
         				programCounterLoader <= '1';
         				programCounterSelector <= "11";  
     				    ELSE
-        			        programCounterLoader <= '1';
+        			    programCounterLoader <= '1';
         				programCounterSelector <= "00";  
     				    END IF;
-				accumulatorLoader <= '0'; accumulatorSelector<= "11";
-				accumulatorFlagEnabler<='0';accumulatorOutputSelector<= "11";
+				accumulatorLoader <= '0'; accumulatorSelector<= "10";
+				accumulatorFlagEnabler<='0';accumulatorOutputSelector<= "10";
 				DataMemoryRead<= '0'; DataMemoryWrite <= '0';
 				ALU_Enabler<='0'; ALU_INVA <= '0'; ALU_CarryInEnabler <= '0'; ALU_operand<="00";
 
 		WHEN JumpPosition => instructionRegisterLoad<='0'; 
-				programCounterLoader <= '1'; programCounterSelector<="01";
+				programCounterLoader <= '0'; programCounterSelector<="01";
 				accumulatorLoader <= '0'; accumulatorSelector<= "11";
-				accumulatorFlagEnabler<='0';accumulatorOutputSelector<= "11";
+				accumulatorFlagEnabler<='0';accumulatorOutputSelector<= "10";
 				DataMemoryRead<= '0'; DataMemoryWrite <= '0';
 				ALU_Enabler<='0'; ALU_INVA <= '0'; ALU_CarryInEnabler <= '0'; ALU_operand<="00";
 
-		WHEN defaultState => instructionRegisterLoad<='1'; 
+		WHEN defaultState => instructionRegisterLoad<='0'; 
 				programCounterLoader <= '1'; programCounterSelector<="00";
 				accumulatorLoader <= '0'; accumulatorSelector<= "11";
-				accumulatorFlagEnabler<='0';accumulatorOutputSelector<= "11";
+				accumulatorFlagEnabler<='0';accumulatorOutputSelector<= "10";
 				DataMemoryRead<= '0'; DataMemoryWrite <= '0';
 				ALU_Enabler<='0'; ALU_INVA <= '0'; ALU_CarryInEnabler <= '0'; ALU_operand<="00";
 						
