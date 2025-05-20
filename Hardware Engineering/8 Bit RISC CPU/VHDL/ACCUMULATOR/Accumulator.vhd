@@ -48,8 +48,8 @@ END PROCESS;
 PROCESS(clock, reset)
 BEGIN
     IF reset = '1' THEN
-        aluOutReg <= (OTHERS => '0');
-        dataUnitOutReg <= (OTHERS => '0');
+        AccumulatorToALU <= (OTHERS => '0');
+        AccumulatorToDataUnit <= (OTHERS => '0');
     ELSIF rising_edge(clock) THEN
         CASE outputSelector IS
             WHEN "00" => AccumulatorToALU <= accumulatorDecode;
