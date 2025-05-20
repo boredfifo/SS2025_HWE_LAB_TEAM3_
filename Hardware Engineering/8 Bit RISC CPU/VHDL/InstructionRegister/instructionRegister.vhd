@@ -15,17 +15,17 @@ ARCHITECTURE behavioural OF IR IS
 SIGNAL OPCode: STD_LOGIC_VECTOR(2 downto 0);
 SIGNAL Operand: STD_LOGIC_VECTOR(4 downto 0);
 BEGIN
-PROCESS(ControlClock, ControlReset)
+PROCESS(ControlClock, Loader, ControlReset)
 BEGIN
 if ControlReset = '1' then
 OPCode <= "000";
 Operand<="00000";
-elseif ControlClock'event and ControlClock = '1'  then
+ELSIF ControlClock'event and ControlClock = '1'  then
 	if Loader = '1' then
 	OPCode <= AddressFromInstructionMemory(7 downto 5);
 	Operand <= AddressFromInstructionMemory(4 downto 0);
 	end if;
-end if;
+END if;
 end process;
 
 OpCodeForControlUnit<=OPCode;
