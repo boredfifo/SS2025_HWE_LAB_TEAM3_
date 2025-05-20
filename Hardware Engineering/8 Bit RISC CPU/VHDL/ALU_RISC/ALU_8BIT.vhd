@@ -1,17 +1,21 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
 ENTITY ALU_8bit IS
-PORT(OperandFromControlUnit_0, OperandFromControlUnit_1, CarryInEnabler_CU,EN_B, EN_A, INV_A: IN BIT;
-	MemoryData, AccumulatorData: IN BIT_VECTOR(7 downto 0);
-	OutputToAccumulator : OUT BIT_VECTOR(7 downto 0);
-	CarryOut: OUT BIT);
+PORT(OperandFromControlUnit_0, OperandFromControlUnit_1, CarryInEnabler_CU,EN_B, EN_A, INV_A: IN STD_LOGIC;
+	MemoryData, AccumulatorData: IN STD_LOGIC_VECTOR(7 downto 0);
+	OutputToAccumulator : OUT STD_LOGIC_VECTOR(7 downto 0);
+	CarryOut: OUT STD_LOGIC);
 END ALU_8bit;
 	
 ARCHITECTURE structural of ALU_8bit IS
 
 COMPONENT ALU_1BIT IS
-PORT(F0, F1, B, EN_B, A, EN_A, INV_A, CarryIn: IN BIT;
-	Output, CarryOut: OUT BIT);
+PORT(F0, F1, B, EN_B, A, EN_A, INV_A, CarryIn: IN STD_LOGIC;
+	Output, CarryOut: OUT STD_LOGIC);
 END COMPONENT;
-SIGNAL carry01, carry12, carry23, carry34, carry45, carry56, carry67: BIT;
+SIGNAL carry01, carry12, carry23, carry34, carry45, carry56, carry67: STD_LOGIC;
 BEGIN
 
 U150: ALU_1BIT PORT MAP(F0=>OperandFromControlUnit_0, F1=>OperandFromControlUnit_1, EN_B=>EN_B, A=>MemoryData(0),B=>AccumulatorData(0),EN_A=>EN_A,INV_A=>INV_A,CarryIn=>CarryInEnabler_CU,Output=>OutputToAccumulator(0),CarryOut =>carry01 );
