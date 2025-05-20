@@ -1,0 +1,14 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+ENTITY orgate_ALU IS 
+PORT (c_first,c_second, c_third, c_fourth: IN STD_LOGIC;
+	c_out: OUT STD_LOGIC);
+END orgate_ALU;
+
+
+ARCHITECTURE behavioural of orgate_ALU IS
+BEGIN
+c_out <= c_first or c_second or c_third or c_fourth;
+END behavioural;
