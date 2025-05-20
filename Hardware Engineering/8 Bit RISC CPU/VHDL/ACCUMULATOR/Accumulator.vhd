@@ -36,10 +36,11 @@ BEGIN
 			CASE sourceSelector IS
     				WHEN "00" => accumulatorDecode <= datafromALU;
     				WHEN "01" => accumulatorDecode <= dataFromDataUnit;
-    				WHEN "10" => accumulatorDecode <= accumulatorDecode; -- Load previous value
-    				WHEN OTHERS => accumulatorDecode <= (others => '0'); -- Optional: default clear
+    				WHEN "10" => accumulatorDecode <= accumulatorDecode; 
+    				WHEN OTHERS => accumulatorDecode <= (others => '0');
 			END CASE;
-           	 	
+        else
+                                accumulatorDecode <= accumulatorDecode;    	 	
 		  END IF;
 	
 	END IF;
@@ -53,10 +54,13 @@ BEGIN
     ELSIF rising_edge(clock) THEN
         CASE outputSelector IS
             WHEN "00" => AccumulatorToALU <= accumulatorDecode;
-            WHEN "01" => dataUnitOutReg <= accumulatorDecode;
+            WHEN "01" => AccumulatorToDataUnit <= accumulatorDecode;
+            WHEN "10" =>
+                        AccumulatorToALU <= AccumulatorToALU;
+                        AccumulatorToDataUnit <= AccumulatorToDataUnit;
             WHEN OTHERS =>
-                AccumulatorToALU <= AccumulatorToALU;
-                AccumulatorToDataUnit <= AccumulatorToDataUnit;
+                        AccumulatorToALU <= (OTHERS => '0');
+                        AccumulatorToDataUnit <= (OTHERS => '0');
         END CASE;
     END IF;
 END PROCESS;
