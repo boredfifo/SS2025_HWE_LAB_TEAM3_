@@ -23,6 +23,8 @@ END Accumulator;
 ARCHITECTURE BEHAVIOURAL Of Accumulator IS
 
 SIGNAL accumulatorDecode: STD_LOGIC_VECTOR(7 downto 0);
+SIGNAL AccumulatorToALU         : STD_LOGIC_VECTOR(7 downto 0);
+SIGNAL AccumulatorToDataUnit    : STD_LOGIC_VECTOR(7 downto 0);
 BEGIN
 
 PROCESS(clock, reset)
@@ -31,20 +33,38 @@ BEGIN
 		accumulatorDecode <= (OTHERS => '0');
 	elsif rising_edge(clock) then
 		IF load = '1' then
-                	CASE sourceSelector is
-                    		WHEN "00" => accumulatorDecode <= datafromALU;
-                    		WHEN "01" => accumulatorDecode <= dataFromDataUnit; --Load
-                    		WHEN OTHERS => accumulatorDecode <= (OTHERS => '0');
-                	END CASE;
+			CASE sourceSelector IS
+    				WHEN "00" => accumulatorDecode <= datafromALU;
+    				WHEN "01" => accumulatorDecode <= dataFromDataUnit;
+    				WHEN "10" => accumulatorDecode <= accumulatorDecode; -- Load previous value
+    				WHEN OTHERS => accumulatorDecode <= (others => '0'); -- Optional: default clear
+			END CASE;
            	 	
 		  END IF;
 	
 	END IF;
 END PROCESS;
 
-dataintoALU<= accumulatorDecode WHEN outputSelector = "00" ELSE (OTHERS => '0');
-dataintoDataUnit<= accumulatorDecode WHEN outputSelector = "01" ELSE (OTHERS => '0'); 
-myOutputSignal <= accumulatorDecode;
+PROCESS(clock, reset)
+BEGIN
+    IF reset = '1' THEN
+        aluOutReg <= (OTHERS => '0');
+        dataUnitOutReg <= (OTHERS => '0');
+    ELSIF rising_edge(clock) THEN
+        CASE outputSelector IS
+            WHEN "00" => AccumulatorToALU <= accumulatorDecode;
+            WHEN "01" => dataUnitOutReg <= accumulatorDecode;
+            WHEN OTHERS =>
+                AccumulatorToALU <= AccumulatorToALU;
+                AccumulatorToDataUnit <= AccumulatorToDataUnit;
+        END CASE;
+    END IF;
+END PROCESS;
+
+
+dataintoALU      <= AccumulatorToALU;
+dataintoDataUnit <= AccumulatorToDataUnit;
+myOutputSignal   <= accumulatorDecode;
                	
                 	
 
