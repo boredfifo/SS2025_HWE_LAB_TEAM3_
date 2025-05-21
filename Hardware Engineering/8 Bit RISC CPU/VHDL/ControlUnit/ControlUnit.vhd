@@ -102,9 +102,9 @@ BEGIN
 					WHEN "001" => nextState<=Store;		
 					WHEN "010" => nextState<=SUM;
 					WHEN "011" => nextState<=SUB;
-					WHEN "101" => nextState<=JumpToZero;
-					WHEN "110" => nextState<=JumpToProgramStart;
-					WHEN "111" => nextState<=JumpPosition;	
+					WHEN "100" => nextState<=JumpToZero;
+					WHEN "101" => nextState<=JumpToProgramStart;
+					WHEN "110" => nextState<=JumpPosition;	
 					WHEN OTHERS => nextState<=defaultState;
 				END CASE;
 	        WHEN OTHERS => nextState<=fetchState;
