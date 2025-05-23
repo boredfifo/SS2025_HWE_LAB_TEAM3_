@@ -9,11 +9,11 @@ ENTITY Accumulator IS
         clock, load, reset   : IN STD_LOGIC;
         sourceSelector       : IN STD_LOGIC_VECTOR(1 downto 0);
         carryBit             : IN STD_LOGIC;
-        outputSelector       : IN STD_LOGIC_VECTOR(1 downto 0);
+        outputSelector       : IN STD_LOGIC;
         
         dataintoALU          : OUT STD_LOGIC_VECTOR(7 downto 0);
         dataintoDataUnit     : OUT STD_LOGIC_VECTOR(7 downto 0);
-        myOutputSignal       : OUT STD_LOGIC_VECTOR(7 downto 0);
+        --myOutputSignal       : OUT STD_LOGIC_VECTOR(7 downto 0);
         flagEnablerFromControlUnit : IN STD_LOGIC;
         
         negativeFlag         : OUT STD_LOGIC;
@@ -24,6 +24,13 @@ END Accumulator;
 
 ARCHITECTURE BEHAVIOURAL OF Accumulator IS
     SIGNAL accumulatorDecode : STD_LOGIC_VECTOR(7 downto 0);
+
+component accDEMUX
+port(accOUTPUT: IN STD_LOGIC_VECTOR (7 downto 0);
+	SEL: IN STD_LOGIC;
+	toALU, todataMEMORY: OUT STD_LOGIC_VECTOR (7 downto 0)
+);
+end component;
 	
 BEGIN
 
@@ -42,9 +49,12 @@ BEGIN
         END IF;
     END PROCESS;
 
-    dataintoALU      <= accumulatorDecode WHEN outputSelector = "00" ELSE (OTHERS=>'0') ; --ADDSUB
-    dataintoDataUnit <= accumulatorDecode WHEN outputSelector = "01"  ELSE (OTHERS=>'0')  ; --STORE
-    myOutputSignal   <= accumulatorDecode;
+
+	DEMUX: accDEMUX port map (accOUTPUT=>accumulatorDecode, SEL=>outputSelector, toALU=>dataintoALU, 
+		todataMEMORY=>dataintoDataUnit);
+    --dataintoALU      <= accumulatorDecode WHEN outputSelector = "00" ELSE (OTHERS=>'0') ; --ADDSUB
+    --dataintoDataUnit <= accumulatorDecode WHEN outputSelector = "01"  ELSE (OTHERS=>'0')  ; --STORE
+    --myOutputSignal   <= accumulatorDecode;
 
     PROCESS(accumulatorDecode, carryBit, flagEnablerFromControlUnit)
     BEGIN
