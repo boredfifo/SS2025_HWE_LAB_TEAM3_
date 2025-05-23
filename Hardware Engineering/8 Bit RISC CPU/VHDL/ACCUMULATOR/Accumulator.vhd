@@ -23,28 +23,27 @@ ENTITY Accumulator IS
 END Accumulator;
 
 ARCHITECTURE BEHAVIOURAL OF Accumulator IS
-    SIGNAL accumulatorDecode : STD_LOGIC_VECTOR(7 downto 0) := (OTHERS => '0');
+    SIGNAL accumulatorDecode : STD_LOGIC_VECTOR(7 downto 0);
+	
 BEGIN
 
-    -- Process to handle accumulator loading and reset
     PROCESS(clock, reset)
     BEGIN
         IF reset = '1' THEN
-            accumulatorDecode <= (OTHERS => '0');
+            -- accumulatorDecode <= (OTHERS => '0');
         ELSIF rising_edge(clock) THEN
             IF load = '1' THEN
                 CASE sourceSelector IS
-                    WHEN "00"   => accumulatorDecode <= datafromALU;
-                    WHEN "01"   => accumulatorDecode <= dataFromDataUnit;
+                    WHEN "00"   => accumulatorDecode <= datafromALU; --after ADD SUB
+                    WHEN "01"   => accumulatorDecode <= dataFromDataUnit; --LOAD
                     WHEN OTHERS => NULL; -- Retain current value
                 END CASE;
             END IF;
         END IF;
     END PROCESS;
 
-    -- Combinational output assignments based on outputSelector
-    dataintoALU      <= accumulatorDecode WHEN outputSelector = "00" ELSE (OTHERS => '0');
-    dataintoDataUnit <= accumulatorDecode WHEN outputSelector = "01" ELSE  (OTHERS => '0');
+    dataintoALU      <= accumulatorDecode WHEN outputSelector = "00" ELSE (OTHERS=>'0') ; --ADDSUB
+    dataintoDataUnit <= accumulatorDecode WHEN outputSelector = "01"  ELSE (OTHERS=>'0')  ; --STORE
     myOutputSignal   <= accumulatorDecode;
 
     PROCESS(accumulatorDecode, carryBit, flagEnablerFromControlUnit)
