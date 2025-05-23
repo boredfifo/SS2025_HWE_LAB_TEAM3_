@@ -19,6 +19,7 @@ PORT(
 
 	DataMemoryRead: OUT STD_LOGIC;
 	DataMemoryWrite: OUT STD_LOGIC;
+	DataMemoryOutputController: OUT STD_LOGIC;
 
 	
 	ALU_operand: OUT STD_LOGIC_VECTOR(1 downto 0);
@@ -64,7 +65,7 @@ ARCHITECTURE behavioural of controlUnit IS
 
 SIGNAL state: state_type := Reset;
 SIGNAL nextState: state_type := Reset;
-SIGNAL resetCounter : integer range 0 to 3 := 0;
+--SIGNAL resetCounter : integer range 0 to 3 := 0;
 
 
 BEGIN
@@ -76,14 +77,14 @@ BEGIN
 
 	IF rst = '1' THEN
 		state <= Reset;
-		resetCounter <= 0;
+		--resetCounter <= 0;
 
-	elsif clock'event and clock = '1' then
+	elsif rst = '0' and clock'event and clock = '1' then
 		state <= nextState;
-		IF state = Reset AND resetCounter < 3 THEN
-			resetCounter <= resetCounter + 1;
+		--IF state = Reset AND resetCounter < 3 THEN
+		--	resetCounter <= resetCounter + 1;
 		END IF;
-	END IF;
+--	END IF;
 END PROCESS;
 
 
@@ -92,11 +93,12 @@ BEGIN
 	CASE(state) IS
 			
 		WHEN Reset => 
-			IF resetCounter < 3 THEN
-			nextState <= Reset; 
-			ELSE
-			nextState <= fetchState;
-			END IF;
+	--		IF resetCounter < 3 THEN
+	--		nextState <= Reset; 
+	--		ELSE
+			nextState <= NoOperation;
+	--		END IF;
+		WHEN NoOperation => nextState<=fetchState;	
 		WHEN fetchState => nextState<=DecodeIR;
 		When DecodeIR => 
 				CASE(OPCodeFromInstructionRegister) IS
@@ -104,6 +106,7 @@ BEGIN
 					WHEN "001" => nextState<=Store;		
 					WHEN "010" => nextState<=SUM;
 					WHEN "011" => nextState<=SUB;
+					WHEN "100" => nextState<=NoOperation;
 					WHEN "101" => nextState<=JumpToZero;
 					WHEN "110" => nextState<=JumpToProgramStart;
 					WHEN "111" => nextState<=JumpPosition;
@@ -111,12 +114,11 @@ BEGIN
 				END CASE;
 		WHEN Load => nextState<=fetchState;
 		WHEN Store => nextState<=fetchState;
-		WHEN SUM => nextState<=NoOperation;
-		WHEN SUB => nextState<=NoOperation;
+		WHEN SUM => nextState<=fetchState;
+		WHEN SUB => nextState<=fetchState;
 		WHEN JumpToZero => nextState<=fetchState;
 		WHEN JumpToProgramStart => nextState<=fetchState;
-		WHEN JumpPosition => nextState<=fetchState;
-		WHEN NoOperation => nextState<=fetchState;		
+		WHEN JumpPosition => nextState<=fetchState;	
 	        WHEN OTHERS => nextState<=fetchState;
 	END CASE;
 END PROCESS;
@@ -138,7 +140,6 @@ BEGIN
 				accumulatorFlagEnabler<='0'; accumulatorOutputSelector<= "10";
 				DataMemoryRead<= '0'; DataMemoryWrite <= '0';
 				ALU_Enabler<='0'; ALU_INVA <= '0'; ALU_CarryInEnabler <= '0'; ALU_operand<="00";
-
 		WHEN DecodeIR => instructionRegisterLoad<='1'; 
 				programCounterLoader <= '0'; programCounterSelector<="11"; 
 				accumulatorLoader <= '0'; accumulatorSelector<= "00";
@@ -165,14 +166,14 @@ BEGIN
 				accumulatorLoader <= '1'; accumulatorSelector<= "00";
 				accumulatorFlagEnabler<='1';accumulatorOutputSelector<= "00";
 				DataMemoryRead<= '1'; DataMemoryWrite <= '0';
-				ALU_Enabler<='1'; ALU_INVA <= '0'; ALU_CarryInEnabler <= '0'; ALU_operand<="11";	
+				ALU_Enabler<='1'; ALU_INVA <= '0'; ALU_CarryInEnabler <= '0'; ALU_operand<="11";
 	
 		WHEN SUB => instructionRegisterLoad<='0'; 
 				programCounterLoader <= '0'; programCounterSelector<="00";
 				accumulatorLoader <= '1'; accumulatorSelector<= "00";
 				accumulatorFlagEnabler<='1';accumulatorOutputSelector<= "00";
 				DataMemoryRead<= '1'; DataMemoryWrite <= '0';
-				ALU_Enabler<='1'; ALU_INVA <= '1'; ALU_CarryInEnabler <= '1'; ALU_operand<="11";	
+				ALU_Enabler<='1'; ALU_INVA <= '1'; ALU_CarryInEnabler <= '1'; ALU_operand<="11";
 
 		WHEN JumpToZero => instructionRegisterLoad<='0'; 
 				    IF zeroFlag = '1' THEN
