@@ -10,12 +10,13 @@ end instruction_memoryUnit;
 architecture structural of instruction_memoryUnit is
 begin
 with pcAddress select                     --INSTRUCTION SET
-instruction <= "00000011" when "00000001", --LOAD 3
-		"01000100" when "00000010", --ADD 4
-		"00100011" when "00000011", --STORE 3
-		"01100101" when "00000100", --SUB 5
-		"10000000" when "00000101", --JZ 0
-		"11000001" when "00000110", --JUMP 1
-		"00000000" when others;
+instruction <=  "10000000" when "00000001", --NO OP 3
+		"00000011" when "00000010", --LOAD 3
+--		"01000100" when "00000011", --ADD 4
+--		"00100011" when "00000100", --STORE 3
+--		"01100101" when "00000101", --SUB 5
+--		"10000000" when "00000110", --JZ 0
+--		"11000001" when "00000111", --JUMP 1
+		"10000000" when others;
 end structural;
 	
