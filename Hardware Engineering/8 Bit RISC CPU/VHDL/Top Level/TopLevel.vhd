@@ -19,7 +19,7 @@ SIGNAL	SelectorFromControlUnit: STD_LOGIC_VECTOR(1 downto 0);
 SIGNAL	PCLoadFromControlUnit: STD_LOGIC;
 SIGNAL	AddressToInstructioUnit: STD_LOGIC_VECTOR(7 downto 0);
 SIGNAL InstructionToInstructionRegister:  STD_LOGIC_VECTOR (7 downto 0);
-SIGNAL loadingDataFromAccumulatorToDataUnit, storingDataFromAccumulatorToDataUnit: STD_LOGIC_VECTOR(7 downto 0);
+SIGNAL storingDataFromAccumulatorToDataUnit: STD_LOGIC_VECTOR(7 downto 0);
 SIGNAL controlUnitMemoryWriteController, controlUnitMemoryReadController: STD_LOGIC;
 SIGNAL intructionRegisterLoaderByControlUnit: STD_LOGIC;
 SIGNAL opcodeFromInstructionRegisterForControlUnit: STD_LOGIC_VECTOR(2 downto 0);
@@ -27,6 +27,7 @@ SIGNAL accumulatorLoaderFromControlUnit, AccumulatorFlagEnablerFromControlUnit: 
 SIGNAL accumulatorSourceSelectorFromControlUnit: STD_LOGIC_VECTOR(1 downto 0);
 SIGNAL negativeFlagFromAccumulatorToCU, carryFlagFromAccumulatorToCU, zeroFlagFromAccumulatorCU : STD_LOGIC;
 SIGNAL accumulatorOuputSelector : STD_LOGIC_VECTOR(1 downto 0);
+SIGNAL accumulatorDividerOutput: STD_LOGIC;
 
 COMPONENT ALU_8bit IS
 PORT(OperandFromControlUnit_0, OperandFromControlUnit_1, CarryInEnabler_CU,EN_B, EN_A, INV_A: IN STD_LOGIC;
@@ -35,29 +36,24 @@ PORT(OperandFromControlUnit_0, OperandFromControlUnit_1, CarryInEnabler_CU,EN_B,
 	CarryOut: OUT STD_LOGIC);
 END COMPONENT;
 
-COMPONENT ProgramCounter IS
+COMPONENT ProgramCounter is
 port(operand: IN STD_LOGIC_VECTOR (4 downto 0);
-	SELE: IN STD_LOGIC_VECTOR (1 downto 0);
-	RESET, CLK, PC_LOAD: IN STD_LOGIC;
+ SELE: IN STD_LOGIC_VECTOR (1 downto 0);
+ RESET, CLK, PC_LOAD: IN STD_LOGIC;
  finalpcAddr: OUT STD_LOGIC_VECTOR (7 downto 0));
-END COMPONENT;
+end COMPONENT;
 
 COMPONENT instruction_memoryUnit is
 port(pcAddress: IN STD_LOGIC_VECTOR (7 downto 0);
-	instruction: OUT STD_LOGIC_VECTOR (7 downto 0)
-	);
+	instruction: OUT STD_LOGIC_VECTOR (7 downto 0));
 end COMPONENT;
 
 COMPONENT controlUnit IS
-PORT(	OperandFromInstructionRegister: IN STD_LOGIC_VECTOR(4 downto 0);
+PORT(
 	OPCodeFromInstructionRegister: IN STD_LOGIC_VECTOR(2 downto 0);
 	instructionRegisterLoad: OUT STD_LOGIC;
 	
 	clock, rst: IN STD_LOGIC;
-
-	
-	--userInput: IN STD_LOGIC;
-	--enableLED, LEDwait: OUT STD_LOGIC;
 
 	programCounterSelector:	 OUT STD_LOGIC_VECTOR(1 downto 0);
 	programCounterLoader: OUT STD_LOGIC;
@@ -66,8 +62,6 @@ PORT(	OperandFromInstructionRegister: IN STD_LOGIC_VECTOR(4 downto 0);
 	accumulatorSelector: OUT STD_LOGIC_VECTOR(1 downto 0);
 	accumulatorFlagEnabler: OUT STD_LOGIC;
 	accumulatorOutputSelector: OUT STD_LOGIC_VECTOR(1 downto 0);
-
-	--InstructionMemoryEnable: OUT STD_LOGIC;
 
 	DataMemoryRead: OUT STD_LOGIC;
 	DataMemoryWrite: OUT STD_LOGIC;
@@ -100,20 +94,23 @@ PORT(ControlClock, Loader, ControlReset: IN STD_LOGIC;
 END COMPONENT;
 
 COMPONENT Accumulator IS
-PORT(	
-	datafromALU: IN STD_LOGIC_VECTOR(7 downto 0);
-	dataFromDataUnit: IN STD_LOGIC_VECTOR(7 downto 0);
-	clock, load, reset: IN STD_LOGIC;
-	sourceSelector: IN STD_LOGIC_VECTOR(1 downto 0);
-	carryBit: IN STD_LOGIC;
-
-    outputSelector: IN STD_LOGIC_VECTOR(1 downto 0);
-	dataintoALU: OUT STD_LOGIC_VECTOR(7 downto 0);
-	dataintoDataUnit: OUT STD_LOGIC_VECTOR(7 downto 0);
-	myOutputSignal: OUT STD_LOGIC_VECTOR(7 downto 0);
-	flagEnablerFromControlUnit: IN STD_LOGIC;
-	negativeFlag, ZeroFlag, carryFlag: OUT STD_LOGIC);
-
+    PORT(	
+        datafromALU          : IN STD_LOGIC_VECTOR(7 downto 0);
+        dataFromDataUnit     : IN STD_LOGIC_VECTOR(7 downto 0);
+        clock, load, reset   : IN STD_LOGIC;
+        sourceSelector       : IN STD_LOGIC_VECTOR(1 downto 0);
+        carryBit             : IN STD_LOGIC;
+        outputSelector       : IN STD_LOGIC_VECTOR(1 downto 0);
+        
+        dataintoALU          : OUT STD_LOGIC_VECTOR(7 downto 0);
+        dataintoDataUnit     : OUT STD_LOGIC_VECTOR(7 downto 0);
+        myOutputSignal       : OUT STD_LOGIC_VECTOR(7 downto 0);
+        flagEnablerFromControlUnit : IN STD_LOGIC;
+        
+        negativeFlag         : OUT STD_LOGIC;
+        ZeroFlag             : OUT STD_LOGIC;
+        carryFlag            : OUT STD_LOGIC
+    );
 END COMPONENT;
 
 BEGIN
@@ -153,7 +150,7 @@ CPU104: IR PORT MAP (ControlClock=>globalCLK,
 		              OperandForJump_Data_ALU_Instruction=>InstructionRegisterOperand);
 
 CPU105: Accumulator PORT MAP (datafromALU=>ALUResultToAccumulator, 
-                               dataFromDataUnit=>storingDataFromAccumulatorToDataUnit,
+                               dataFromDataUnit=>BFromDataMemory,
 		                      clock=> globalCLK, 
 		                      load=>accumulatorLoaderFromControlUnit , 
 		                      reset=>RESET, 
@@ -162,13 +159,16 @@ CPU105: Accumulator PORT MAP (datafromALU=>ALUResultToAccumulator,
 		                      outputSelector=> accumulatorOuputSelector,
 		                      dataintoALU=>AFromAccumulator,
 		                      dataintoDataUnit=>storingDataFromAccumulatorToDataUnit,
-		                      myOutputSignal=>outputFor7seg,
+		                      myOutputSignal=>accumulatorDividerOutput,
 		                      flagEnablerFromControlUnit=>AccumulatorFlagEnablerFromControlUnit,
 		                      negativeFlag=>negativeFlagFromAccumulatorToCU, 
 		                      ZeroFlag=>zeroFlagFromAccumulatorCU,
 		                      carryFlag=> carryFlagFromAccumulatorToCU);
 
-CPU106: controlUnit PORT MAP(OperandFromInstructionRegister=>InstructionRegisterOperand,
+WITH accumulatorDividerOutput SELECT
+			
+
+CPU106: controlUnit PORT MAP(
                             OPCodeFromInstructionRegister=>opcodeFromInstructionRegisterForControlUnit,
 				            instructionRegisterLoad=>intructionRegisterLoaderByControlUnit,
 				            clock=>globalCLK,
@@ -186,7 +186,7 @@ CPU106: controlUnit PORT MAP(OperandFromInstructionRegister=>InstructionRegister
 				            ALU_CarryInEnabler=> CUCarryEnabler,
 				            negativeFlag=>negativeFlagFromAccumulatorToCU,
 				            zeroFlag=>zeroFlagFromAccumulatorCU, 
-				            carryFlag=>carryFlagFromAccumulatorToCU );
+				            carryFlag=>carryFlagFromAccumulatorToCU);
 
 
 END ARCHITECTURE;
