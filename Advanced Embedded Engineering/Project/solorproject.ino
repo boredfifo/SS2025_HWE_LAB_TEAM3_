@@ -54,6 +54,6 @@ void loop() {
     }
   }
 
-  delay(100); // adjust for smoother movement
+  delay(100); 
 }
 
