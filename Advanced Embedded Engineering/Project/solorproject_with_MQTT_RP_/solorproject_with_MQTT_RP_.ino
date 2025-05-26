@@ -1,5 +1,6 @@
 #include <Servo.h>
 #include <WiFiNINA.h>
+#include <ArduinoJson.h>
 #include <PubSubClient.h>
 
 // WiFi credentials
@@ -69,13 +70,7 @@ void loop() {
   int left = analogRead(ldrLeft);
   int right = analogRead(ldrRight);
 
-  // Publish MQTT message
-  String payload = "Top: " + String(top) +
-                 " | Bottom: " + String(bottom) +
-                 " | Left: " + String(left) +
-                 " | Right: " + String(right);
-
-  client.publish("solartracker/ldr", payload.c_str());
+  publishLDRData(top, bottom, left, right);
   Serial.println("Published: " + payload);
 
   // Servo logic
@@ -104,4 +99,19 @@ void loop() {
   }
 
   delay(1000);
+}
+
+
+void publishLDRData(int top, int bottom, int left, int right){
+  StaticJsonDocument<128> doc;
+
+  doc["top"] = top;
+  doc["bottom"] = bottom;
+  doc["left"] = left;
+  doc["right"] = right;
+
+  char payload[128];
+  serializeJson(doc, payload);
+
+  client.publish("solartracker/ldr", payload);
 }
