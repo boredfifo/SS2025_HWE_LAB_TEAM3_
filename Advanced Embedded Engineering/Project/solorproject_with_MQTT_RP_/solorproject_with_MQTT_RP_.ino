@@ -71,7 +71,7 @@ void loop() {
   int right = analogRead(ldrRight);
 
   publishLDRData(top, bottom, left, right);
-  Serial.println("Published: " + payload);
+  
 
   // Servo logic
   int diffX = abs(left - right);
@@ -114,4 +114,5 @@ void publishLDRData(int top, int bottom, int left, int right){
   serializeJson(doc, payload);
 
   client.publish("solartracker/ldr", payload);
+  Serial.println("Published: " + payload);
 }
