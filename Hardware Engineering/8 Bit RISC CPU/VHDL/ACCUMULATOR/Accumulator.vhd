@@ -2,76 +2,68 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
-ENTITY Accumulator IS
-    PORT( 
-        datafromALU          : IN STD_LOGIC_VECTOR(7 downto 0);
-        dataFromDataUnit     : IN STD_LOGIC_VECTOR(7 downto 0);
-        clock, load, reset   : IN STD_LOGIC;
-        sourceSelector       : IN STD_LOGIC_VECTOR(1 downto 0);
-        carryBit             : IN STD_LOGIC;
-        outputSelector       : IN STD_LOGIC;
-        
-        dataintoALU          : OUT STD_LOGIC_VECTOR(7 downto 0);
-        dataintoDataUnit     : OUT STD_LOGIC_VECTOR(7 downto 0);
-        --myOutputSignal       : OUT STD_LOGIC_VECTOR(7 downto 0);
-        flagEnablerFromControlUnit : IN STD_LOGIC;
-        
-        negativeFlag         : OUT STD_LOGIC;
+entity Accumulator is 
+port(datafromALU, datafromDataUnit: IN STD_LOGIC_VECTOR (7 downto 0);
+	CLK, RST, EN, MUX_SEL, DEMUX_SEL,carryBit,flagEnablerFromControlUnit: IN STD_LOGIC;
+	datatoALU, datatoDataUnit: OUT STD_LOGIC_VECTOR (7 downto 0);
+	outputForDisplay: OUT STD_LOGIC_VECTOR(7 downto 0);
+	negativeFlag         : OUT STD_LOGIC;
         ZeroFlag             : OUT STD_LOGIC;
         carryFlag            : OUT STD_LOGIC
-    );
-END Accumulator;
+);
+end Accumulator;
 
-ARCHITECTURE BEHAVIOURAL OF Accumulator IS
-    SIGNAL accumulatorDecode : STD_LOGIC_VECTOR(7 downto 0);
-
+architecture behavioral of Accumulator is
+component accMUX
+port(inALU, inDU: IN STD_LOGIC_VECTOR (7 downto 0);
+	SEL: IN STD_LOGIC;
+	DATA: OUT STD_LOGIC_VECTOR (7 downto 0)
+);
+end component;
+component Accumulator_eightBIT_DFLIPFLOP
+port(a: IN STD_LOGIC_VECTOR (7 downto 0);
+    b: OUT STD_LOGIC_VECTOR (7 downto 0);
+ clk, rst, en: IN STD_LOGIC);
+end component;
 component accDEMUX
 port(accOUTPUT: IN STD_LOGIC_VECTOR (7 downto 0);
 	SEL: IN STD_LOGIC;
 	toALU, todataMEMORY: OUT STD_LOGIC_VECTOR (7 downto 0)
 );
 end component;
-	
-BEGIN
+signal datatoRegister, registertoDEMUX, aluDataInternal: STD_LOGIC_VECTOR (7 downto 0);
 
-    PROCESS(clock, reset)
-    BEGIN
-        IF reset = '1' THEN
-            -- accumulatorDecode <= (OTHERS => '0');
-        ELSIF rising_edge(clock) THEN
-            IF load = '1' THEN
-                CASE sourceSelector IS
-                    WHEN "00"   => accumulatorDecode <= datafromALU; --after ADD SUB
-                    WHEN "01"   => accumulatorDecode <= dataFromDataUnit; --LOAD
-                    WHEN OTHERS => NULL; -- Retain current value
-                END CASE;
-            END IF;
-        END IF;
-    END PROCESS;
+begin
+MUX: accMUX port map(inALU=>datafromALU, inDU=>datafromDataUnit, SEL=>MUX_SEL, DATA=>datatoRegister);
+RGSTR: Accumulator_eightBIT_DFLIPFLOP port map (a=>datatoRegister, b=>registertoDEMUX, clk=>CLK, rst=>RST, en=>EN);
+DEMUX: accDEMUX port map (accOUTPUT => registertoDEMUX, SEL=> DEMUX_SEL, toALU=>aluDataInternal, todataMEMORY=>datatoDataUnit);
+datatoALU <= aluDataInternal;
+outputForDisplay<= registertoDEMUX;
 
-
-	DEMUX: accDEMUX port map (accOUTPUT=>accumulatorDecode, SEL=>outputSelector, toALU=>dataintoALU, 
-		todataMEMORY=>dataintoDataUnit);
-    --dataintoALU      <= accumulatorDecode WHEN outputSelector = "00" ELSE (OTHERS=>'0') ; --ADDSUB
-    --dataintoDataUnit <= accumulatorDecode WHEN outputSelector = "01"  ELSE (OTHERS=>'0')  ; --STORE
-    --myOutputSignal   <= accumulatorDecode;
-
-    PROCESS(accumulatorDecode, carryBit, flagEnablerFromControlUnit)
-    BEGIN
-        IF flagEnablerFromControlUnit = '1' THEN
-            IF accumulatorDecode = "00000000" THEN
+process(CLK,RST)
+begin
+    if RST = '1' then
+        ZeroFlag     <= '0';
+        negativeFlag <= '0';
+        carryFlag    <= '0';
+    elsif rising_edge(CLK) then
+        if flagEnablerFromControlUnit = '1' then
+            if registertoDEMUX = "00000000" then
                 ZeroFlag <= '1';
-            ELSE
+            else
                 ZeroFlag <= '0';
-            END IF;
+            end if;
 
-            negativeFlag <= accumulatorDecode(7);
+            negativeFlag <= registertoDEMUX(7);
             carryFlag    <= carryBit;
-        ELSE
+        else
             ZeroFlag     <= '0';
             negativeFlag <= '0';
             carryFlag    <= '0';
-        END IF;
-    END PROCESS;
+        end if;
+    end if;
+end process;
 
-END BEHAVIOURAL;
+
+end behavioral;
+
