@@ -5,7 +5,7 @@
   /Author   (kamalrubayet)
   /Producer (Concept Engineering GmbH)
   /Creator  (Nlview 7.8.0 2024-04-26 e1825d835c VDI=44 GEI=38)
-  /CreationDate (D:20250521003757)
+  /CreationDate (D:20250530001838)
 >>
 endobj
 2 0 obj
@@ -37,7 +37,7 @@ endobj
 endobj
 %
 % Schematic page 1
-% (user space scaling 0.696482)
+% (user space scaling 0.144639)
 %
 10 0 obj
 <<
@@ -51,39 +51,219 @@ endobj
 endobj
 11 0 obj
 <<
-  /Length 3312
+  /Length 18495
 >>
 stream
-1 0 0 1 0 231.734 cm
+1 0 0 1 0 320.265 cm
 1 0 0 1 28.8 28.8 cm
-0.696482 0 0 -0.696482 0 0 cm
-1 0 0 1 0 -389 cm
-0 0 796 389 re
+0.144639 0 0 -0.144639 0 0 cm
+1 0 0 1 0 -649 cm
+0 0 3833 649 re
 W n
 /GS gs
-1 0 0 1 -543 0 cm
+1 0 0 1 113 0 cm
 q
 1.000 1.000 1.000 rg
 /GSa0 gs
-543 0 796 390 re
-f
-Q
-q
-0.875 0.922 0.973 rg
-/GSa0 gs
-500 158 60 42 re
+-113 0 3832 650 re
 f
 Q
 [] 0 d
 1 w
 0.000 0.000 0.000 RG
 /GSA0 gs
-500 158 60 42 re
+0 90 m
+-7 97 l
+-21 97 l
+-21 83 l
+-7 83 l
+h S
+q
+0.000 0.000 0.000 rg
+/GSa0 gs
+1 0 0 1 -25 90 cm
+BT
+/F1 12 Tf
+1 0 0 -1 0 0 Tm
+-55.356 -4.308 Td
+(globalCLK) Tj
+ET
+Q
+0 210 m
+-7 217 l
+-21 217 l
+-21 203 l
+-7 203 l
+h S
+q
+0.000 0.000 0.000 rg
+/GSa0 gs
+1 0 0 1 -25 210 cm
+BT
+/F1 12 Tf
+1 0 0 -1 0 0 Tm
+-40.008 -4.308 Td
+(RESET) Tj
+ET
+Q
+q
+0.875 0.922 0.973 rg
+/GSa0 gs
+180 138 60 122 re
+f
+Q
+180 138 60 122 re
+S
+q
+1 0 0 1 191 149 cm
+1 0 0 1 -8 -8 cm
+16 0 0 -16 0 16 cm /Im0 Do
+Q
+q
+0.000 0.000 0.000 rg
+/GSa0 gs
+1 0 0 1 210 136 cm
+BT
+/F1 12 Tf
+1 0 0 -1 0 0 Tm
+-22.674 2.484 Td
+(CPU101) Tj
+ET
+Q
+q
+0.000 0.000 0.000 rg
+/GSa0 gs
+1 0 0 1 210 262 cm
+BT
+/F1 12 Tf
+1 0 0 -1 0 0 Tm
+-44.346 -8.616 Td
+(ProgramCounter) Tj
+ET
+Q
+170 170 m
+180 170 l
 S
 q
 0.000 0.000 0.000 rg
 /GSa0 gs
-1 0 0 1 530 156 cm
+1 0 0 1 178 169 cm
+BT
+/F1 10 Tf
+1 0 0 -1 0 0 Tm
+-19.45 2.07 Td
+(CLK) Tj
+ET
+Q
+170 190 m
+180 190 l
+S
+q
+0.000 0.000 0.000 rg
+/GSa0 gs
+1 0 0 1 178 189 cm
+BT
+/F1 10 Tf
+1 0 0 -1 0 0 Tm
+-46.68 2.07 Td
+(PC_LOAD) Tj
+ET
+Q
+170 210 m
+180 210 l
+S
+q
+0.000 0.000 0.000 rg
+/GSa0 gs
+1 0 0 1 178 209 cm
+BT
+/F1 10 Tf
+1 0 0 -1 0 0 Tm
+-33.34 2.07 Td
+(RESET) Tj
+ET
+Q
+3 w
+170 230 m
+180 230 l
+S
+q
+0.000 0.000 0.000 rg
+/GSa0 gs
+1 0 0 1 178 229 cm
+BT
+/F1 10 Tf
+1 0 0 -1 0 0 Tm
+-45.03 2.07 Td
+(SELE[1:0]) Tj
+ET
+Q
+250 210 m
+240 210 l
+S
+q
+0.000 0.000 0.000 rg
+/GSa0 gs
+1 0 0 1 242 209 cm
+BT
+/F1 10 Tf
+1 0 0 -1 0 0 Tm
+0 2.07 Td
+(finalpcAddr[7:0]) Tj
+ET
+Q
+170 250 m
+180 250 l
+S
+q
+0.000 0.000 0.000 rg
+/GSa0 gs
+1 0 0 1 178 249 cm
+BT
+/F1 10 Tf
+1 0 0 -1 0 0 Tm
+-56.15 2.07 Td
+(operand[4:0]) Tj
+ET
+Q
+1 w
+190 170 m
+180 170 l
+S
+190 190 m
+180 190 l
+S
+190 210 m
+180 210 l
+S
+3 w
+190 230 m
+180 230 l
+S
+230 210 m
+240 210 l
+S
+190 250 m
+180 250 l
+S
+q
+0.875 0.922 0.973 rg
+/GSa0 gs
+480 158 60 42 re
+f
+Q
+1 w
+480 158 60 42 re
+S
+q
+1 0 0 1 491 169 cm
+1 0 0 1 -8 -8 cm
+16 0 0 -16 0 16 cm /Im0 Do
+Q
+q
+0.000 0.000 0.000 rg
+/GSa0 gs
+1 0 0 1 510 156 cm
 BT
 /F1 12 Tf
 1 0 0 -1 0 0 Tm
@@ -94,7 +274,7 @@ Q
 q
 0.000 0.000 0.000 rg
 /GSa0 gs
-1 0 0 1 530 202 cm
+1 0 0 1 510 202 cm
 BT
 /F1 12 Tf
 1 0 0 -1 0 0 Tm
@@ -103,13 +283,13 @@ BT
 ET
 Q
 3 w
-570 190 m
-560 190 l
+550 190 m
+540 190 l
 S
 q
 0.000 0.000 0.000 rg
 /GSa0 gs
-1 0 0 1 562 189 cm
+1 0 0 1 542 189 cm
 BT
 /F1 10 Tf
 1 0 0 -1 0 0 Tm
@@ -117,27 +297,44 @@ BT
 (instruction[7:0]) Tj
 ET
 Q
-550 190 m
-560 190 l
+470 190 m
+480 190 l
+S
+q
+0.000 0.000 0.000 rg
+/GSa0 gs
+1 0 0 1 478 189 cm
+BT
+/F1 10 Tf
+1 0 0 -1 0 0 Tm
+-66.7 2.07 Td
+(pcAddress[7:0]) Tj
+ET
+Q
+530 190 m
+540 190 l
+S
+490 190 m
+480 190 l
 S
 q
 0.875 0.922 0.973 rg
 /GSa0 gs
-970 158 60 102 re
+910 158 60 102 re
 f
 Q
 1 w
-970 158 60 102 re
+910 158 60 102 re
 S
 q
-1 0 0 1 981 169 cm
+1 0 0 1 921 169 cm
 1 0 0 1 -8 -8 cm
 16 0 0 -16 0 16 cm /Im0 Do
 Q
 q
 0.000 0.000 0.000 rg
 /GSa0 gs
-1 0 0 1 1000 156 cm
+1 0 0 1 940 156 cm
 BT
 /F1 12 Tf
 1 0 0 -1 0 0 Tm
@@ -148,7 +345,7 @@ Q
 q
 0.000 0.000 0.000 rg
 /GSa0 gs
-1 0 0 1 1000 262 cm
+1 0 0 1 940 262 cm
 BT
 /F1 12 Tf
 1 0 0 -1 0 0 Tm
@@ -156,13 +353,13 @@ BT
 (IR) Tj
 ET
 Q
-960 210 m
-970 210 l
+900 210 m
+910 210 l
 S
 q
 0.000 0.000 0.000 rg
 /GSa0 gs
-1 0 0 1 968 209 cm
+1 0 0 1 908 209 cm
 BT
 /F1 10 Tf
 1 0 0 -1 0 0 Tm
@@ -170,13 +367,13 @@ BT
 (ControlClock) Tj
 ET
 Q
-960 230 m
-970 230 l
+900 230 m
+910 230 l
 S
 q
 0.000 0.000 0.000 rg
 /GSa0 gs
-1 0 0 1 968 229 cm
+1 0 0 1 908 229 cm
 BT
 /F1 10 Tf
 1 0 0 -1 0 0 Tm
@@ -184,13 +381,13 @@ BT
 (ControlReset) Tj
 ET
 Q
-960 250 m
-970 250 l
+900 250 m
+910 250 l
 S
 q
 0.000 0.000 0.000 rg
 /GSa0 gs
-1 0 0 1 968 249 cm
+1 0 0 1 908 249 cm
 BT
 /F1 10 Tf
 1 0 0 -1 0 0 Tm
@@ -199,13 +396,13 @@ BT
 ET
 Q
 3 w
-960 190 m
-970 190 l
+900 190 m
+910 190 l
 S
 q
 0.000 0.000 0.000 rg
 /GSa0 gs
-1 0 0 1 968 189 cm
+1 0 0 1 908 189 cm
 BT
 /F1 10 Tf
 1 0 0 -1 0 0 Tm
@@ -213,13 +410,13 @@ BT
 (AddressFromInstructionMemory[7:0]) Tj
 ET
 Q
-1040 210 m
-1030 210 l
+980 210 m
+970 210 l
 S
 q
 0.000 0.000 0.000 rg
 /GSa0 gs
-1 0 0 1 1032 209 cm
+1 0 0 1 972 209 cm
 BT
 /F1 10 Tf
 1 0 0 -1 0 0 Tm
@@ -227,13 +424,13 @@ BT
 (OpCodeForControlUnit[2:0]) Tj
 ET
 Q
-1040 230 m
-1030 230 l
+980 230 m
+970 230 l
 S
 q
 0.000 0.000 0.000 rg
 /GSa0 gs
-1 0 0 1 1032 229 cm
+1 0 0 1 972 229 cm
 BT
 /F1 10 Tf
 1 0 0 -1 0 0 Tm
@@ -242,157 +439,1525 @@ BT
 ET
 Q
 1 w
-980 210 m
-970 210 l
+920 210 m
+910 210 l
 S
-980 230 m
-970 230 l
+920 230 m
+910 230 l
 S
-980 250 m
-970 250 l
+920 250 m
+910 250 l
 S
 3 w
-980 190 m
-970 190 l
+920 190 m
+910 190 l
 S
-1020 210 m
-1030 210 l
+960 210 m
+970 210 l
 S
-1020 230 m
-1030 230 l
+960 230 m
+970 230 l
 S
+q
+0.875 0.922 0.973 rg
+/GSa0 gs
+1550 98 60 322 re
+f
+Q
+1 w
+1550 98 60 322 re
+S
+q
+1 0 0 1 1561 109 cm
+1 0 0 1 -8 -8 cm
+16 0 0 -16 0 16 cm /Im0 Do
+Q
+q
+0.000 0.000 0.000 rg
+/GSa0 gs
+1 0 0 1 1580 96 cm
+BT
+/F1 12 Tf
+1 0 0 -1 0 0 Tm
+-22.674 2.484 Td
+(CPU106) Tj
+ET
+Q
+q
+0.000 0.000 0.000 rg
+/GSa0 gs
+1 0 0 1 1580 422 cm
+BT
+/F1 12 Tf
+1 0 0 -1 0 0 Tm
+-28.674 -8.616 Td
+(controlUnit) Tj
+ET
+Q
+1620 130 m
+1610 130 l
+S
+q
+0.000 0.000 0.000 rg
+/GSa0 gs
+1 0 0 1 1612 129 cm
+BT
+/F1 10 Tf
+1 0 0 -1 0 0 Tm
+0 2.07 Td
+(ALUFlipFlopLoader) Tj
+ET
+Q
+1620 150 m
+1610 150 l
+S
+q
+0.000 0.000 0.000 rg
+/GSa0 gs
+1 0 0 1 1612 149 cm
+BT
+/F1 10 Tf
+1 0 0 -1 0 0 Tm
+0 2.07 Td
+(ALU_CarryInEnabler) Tj
+ET
+Q
+1620 170 m
+1610 170 l
+S
+q
+0.000 0.000 0.000 rg
+/GSa0 gs
+1 0 0 1 1612 169 cm
+BT
+/F1 10 Tf
+1 0 0 -1 0 0 Tm
+0 2.07 Td
+(ALU_Enabler) Tj
+ET
+Q
+1620 190 m
+1610 190 l
+S
+q
+0.000 0.000 0.000 rg
+/GSa0 gs
+1 0 0 1 1612 189 cm
+BT
+/F1 10 Tf
+1 0 0 -1 0 0 Tm
+0 2.07 Td
+(ALU_INVA) Tj
+ET
+Q
+1620 230 m
+1610 230 l
+S
+q
+0.000 0.000 0.000 rg
+/GSa0 gs
+1 0 0 1 1612 229 cm
+BT
+/F1 10 Tf
+1 0 0 -1 0 0 Tm
+0 2.07 Td
+(DataMemoryRead) Tj
+ET
+Q
+1620 250 m
+1610 250 l
+S
+q
+0.000 0.000 0.000 rg
+/GSa0 gs
+1 0 0 1 1612 249 cm
+BT
+/F1 10 Tf
+1 0 0 -1 0 0 Tm
+0 2.07 Td
+(DataMemoryWrite) Tj
+ET
+Q
+1620 270 m
+1610 270 l
+S
+q
+0.000 0.000 0.000 rg
+/GSa0 gs
+1 0 0 1 1612 269 cm
+BT
+/F1 10 Tf
+1 0 0 -1 0 0 Tm
+0 2.07 Td
+(accumulatorFlagEnabler) Tj
+ET
+Q
+1620 290 m
+1610 290 l
+S
+q
+0.000 0.000 0.000 rg
+/GSa0 gs
+1 0 0 1 1612 289 cm
+BT
+/F1 10 Tf
+1 0 0 -1 0 0 Tm
+0 2.07 Td
+(accumulatorLoader) Tj
+ET
+Q
+1620 310 m
+1610 310 l
+S
+q
+0.000 0.000 0.000 rg
+/GSa0 gs
+1 0 0 1 1612 309 cm
+BT
+/F1 10 Tf
+1 0 0 -1 0 0 Tm
+0 2.07 Td
+(accumulatorOutputSelector) Tj
+ET
+Q
+1620 330 m
+1610 330 l
+S
+q
+0.000 0.000 0.000 rg
+/GSa0 gs
+1 0 0 1 1612 329 cm
+BT
+/F1 10 Tf
+1 0 0 -1 0 0 Tm
+0 2.07 Td
+(accumulatorSelector) Tj
+ET
+Q
+1540 230 m
+1550 230 l
+S
+q
+0.000 0.000 0.000 rg
+/GSa0 gs
+1 0 0 1 1548 229 cm
+BT
+/F1 10 Tf
+1 0 0 -1 0 0 Tm
+-41.67 2.07 Td
+(carryFlag) Tj
+ET
+Q
+1540 250 m
+1550 250 l
+S
+q
+0.000 0.000 0.000 rg
+/GSa0 gs
+1 0 0 1 1548 249 cm
+BT
+/F1 10 Tf
+1 0 0 -1 0 0 Tm
+-22.78 2.07 Td
+(clock) Tj
+ET
+Q
+1620 350 m
+1610 350 l
+S
+q
+0.000 0.000 0.000 rg
+/GSa0 gs
+1 0 0 1 1612 349 cm
+BT
+/F1 10 Tf
+1 0 0 -1 0 0 Tm
+0 2.07 Td
+(dataUnitSelector) Tj
+ET
+Q
+1620 370 m
+1610 370 l
+S
+q
+0.000 0.000 0.000 rg
+/GSa0 gs
+1 0 0 1 1612 369 cm
+BT
+/F1 10 Tf
+1 0 0 -1 0 0 Tm
+0 2.07 Td
+(instructionRegisterLoad) Tj
+ET
+Q
+1540 270 m
+1550 270 l
+S
+q
+0.000 0.000 0.000 rg
+/GSa0 gs
+1 0 0 1 1548 269 cm
+BT
+/F1 10 Tf
+1 0 0 -1 0 0 Tm
+-57.25 2.07 Td
+(negativeFlag) Tj
+ET
+Q
+1620 390 m
+1610 390 l
+S
+q
+0.000 0.000 0.000 rg
+/GSa0 gs
+1 0 0 1 1612 389 cm
+BT
+/F1 10 Tf
+1 0 0 -1 0 0 Tm
+0 2.07 Td
+(programCounterLoader) Tj
+ET
+Q
+1540 290 m
+1550 290 l
+S
+q
+0.000 0.000 0.000 rg
+/GSa0 gs
+1 0 0 1 1548 289 cm
+BT
+/F1 10 Tf
+1 0 0 -1 0 0 Tm
+-11.11 2.07 Td
+(rst) Tj
+ET
+Q
+1540 310 m
+1550 310 l
+S
+q
+0.000 0.000 0.000 rg
+/GSa0 gs
+1 0 0 1 1548 309 cm
+BT
+/F1 10 Tf
+1 0 0 -1 0 0 Tm
+-38.9 2.07 Td
+(zeroFlag) Tj
+ET
+Q
+3 w
+1620 210 m
+1610 210 l
+S
+q
+0.000 0.000 0.000 rg
+/GSa0 gs
+1 0 0 1 1612 209 cm
+BT
+/F1 10 Tf
+1 0 0 -1 0 0 Tm
+0 2.07 Td
+(ALU_operand[1:0]) Tj
+ET
+Q
+1540 210 m
+1550 210 l
+S
+q
+0.000 0.000 0.000 rg
+/GSa0 gs
+1 0 0 1 1548 209 cm
+BT
+/F1 10 Tf
+1 0 0 -1 0 0 Tm
+-164.5 2.07 Td
+(OPCodeFromInstructionRegister[2:0]) Tj
+ET
+Q
+1620 410 m
+1610 410 l
+S
+q
+0.000 0.000 0.000 rg
+/GSa0 gs
+1 0 0 1 1612 409 cm
+BT
+/F1 10 Tf
+1 0 0 -1 0 0 Tm
+0 2.07 Td
+(programCounterSelector[1:0]) Tj
+ET
+Q
+1 w
+1600 130 m
+1610 130 l
+S
+1600 150 m
+1610 150 l
+S
+1600 170 m
+1610 170 l
+S
+1600 190 m
+1610 190 l
+S
+1600 230 m
+1610 230 l
+S
+1600 250 m
+1610 250 l
+S
+1600 270 m
+1610 270 l
+S
+1600 290 m
+1610 290 l
+S
+1600 310 m
+1610 310 l
+S
+1600 330 m
+1610 330 l
+S
+1560 230 m
+1550 230 l
+S
+1560 250 m
+1550 250 l
+S
+1600 350 m
+1610 350 l
+S
+1600 370 m
+1610 370 l
+S
+1560 270 m
+1550 270 l
+S
+1600 390 m
+1610 390 l
+S
+1560 290 m
+1550 290 l
+S
+1560 310 m
+1550 310 l
+S
+3 w
+1600 210 m
+1610 210 l
+S
+1560 210 m
+1550 210 l
+S
+1600 410 m
+1610 410 l
+S
+q
+0.875 0.922 0.973 rg
+/GSa0 gs
+2230 238 60 142 re
+f
+Q
+1 w
+2230 238 60 142 re
+S
+q
+1 0 0 1 2241 249 cm
+1 0 0 1 -8 -8 cm
+16 0 0 -16 0 16 cm /Im0 Do
+Q
+q
+0.000 0.000 0.000 rg
+/GSa0 gs
+1 0 0 1 2260 236 cm
+BT
+/F1 12 Tf
+1 0 0 -1 0 0 Tm
+-22.674 2.484 Td
+(CPU103) Tj
+ET
+Q
+q
+0.000 0.000 0.000 rg
+/GSa0 gs
+1 0 0 1 2260 382 cm
+BT
+/F1 12 Tf
+1 0 0 -1 0 0 Tm
+-47.346 -8.616 Td
+(data_memoryUnit) Tj
+ET
+Q
+2220 270 m
+2230 270 l
+S
+q
+0.000 0.000 0.000 rg
+/GSa0 gs
+1 0 0 1 2228 269 cm
+BT
+/F1 10 Tf
+1 0 0 -1 0 0 Tm
+-19.45 2.07 Td
+(CLK) Tj
+ET
+Q
+2220 290 m
+2230 290 l
+S
+q
+0.000 0.000 0.000 rg
+/GSa0 gs
+1 0 0 1 2228 289 cm
+BT
+/F1 10 Tf
+1 0 0 -1 0 0 Tm
+-56.67 2.07 Td
+(MEM_READ) Tj
+ET
+Q
+2220 310 m
+2230 310 l
+S
+q
+0.000 0.000 0.000 rg
+/GSa0 gs
+1 0 0 1 2228 309 cm
+BT
+/F1 10 Tf
+1 0 0 -1 0 0 Tm
+-61.11 2.07 Td
+(MEM_WRITE) Tj
+ET
+Q
+2220 330 m
+2230 330 l
+S
+q
+0.000 0.000 0.000 rg
+/GSa0 gs
+1 0 0 1 2228 329 cm
+BT
+/F1 10 Tf
+1 0 0 -1 0 0 Tm
+-66.7 2.07 Td
+(OutputSelector) Tj
+ET
+Q
+3 w
+2220 350 m
+2230 350 l
+S
+q
+0.000 0.000 0.000 rg
+/GSa0 gs
+1 0 0 1 2228 349 cm
+BT
+/F1 10 Tf
+1 0 0 -1 0 0 Tm
+-75.6 2.07 Td
+(dataAddress[4:0]) Tj
+ET
+Q
+2220 370 m
+2230 370 l
+S
+q
+0.000 0.000 0.000 rg
+/GSa0 gs
+1 0 0 1 2228 369 cm
+BT
+/F1 10 Tf
+1 0 0 -1 0 0 Tm
+-48.92 2.07 Td
+(dataIN[7:0]) Tj
+ET
+Q
+2300 310 m
+2290 310 l
+S
+q
+0.000 0.000 0.000 rg
+/GSa0 gs
+1 0 0 1 2292 309 cm
+BT
+/F1 10 Tf
+1 0 0 -1 0 0 Tm
+0 2.07 Td
+(outputToALU[7:0]) Tj
+ET
+Q
+2300 330 m
+2290 330 l
+S
+q
+0.000 0.000 0.000 rg
+/GSa0 gs
+1 0 0 1 2292 329 cm
+BT
+/F1 10 Tf
+1 0 0 -1 0 0 Tm
+0 2.07 Td
+(outputToAccumulator[7:0]) Tj
+ET
+Q
+1 w
+2240 270 m
+2230 270 l
+S
+2240 290 m
+2230 290 l
+S
+2240 310 m
+2230 310 l
+S
+2240 330 m
+2230 330 l
+S
+3 w
+2240 350 m
+2230 350 l
+S
+2240 370 m
+2230 370 l
+S
+2280 310 m
+2290 310 l
+S
+2280 330 m
+2290 330 l
+S
+q
+0.875 0.922 0.973 rg
+/GSa0 gs
+2790 38 60 242 re
+f
+Q
+1 w
+2790 38 60 242 re
+S
+q
+1 0 0 1 2801 49 cm
+1 0 0 1 -8 -8 cm
+16 0 0 -16 0 16 cm /Im0 Do
+Q
+q
+0.000 0.000 0.000 rg
+/GSa0 gs
+1 0 0 1 2820 36 cm
+BT
+/F1 12 Tf
+1 0 0 -1 0 0 Tm
+-22.674 2.484 Td
+(CPU100) Tj
+ET
+Q
+q
+0.000 0.000 0.000 rg
+/GSa0 gs
+1 0 0 1 2820 282 cm
+BT
+/F1 12 Tf
+1 0 0 -1 0 0 Tm
+-24.678 -8.616 Td
+(ALU_8bit) Tj
+ET
+Q
+2780 70 m
+2790 70 l
+S
+q
+0.000 0.000 0.000 rg
+/GSa0 gs
+1 0 0 1 2788 69 cm
+BT
+/F1 10 Tf
+1 0 0 -1 0 0 Tm
+-86.14 2.07 Td
+(ALUFlipFlopLoader) Tj
+ET
+Q
+2780 110 m
+2790 110 l
+S
+q
+0.000 0.000 0.000 rg
+/GSa0 gs
+1 0 0 1 2788 109 cm
+BT
+/F1 10 Tf
+1 0 0 -1 0 0 Tm
+-19.45 2.07 Td
+(CLK) Tj
+ET
+Q
+2780 130 m
+2790 130 l
+S
+q
+0.000 0.000 0.000 rg
+/GSa0 gs
+1 0 0 1 2788 129 cm
+BT
+/F1 10 Tf
+1 0 0 -1 0 0 Tm
+-87.24 2.07 Td
+(CarryInEnabler_CU) Tj
+ET
+Q
+2860 150 m
+2850 150 l
+S
+q
+0.000 0.000 0.000 rg
+/GSa0 gs
+1 0 0 1 2852 149 cm
+BT
+/F1 10 Tf
+1 0 0 -1 0 0 Tm
+0 2.07 Td
+(CarryOut) Tj
+ET
+Q
+2780 150 m
+2790 150 l
+S
+q
+0.000 0.000 0.000 rg
+/GSa0 gs
+1 0 0 1 2788 149 cm
+BT
+/F1 10 Tf
+1 0 0 -1 0 0 Tm
+-26.12 2.07 Td
+(EN_A) Tj
+ET
+Q
+2780 170 m
+2790 170 l
+S
+q
+0.000 0.000 0.000 rg
+/GSa0 gs
+1 0 0 1 2788 169 cm
+BT
+/F1 10 Tf
+1 0 0 -1 0 0 Tm
+-26.12 2.07 Td
+(EN_B) Tj
+ET
+Q
+2780 190 m
+2790 190 l
+S
+q
+0.000 0.000 0.000 rg
+/GSa0 gs
+1 0 0 1 2788 189 cm
+BT
+/F1 10 Tf
+1 0 0 -1 0 0 Tm
+-28.9 2.07 Td
+(INV_A) Tj
+ET
+Q
+2780 230 m
+2790 230 l
+S
+q
+0.000 0.000 0.000 rg
+/GSa0 gs
+1 0 0 1 2788 229 cm
+BT
+/F1 10 Tf
+1 0 0 -1 0 0 Tm
+-123.37 2.07 Td
+(OperandFromControlUnit_0) Tj
+ET
+Q
+2780 250 m
+2790 250 l
+S
+q
+0.000 0.000 0.000 rg
+/GSa0 gs
+1 0 0 1 2788 249 cm
+BT
+/F1 10 Tf
+1 0 0 -1 0 0 Tm
+-123.37 2.07 Td
+(OperandFromControlUnit_1) Tj
+ET
+Q
+2780 270 m
+2790 270 l
+S
+q
+0.000 0.000 0.000 rg
+/GSa0 gs
+1 0 0 1 2788 269 cm
+BT
+/F1 10 Tf
+1 0 0 -1 0 0 Tm
+-33.34 2.07 Td
+(RESET) Tj
+ET
+Q
+3 w
+2780 90 m
+2790 90 l
+S
+q
+0.000 0.000 0.000 rg
+/GSa0 gs
+1 0 0 1 2788 89 cm
+BT
+/F1 10 Tf
+1 0 0 -1 0 0 Tm
+-96.15 2.07 Td
+(AccumulatorData[7:0]) Tj
+ET
+Q
+2780 210 m
+2790 210 l
+S
+q
+0.000 0.000 0.000 rg
+/GSa0 gs
+1 0 0 1 2788 209 cm
+BT
+/F1 10 Tf
+1 0 0 -1 0 0 Tm
+-76.69 2.07 Td
+(MemoryData[7:0]) Tj
+ET
+Q
+2860 170 m
+2850 170 l
+S
+q
+0.000 0.000 0.000 rg
+/GSa0 gs
+1 0 0 1 2852 169 cm
+BT
+/F1 10 Tf
+1 0 0 -1 0 0 Tm
+0 2.07 Td
+(OutputToAccumulator[7:0]) Tj
+ET
+Q
+1 w
+2800 70 m
+2790 70 l
+S
+2800 110 m
+2790 110 l
+S
+2800 130 m
+2790 130 l
+S
+2840 150 m
+2850 150 l
+S
+2800 150 m
+2790 150 l
+S
+2800 170 m
+2790 170 l
+S
+2800 190 m
+2790 190 l
+S
+2800 230 m
+2790 230 l
+S
+2800 250 m
+2790 250 l
+S
+2800 270 m
+2790 270 l
+S
+3 w
+2800 90 m
+2790 90 l
+S
+2800 210 m
+2790 210 l
+S
+2840 170 m
+2850 170 l
+S
+q
+0.875 0.922 0.973 rg
+/GSa0 gs
+3240 418 60 202 re
+f
+Q
+1 w
+3240 418 60 202 re
+S
+q
+1 0 0 1 3251 429 cm
+1 0 0 1 -8 -8 cm
+16 0 0 -16 0 16 cm /Im0 Do
+Q
+q
+0.000 0.000 0.000 rg
+/GSa0 gs
+1 0 0 1 3270 416 cm
+BT
+/F1 12 Tf
+1 0 0 -1 0 0 Tm
+-22.674 2.484 Td
+(CPU105) Tj
+ET
+Q
+q
+0.000 0.000 0.000 rg
+/GSa0 gs
+1 0 0 1 3270 622 cm
+BT
+/F1 12 Tf
+1 0 0 -1 0 0 Tm
+-33.342 -8.616 Td
+(Accumulator) Tj
+ET
+Q
+3230 450 m
+3240 450 l
+S
+q
+0.000 0.000 0.000 rg
+/GSa0 gs
+1 0 0 1 3238 449 cm
+BT
+/F1 10 Tf
+1 0 0 -1 0 0 Tm
+-19.45 2.07 Td
+(CLK) Tj
+ET
+Q
+3230 470 m
+3240 470 l
+S
+q
+0.000 0.000 0.000 rg
+/GSa0 gs
+1 0 0 1 3238 469 cm
+BT
+/F1 10 Tf
+1 0 0 -1 0 0 Tm
+-60.57 2.07 Td
+(DEMUX_SEL) Tj
+ET
+Q
+3230 490 m
+3240 490 l
+S
+q
+0.000 0.000 0.000 rg
+/GSa0 gs
+1 0 0 1 3238 489 cm
+BT
+/F1 10 Tf
+1 0 0 -1 0 0 Tm
+-13.89 2.07 Td
+(EN) Tj
+ET
+Q
+3230 510 m
+3240 510 l
+S
+q
+0.000 0.000 0.000 rg
+/GSa0 gs
+1 0 0 1 3238 509 cm
+BT
+/F1 10 Tf
+1 0 0 -1 0 0 Tm
+-46.68 2.07 Td
+(MUX_SEL) Tj
+ET
+Q
+3230 530 m
+3240 530 l
+S
+q
+0.000 0.000 0.000 rg
+/GSa0 gs
+1 0 0 1 3238 529 cm
+BT
+/F1 10 Tf
+1 0 0 -1 0 0 Tm
+-20 2.07 Td
+(RST) Tj
+ET
+Q
+3310 470 m
+3300 470 l
+S
+q
+0.000 0.000 0.000 rg
+/GSa0 gs
+1 0 0 1 3302 469 cm
+BT
+/F1 10 Tf
+1 0 0 -1 0 0 Tm
+0 2.07 Td
+(ZeroFlag) Tj
+ET
+Q
+3230 550 m
+3240 550 l
+S
+q
+0.000 0.000 0.000 rg
+/GSa0 gs
+1 0 0 1 3238 549 cm
+BT
+/F1 10 Tf
+1 0 0 -1 0 0 Tm
+-33.89 2.07 Td
+(carryBit) Tj
+ET
+Q
+3310 490 m
+3300 490 l
+S
+q
+0.000 0.000 0.000 rg
+/GSa0 gs
+1 0 0 1 3302 489 cm
+BT
+/F1 10 Tf
+1 0 0 -1 0 0 Tm
+0 2.07 Td
+(carryFlag) Tj
+ET
+Q
+3230 610 m
+3240 610 l
+S
+q
+0.000 0.000 0.000 rg
+/GSa0 gs
+1 0 0 1 3238 609 cm
+BT
+/F1 10 Tf
+1 0 0 -1 0 0 Tm
+-123.92 2.07 Td
+(flagEnablerFromControlUnit) Tj
+ET
+Q
+3310 550 m
+3300 550 l
+S
+q
+0.000 0.000 0.000 rg
+/GSa0 gs
+1 0 0 1 3302 549 cm
+BT
+/F1 10 Tf
+1 0 0 -1 0 0 Tm
+0 2.07 Td
+(negativeFlag) Tj
+ET
+Q
+3 w
+3230 570 m
+3240 570 l
+S
+q
+0.000 0.000 0.000 rg
+/GSa0 gs
+1 0 0 1 3238 569 cm
+BT
+/F1 10 Tf
+1 0 0 -1 0 0 Tm
+-78.37 2.07 Td
+(datafromALU[7:0]) Tj
+ET
+Q
+3230 590 m
+3240 590 l
+S
+q
+0.000 0.000 0.000 rg
+/GSa0 gs
+1 0 0 1 3238 589 cm
+BT
+/F1 10 Tf
+1 0 0 -1 0 0 Tm
+-97.82 2.07 Td
+(datafromDataUnit[7:0]) Tj
+ET
+Q
+3310 510 m
+3300 510 l
+S
+q
+0.000 0.000 0.000 rg
+/GSa0 gs
+1 0 0 1 3302 509 cm
+BT
+/F1 10 Tf
+1 0 0 -1 0 0 Tm
+0 2.07 Td
+(datatoALU[7:0]) Tj
+ET
+Q
+3310 530 m
+3300 530 l
+S
+q
+0.000 0.000 0.000 rg
+/GSa0 gs
+1 0 0 1 3302 529 cm
+BT
+/F1 10 Tf
+1 0 0 -1 0 0 Tm
+0 2.07 Td
+(datatoDataUnit[7:0]) Tj
+ET
+Q
+3310 570 m
+3300 570 l
+S
+q
+0.000 0.000 0.000 rg
+/GSa0 gs
+1 0 0 1 3302 569 cm
+BT
+/F1 10 Tf
+1 0 0 -1 0 0 Tm
+0 2.07 Td
+(outputForDisplay[7:0]) Tj
+ET
+Q
+1 w
+3250 450 m
+3240 450 l
+S
+3250 470 m
+3240 470 l
+S
+3250 490 m
+3240 490 l
+S
+3250 510 m
+3240 510 l
+S
+3250 530 m
+3240 530 l
+S
+3290 470 m
+3300 470 l
+S
+3250 550 m
+3240 550 l
+S
+3290 490 m
+3300 490 l
+S
+3250 610 m
+3240 610 l
+S
+3290 550 m
+3300 550 l
+S
+3 w
+3250 570 m
+3240 570 l
+S
+3250 590 m
+3240 590 l
+S
+3290 510 m
+3300 510 l
+S
+3290 530 m
+3300 530 l
+S
+3290 570 m
+3300 570 l
+S
+1 w
+3550 20 m
+3550 13 l
+3564 13 l
+3571 20 l
+3564 27 l
+3550 27 l
+h S
+q
+0.000 0.000 0.000 rg
+/GSa0 gs
+1 0 0 1 3575 20 cm
+BT
+/F1 12 Tf
+1 0 0 -1 0 0 Tm
+0 -4.308 Td
+(carry) Tj
+ET
+Q
+3 w
+3550 570 m
+3550 563 l
+3564 563 l
+3571 570 l
+3564 577 l
+3550 577 l
+h S
+q
+0.000 0.000 0.000 rg
+/GSa0 gs
+1 0 0 1 3575 570 cm
+BT
+/F1 12 Tf
+1 0 0 -1 0 0 Tm
+0 -4.308 Td
+(outputFor7seg[7:0]) Tj
+ET
+Q
 0.000 0.502 0.000 RG
-190 250 m
-80 250 l
-80 330 l
-1300 330 l
-1300 30 l
-2160 30 l
-2160 250 l
-2300 250 l
+2780 90 m
+2610 90 l
+2610 370 l
+3490 370 l
+3490 510 l
+3310 510 l
 S
-1040 230 m
-1300 230 l
+2860 170 m
+3030 170 l
+3030 570 l
+3230 570 l
 S
-1300 150 m
-1720 150 l
+250 210 m
+360 210 l
+360 190 l
+470 190 l
+S
+2300 310 m
+2510 310 l
+2510 210 l
+2780 210 l
+S
+170 250 m
+60 250 l
+60 110 l
+1260 110 l
 S
 q
 0.000 0.502 0.000 rg
 /GSa0 gs
-1297 227 7 7 re
+1257 107 7 7 re
 f
 Q
-q
-0.000 0.502 0.000 rg
-/GSa0 gs
-1297 147 7 7 re
-f
-Q
-570 190 m
-960 190 l
+980 230 m
+1260 230 l
+1260 70 l
+1960 70 l
+1960 350 l
+2220 350 l
 S
-190 230 m
-60 230 l
-60 310 l
-1400 310 l
-1400 370 l
-1980 370 l
-1980 310 l
-1800 310 l
+550 190 m
+900 190 l
 S
-1040 210 m
-1320 210 l
-1320 130 l
-1720 130 l
+1620 210 m
+2060 210 l
+2060 190 l
+2530 190 l
+2530 253 l
 S
 1 w
 0.098 0.706 0.000 RG
-190 190 m
-100 190 l
-100 290 l
-1460 290 l
-1460 350 l
-2000 350 l
-2000 290 l
-1800 290 l
+2530 230 m
+2780 230 l
+S
+2530 250 m
+2780 250 l
+S
+3 w
+0.000 0.000 0.000 RG
+q
+0.000 0.000 0.000 rg
+/GSa0 gs
+2529 225 m
+2529 235 l
+2540 230 l
+f
+Q
+q
+0.000 0.000 0.000 rg
+/GSa0 gs
+2529 245 m
+2529 255 l
+2540 250 l
+f
+Q
+0.000 0.502 0.000 RG
+170 230 m
+40 230 l
+40 510 l
+1800 510 l
+1800 410 l
+1620 410 l
+S
+2300 330 m
+2470 330 l
+2470 590 l
+3230 590 l
+S
+980 210 m
+1540 210 l
+S
+3310 570 m
+3550 570 l
+S
+2220 370 m
+2100 370 l
+2100 450 l
+2550 450 l
+2550 390 l
+3450 390 l
+3450 530 l
+3310 530 l
+S
+1 w
+0.098 0.706 0.000 RG
+1620 190 m
+2040 190 l
+2040 170 l
+2550 170 l
+2550 190 l
+2780 190 l
+S
+1620 130 m
+1980 130 l
+1980 70 l
+2780 70 l
+S
+1620 170 m
+2020 170 l
+2020 150 l
+2590 150 l
+2590 170 l
+2780 170 l
+S
+2590 150 m
+2780 150 l
+S
+q
+0.098 0.706 0.000 rg
+/GSa0 gs
+2588 148 5 5 re
+f
+Q
+1620 270 m
+1880 270 l
+1880 610 l
+3230 610 l
+S
+1620 150 m
+2000 150 l
+2000 130 l
+2780 130 l
+S
+2860 150 m
+3050 150 l
+3050 550 l
+3230 550 l
+S
+170 190 m
+80 190 l
+80 490 l
+1820 490 l
+1820 390 l
+1620 390 l
 S
 0 210 m
 20 210 l
-20 370 l
-700 370 l
+20 290 l
+660 290 l
 S
 q
 0.098 0.706 0.000 rg
 /GSa0 gs
-698 348 5 5 re
+658 288 5 5 re
 f
 Q
+1540 290 m
+1240 290 l
+1240 30 l
+2100 30 l
+2100 210 l
+2490 210 l
+2490 530 l
+3230 530 l
+S
+20 210 m
+170 210 l
+S
 q
 0.098 0.706 0.000 rg
 /GSa0 gs
-698 368 5 5 re
+18 208 5 5 re
 f
 Q
-960 230 m
-700 230 l
-700 610 l
-960 610 l
+900 230 m
+660 230 l
+660 290 l
+1240 290 l
 S
-700 350 m
-1420 350 l
-1420 230 l
-1720 230 l
+q
+0.098 0.706 0.000 rg
+/GSa0 gs
+1238 288 5 5 re
+f
+Q
+2490 270 m
+2780 270 l
 S
-960 490 m
-720 490 l
-720 390 l
-1360 390 l
-1360 410 l
-2960 410 l
-2960 130 l
-2770 130 l
+q
+0.098 0.706 0.000 rg
+/GSa0 gs
+2488 268 5 5 re
+f
+Q
+1620 290 m
+1920 290 l
+1920 490 l
+3230 490 l
 S
-0 170 m
+1620 310 m
+1900 310 l
+1900 470 l
+3230 470 l
+S
+1620 330 m
+1860 330 l
+1860 510 l
+3230 510 l
+S
+1540 230 m
+1320 230 l
+1320 10 l
+3530 10 l
+3530 490 l
+3310 490 l
+S
+3530 20 m
+3550 20 l
+S
+q
+0.098 0.706 0.000 rg
+/GSa0 gs
+3528 18 5 5 re
+f
+Q
+1620 230 m
+2000 230 l
+2000 290 l
+2220 290 l
+S
+1620 250 m
+1940 250 l
+1940 310 l
+2220 310 l
+S
+1620 350 m
+1940 350 l
+1940 330 l
+2220 330 l
+S
+0 90 m
+40 90 l
 40 170 l
-40 350 l
-680 350 l
+170 170 l
 S
-680 410 m
-1340 410 l
-1340 10 l
-2180 10 l
-2180 190 l
-2300 190 l
+40 90 m
+660 90 l
+660 210 l
+900 210 l
 S
-960 210 m
-680 210 l
-680 510 l
-960 510 l
+660 130 m
+1280 130 l
 S
 q
 0.098 0.706 0.000 rg
 /GSa0 gs
-678 348 5 5 re
+1278 128 5 5 re
 f
 Q
-1340 190 m
-1720 190 l
+q
+0.098 0.706 0.000 rg
+/GSa0 gs
+38 88 5 5 re
+f
+Q
+q
+0.098 0.706 0.000 rg
+/GSa0 gs
+658 128 5 5 re
+f
+Q
+1540 250 m
+1280 250 l
+1280 50 l
+2080 50 l
+2080 270 l
+2220 270 l
+S
+2080 110 m
+2570 110 l
+2570 450 l
+3230 450 l
 S
 q
 0.098 0.706 0.000 rg
 /GSa0 gs
-1338 188 5 5 re
+2078 108 5 5 re
 f
 Q
-960 250 m
-720 250 l
-720 370 l
-1380 370 l
-1380 390 l
-2020 390 l
-2020 270 l
-1800 270 l
+2570 110 m
+2780 110 l
+S
+q
+0.098 0.706 0.000 rg
+/GSa0 gs
+2568 108 5 5 re
+f
+Q
+900 250 m
+680 250 l
+680 470 l
+1840 470 l
+1840 370 l
+1620 370 l
+S
+1540 270 m
+1320 270 l
+1320 450 l
+1960 450 l
+1960 410 l
+2510 410 l
+2510 330 l
+3510 330 l
+3510 550 l
+3310 550 l
+S
+1540 310 m
+1300 310 l
+1300 530 l
+2040 530 l
+2040 430 l
+2530 430 l
+2530 350 l
+3470 350 l
+3470 470 l
+3310 470 l
 S
 endstream
 endobj
@@ -424,20 +1989,70 @@ endobj
 endobj
 15 0 obj
 <<
-  /Title  (CPU102 instruction_memoryUnit)
+  /Title  (CPU100 ALU_8bit)
   /C      [0.0 0.0 0.4]
-  /Dest   [10 0 R /FitR 28 381 87 431]
+  /Dest   [10 0 R /FitR 430 400 474 439]
   /Parent 14 0 R
   /Next   16 0 R
 >>
 endobj
 16 0 obj
 <<
-  /Title  (CPU104 IR)
+  /Title  (CPU101 ProgramCounter)
   /C      [0.0 0.0 0.4]
-  /Dest   [10 0 R /FitR 212 339 509 431]
+  /Dest   [10 0 R /FitR 62 403 90 425]
   /Parent 14 0 R
   /Prev   15 0 R
+  /Next   17 0 R
+>>
+endobj
+17 0 obj
+<<
+  /Title  (CPU102 instruction_memoryUnit)
+  /C      [0.0 0.0 0.4]
+  /Dest   [10 0 R /FitR 104 411 132 422]
+  /Parent 14 0 R
+  /Prev   16 0 R
+  /Next   18 0 R
+>>
+endobj
+18 0 obj
+<<
+  /Title  (CPU103 data_memoryUnit)
+  /C      [0.0 0.0 0.4]
+  /Dest   [10 0 R /FitR 356 385 393 410]
+  /Parent 14 0 R
+  /Prev   17 0 R
+  /Next   19 0 R
+>>
+endobj
+19 0 obj
+<<
+  /Title  (CPU104 IR)
+  /C      [0.0 0.0 0.4]
+  /Dest   [10 0 R /FitR 153 403 214 422]
+  /Parent 14 0 R
+  /Prev   18 0 R
+  /Next   20 0 R
+>>
+endobj
+20 0 obj
+<<
+  /Title  (CPU105 Accumulator)
+  /C      [0.0 0.0 0.4]
+  /Dest   [10 0 R /FitR 495 351 536 384]
+  /Parent 14 0 R
+  /Prev   19 0 R
+  /Next   21 0 R
+>>
+endobj
+21 0 obj
+<<
+  /Title  (CPU106 controlUnit)
+  /C      [0.0 0.0 0.4]
+  /Dest   [10 0 R /FitR 245 380 296 430]
+  /Parent 14 0 R
+  /Prev   20 0 R
 >>
 endobj
 14 0 obj
@@ -447,146 +2062,402 @@ endobj
   /F      1
   /Parent 13 0 R
   /First  15 0 R
-  /Last   16 0 R
-  /Count  2
-  /Next   17 0 R
->>
-endobj
-17 0 obj
-<<
-  /Title  (ports)
-  /C      [0.0 0.4 0.0]
-  /F      1
-  /Parent 13 0 R
-  /First  0 0 R
-  /Last   0 0 R
-  /Count  0
-  /Prev   14 0 R
-  /Next   18 0 R
->>
-endobj
-18 0 obj
-<<
-  /Title  (portBuses)
-  /C      [0.0 0.4 0.0]
-  /F      1
-  /Parent 13 0 R
-  /First  0 0 R
-  /Last   0 0 R
-  /Count  0
-  /Prev   17 0 R
-  /Next   19 0 R
->>
-endobj
-20 0 obj
-<<
-  /Title  (PCLoadFromControlUnit)
-  /C      [0.0 0.0 0.4]
-  /Dest   [10 0 R /FitR 28 287 583 399]
-  /Parent 19 0 R
-  /Next   21 0 R
->>
-endobj
-21 0 obj
-<<
-  /Title  (RESET)
-  /C      [0.0 0.0 0.4]
-  /Dest   [10 0 R /FitR 28 260 583 385]
-  /Parent 19 0 R
-  /Prev   20 0 R
+  /Last   21 0 R
+  /Count  7
   /Next   22 0 R
->>
-endobj
-22 0 obj
-<<
-  /Title  (carry)
-  /C      [0.0 0.0 0.4]
-  /Dest   [10 0 R /FitR 151 260 583 441]
-  /Parent 19 0 R
-  /Prev   21 0 R
-  /Next   23 0 R
 >>
 endobj
 23 0 obj
 <<
-  /Title  (globalCLK)
+  /Title  (RESET input)
   /C      [0.0 0.0 0.4]
-  /Dest   [10 0 R /FitR 28 260 583 525]
-  /Parent 19 0 R
-  /Prev   22 0 R
+  /Dest   [10 0 R /FitR 35 411 45 413]
+  /Parent 22 0 R
   /Next   24 0 R
 >>
 endobj
 24 0 obj
 <<
-  /Title  (intructionRegisterLoaderByControlUnit)
+  /Title  (carry output)
   /C      [0.0 0.0 0.4]
-  /Dest   [10 0 R /FitR 151 260 583 358]
-  /Parent 19 0 R
+  /Dest   [10 0 R /FitR 558 438 565 441]
+  /Parent 22 0 R
   /Prev   23 0 R
+  /Next   25 0 R
 >>
 endobj
-19 0 obj
+25 0 obj
+<<
+  /Title  (globalCLK input)
+  /C      [0.0 0.0 0.4]
+  /Dest   [10 0 R /FitR 33 428 45 431]
+  /Parent 22 0 R
+  /Prev   24 0 R
+>>
+endobj
+22 0 obj
+<<
+  /Title  (ports)
+  /C      [0.0 0.4 0.0]
+  /F      1
+  /Parent 13 0 R
+  /First  23 0 R
+  /Last   25 0 R
+  /Count  3
+  /Prev   14 0 R
+  /Next   26 0 R
+>>
+endobj
+27 0 obj
+<<
+  /Title  (outputFor7seg output)
+  /C      [0.0 0.0 0.4]
+  /Dest   [10 0 R /FitR 558 359 576 361]
+  /Parent 26 0 R
+>>
+endobj
+26 0 obj
+<<
+  /Title  (portBuses)
+  /C      [0.0 0.4 0.0]
+  /F      1
+  /Parent 13 0 R
+  /First  27 0 R
+  /Last   27 0 R
+  /Count  1
+  /Prev   22 0 R
+  /Next   28 0 R
+>>
+endobj
+29 0 obj
+<<
+  /Title  (AFromAccumulatorInverterByControlUnit)
+  /C      [0.0 0.0 0.4]
+  /Dest   [10 0 R /FitR 279 415 447 418]
+  /Parent 28 0 R
+  /Next   30 0 R
+>>
+endobj
+30 0 obj
+<<
+  /Title  (ALUFlipFlopLoaderByControlUnit)
+  /C      [0.0 0.0 0.4]
+  /Dest   [10 0 R /FitR 279 423 447 432]
+  /Parent 28 0 R
+  /Prev   29 0 R
+  /Next   31 0 R
+>>
+endobj
+31 0 obj
+<<
+  /Title  (ALUInputEnablers)
+  /C      [0.0 0.0 0.4]
+  /Dest   [10 0 R /FitR 279 418 447 421]
+  /Parent 28 0 R
+  /Prev   30 0 R
+  /Next   32 0 R
+>>
+endobj
+32 0 obj
+<<
+  /Title  (AccumulatorFlagEnablerFromControlUnit)
+  /C      [0.0 0.0 0.4]
+  /Dest   [10 0 R /FitR 279 354 512 404]
+  /Parent 28 0 R
+  /Prev   31 0 R
+  /Next   33 0 R
+>>
+endobj
+33 0 obj
+<<
+  /Title  (CUCarryEnabler)
+  /C      [0.0 0.0 0.4]
+  /Dest   [10 0 R /FitR 279 421 447 424]
+  /Parent 28 0 R
+  /Prev   32 0 R
+  /Next   34 0 R
+>>
+endobj
+34 0 obj
+<<
+  /Title  (CarryOutToAccumulator)
+  /C      [0.0 0.0 0.4]
+  /Dest   [10 0 R /FitR 458 363 512 421]
+  /Parent 28 0 R
+  /Prev   33 0 R
+  /Next   35 0 R
+>>
+endobj
+35 0 obj
+<<
+  /Title  (PCLoadFromControlUnit)
+  /C      [0.0 0.0 0.4]
+  /Dest   [10 0 R /FitR 56 371 308 415]
+  /Parent 28 0 R
+  /Prev   34 0 R
+  /Next   36 0 R
+>>
+endobj
+36 0 obj
+<<
+  /Title  (RESET)
+  /C      [0.0 0.0 0.4]
+  /Dest   [10 0 R /FitR 44 366 512 438]
+  /Parent 28 0 R
+  /Prev   35 0 R
+  /Next   37 0 R
+>>
+endobj
+37 0 obj
+<<
+  /Title  (accumulatorLoaderFromControlUnit)
+  /C      [0.0 0.0 0.4]
+  /Dest   [10 0 R /FitR 279 371 512 401]
+  /Parent 28 0 R
+  /Prev   36 0 R
+  /Next   38 0 R
+>>
+endobj
+38 0 obj
+<<
+  /Title  (accumulatorOuputSelector)
+  /C      [0.0 0.0 0.4]
+  /Dest   [10 0 R /FitR 279 374 512 398]
+  /Parent 28 0 R
+  /Prev   37 0 R
+  /Next   39 0 R
+>>
+endobj
+39 0 obj
+<<
+  /Title  (accumulatorSourceSelectorFromControlUnit)
+  /C      [0.0 0.0 0.4]
+  /Dest   [10 0 R /FitR 279 369 512 395]
+  /Parent 28 0 R
+  /Prev   38 0 R
+  /Next   40 0 R
+>>
+endobj
+40 0 obj
+<<
+  /Title  (carry)
+  /C      [0.0 0.0 0.4]
+  /Dest   [10 0 R /FitR 235 371 558 441]
+  /Parent 28 0 R
+  /Prev   39 0 R
+  /Next   41 0 R
+>>
+endobj
+41 0 obj
+<<
+  /Title  (controlUnitMemoryReadController)
+  /C      [0.0 0.0 0.4]
+  /Dest   [10 0 R /FitR 279 400 366 409]
+  /Parent 28 0 R
+  /Prev   40 0 R
+  /Next   42 0 R
+>>
+endobj
+42 0 obj
+<<
+  /Title  (controlUnitMemoryWriteController)
+  /C      [0.0 0.0 0.4]
+  /Dest   [10 0 R /FitR 279 397 366 406]
+  /Parent 28 0 R
+  /Prev   41 0 R
+  /Next   43 0 R
+>>
+endobj
+43 0 obj
+<<
+  /Title  (dataUnitOutputSelector)
+  /C      [0.0 0.0 0.4]
+  /Dest   [10 0 R /FitR 279 392 366 395]
+  /Parent 28 0 R
+  /Prev   42 0 R
+  /Next   44 0 R
+>>
+endobj
+44 0 obj
+<<
+  /Title  (globalCLK)
+  /C      [0.0 0.0 0.4]
+  /Dest   [10 0 R /FitR 44 377 512 435]
+  /Parent 28 0 R
+  /Prev   43 0 R
+  /Next   45 0 R
+>>
+endobj
+45 0 obj
+<<
+  /Title  (intructionRegisterLoaderByControlUnit)
+  /C      [0.0 0.0 0.4]
+  /Dest   [10 0 R /FitR 143 374 311 406]
+  /Parent 28 0 R
+  /Prev   44 0 R
+  /Next   46 0 R
+>>
+endobj
+46 0 obj
+<<
+  /Title  (negativeFlagFromAccumulatorToCU)
+  /C      [0.0 0.0 0.4]
+  /Dest   [10 0 R /FitR 235 363 552 404]
+  /Parent 28 0 R
+  /Prev   45 0 R
+  /Next   47 0 R
+>>
+endobj
+47 0 obj
+<<
+  /Title  (zeroFlagFromAccumulatorCU)
+  /C      [0.0 0.0 0.4]
+  /Dest   [10 0 R /FitR 233 366 547 398]
+  /Parent 28 0 R
+  /Prev   46 0 R
+>>
+endobj
+28 0 obj
 <<
   /Title  (nets)
   /C      [0.0 0.4 0.0]
   /F      1
   /Parent 13 0 R
-  /First  20 0 R
-  /Last   24 0 R
-  /Count  5
-  /Prev   18 0 R
-  /Next   25 0 R
+  /First  29 0 R
+  /Last   47 0 R
+  /Count  19
+  /Prev   26 0 R
+  /Next   48 0 R
 >>
 endobj
-26 0 obj
+49 0 obj
+<<
+  /Title  (@AFromAccumulator)
+  /C      [0.0 0.0 0.4]
+  /Dest   [10 0 R /FitR 422 368 550 430]
+  /Parent 48 0 R
+  /Next   50 0 R
+>>
+endobj
+50 0 obj
+<<
+  /Title  (@ALUResultToAccumulator)
+  /C      [0.0 0.0 0.4]
+  /Dest   [10 0 R /FitR 458 360 512 418]
+  /Parent 48 0 R
+  /Prev   49 0 R
+  /Next   51 0 R
+>>
+endobj
+51 0 obj
+<<
+  /Title  (@AddressToInstructioUnit)
+  /C      [0.0 0.0 0.4]
+  /Dest   [10 0 R /FitR 80 412 113 415]
+  /Parent 48 0 R
+  /Prev   50 0 R
+  /Next   52 0 R
+>>
+endobj
+52 0 obj
+<<
+  /Title  (@BFromDataMemory)
+  /C      [0.0 0.0 0.4]
+  /Dest   [10 0 R /FitR 377 397 447 412]
+  /Parent 48 0 R
+  /Prev   51 0 R
+  /Next   53 0 R
+>>
+endobj
+53 0 obj
 <<
   /Title  (@InstructionRegisterOperand)
   /C      [0.0 0.0 0.4]
-  /Dest   [10 0 R /FitR 28 299 583 512]
-  /Parent 25 0 R
-  /Next   27 0 R
+  /Dest   [10 0 R /FitR 53 391 366 433]
+  /Parent 48 0 R
+  /Prev   52 0 R
+  /Next   54 0 R
 >>
 endobj
-27 0 obj
+54 0 obj
 <<
   /Title  (@InstructionToInstructionRegist)
   /C      [0.0 0.0 0.4]
-  /Dest   [10 0 R /FitR 47 399 319 399]
-  /Parent 25 0 R
-  /Prev   26 0 R
-  /Next   28 0 R
+  /Dest   [10 0 R /FitR 124 415 175 415]
+  /Parent 48 0 R
+  /Prev   53 0 R
+  /Next   55 0 R
 >>
 endobj
-28 0 obj
+55 0 obj
+<<
+  /Title  (@OperandFromControlUnit_)
+  /C      [0.0 0.0 0.4]
+  /Dest   [10 0 R /FitR 279 405 447 415]
+  /Parent 48 0 R
+  /Prev   54 0 R
+  /Next   56 0 R
+>>
+endobj
+56 0 obj
 <<
   /Title  (@SelectorFromControlUnit)
   /C      [0.0 0.0 0.4]
-  /Dest   [10 0 R /FitR 28 271 583 373]
-  /Parent 25 0 R
-  /Prev   27 0 R
-  /Next   29 0 R
+  /Dest   [10 0 R /FitR 50 368 305 410]
+  /Parent 48 0 R
+  /Prev   55 0 R
+  /Next   57 0 R
 >>
 endobj
-29 0 obj
+57 0 obj
+<<
+  /Title  (@dataUnitToAccumulator)
+  /C      [0.0 0.0 0.4]
+  /Dest   [10 0 R /FitR 377 357 512 395]
+  /Parent 48 0 R
+  /Prev   56 0 R
+  /Next   58 0 R
+>>
+endobj
+58 0 obj
 <<
   /Title  (@opcodeFromInstructionRegisterF)
   /C      [0.0 0.0 0.4]
-  /Dest   [10 0 R /FitR 372 383 583 443]
-  /Parent 25 0 R
-  /Prev   28 0 R
+  /Dest   [10 0 R /FitR 186 412 267 412]
+  /Parent 48 0 R
+  /Prev   57 0 R
+  /Next   59 0 R
 >>
 endobj
-25 0 obj
+59 0 obj
+<<
+  /Title  (@outputFor7seg)
+  /C      [0.0 0.0 0.4]
+  /Dest   [10 0 R /FitR 523 360 558 360]
+  /Parent 48 0 R
+  /Prev   58 0 R
+  /Next   60 0 R
+>>
+endobj
+60 0 obj
+<<
+  /Title  (@storingDataFromAccumulatorToDa)
+  /C      [0.0 0.0 0.4]
+  /Dest   [10 0 R /FitR 348 365 544 389]
+  /Parent 48 0 R
+  /Prev   59 0 R
+>>
+endobj
+48 0 obj
 <<
   /Title  (netBundles)
   /C      [0.0 0.4 0.0]
   /F      1
   /Parent 13 0 R
-  /First  26 0 R
-  /Last   29 0 R
-  /Count  4
-  /Prev   19 0 R
+  /First  49 0 R
+  /Last   60 0 R
+  /Count  12
+  /Prev   28 0 R
 >>
 endobj
 13 0 obj
@@ -596,7 +2467,7 @@ endobj
   /Dest   [10 0 R /Fit]
   /Parent 7 0 R
   /First  14 0 R
-  /Last   25 0 R
+  /Last   48 0 R
   /Count  5
 >>
 endobj
@@ -609,7 +2480,7 @@ endobj
   /Im0 12 0 R
 >>
 endobj
-30 0 obj
+61 0 obj
 <<
   /Type /XObject
   /Subtype /Image
@@ -637,7 +2508,7 @@ endobj
   /BitsPerComponent 8
   /Width 44
   /Height 44
-  /SMask 30 0 R
+  /SMask 61 0 R
   /Filter [/ASCII85Decode /RunLengthDecode]
   /Length 5718
 >>
@@ -729,44 +2600,75 @@ endobj
 >>
 endobj
 xref
-0 31
+0 62
 0000000000 65535 f 
 0000000009 00000 n 
 0000000220 00000 n 
-0000004217 00000 n 
+0000019401 00000 n 
 0000000370 00000 n 
 0000000497 00000 n 
-0000004336 00000 n 
-0000014027 00000 n 
-0000007381 00000 n 
-0000007402 00000 n 
+0000019520 00000 n 
+0000034541 00000 n 
+0000027895 00000 n 
+0000027916 00000 n 
 0000000710 00000 n 
 0000000851 00000 n 
-0000008088 00000 n 
-0000007220 00000 n 
-0000004906 00000 n 
-0000004602 00000 n 
-0000004763 00000 n 
-0000005066 00000 n 
-0000005237 00000 n 
-0000006207 00000 n 
-0000005412 00000 n 
-0000005566 00000 n 
-0000005721 00000 n 
-0000005877 00000 n 
-0000006036 00000 n 
-0000007059 00000 n 
-0000006379 00000 n 
-0000006539 00000 n 
-0000006720 00000 n 
-0000006894 00000 n 
-0000007437 00000 n 
+0000028602 00000 n 
+0000027734 00000 n 
+0000020939 00000 n 
+0000019786 00000 n 
+0000019935 00000 n 
+0000020105 00000 n 
+0000020285 00000 n 
+0000020458 00000 n 
+0000020618 00000 n 
+0000020787 00000 n 
+0000021552 00000 n 
+0000021099 00000 n 
+0000021242 00000 n 
+0000021405 00000 n 
+0000021862 00000 n 
+0000021725 00000 n 
+0000025340 00000 n 
+0000022039 00000 n 
+0000022210 00000 n 
+0000022391 00000 n 
+0000022558 00000 n 
+0000022746 00000 n 
+0000022911 00000 n 
+0000023083 00000 n 
+0000023254 00000 n 
+0000023409 00000 n 
+0000023592 00000 n 
+0000023767 00000 n 
+0000023958 00000 n 
+0000024114 00000 n 
+0000024296 00000 n 
+0000024479 00000 n 
+0000024652 00000 n 
+0000024811 00000 n 
+0000024999 00000 n 
+0000025181 00000 n 
+0000027572 00000 n 
+0000025513 00000 n 
+0000025664 00000 n 
+0000025838 00000 n 
+0000026012 00000 n 
+0000026179 00000 n 
+0000026356 00000 n 
+0000026538 00000 n 
+0000026713 00000 n 
+0000026887 00000 n 
+0000027060 00000 n 
+0000027242 00000 n 
+0000027407 00000 n 
+0000027951 00000 n 
 trailer
 <<
-  /Size 31
+  /Size 62
   /Info 1 0 R
   /Root 2 0 R
 >>
 startxref
-14109
+34623
 %%EOF
