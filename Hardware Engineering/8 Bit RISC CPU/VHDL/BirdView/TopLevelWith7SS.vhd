@@ -6,14 +6,13 @@ ENTITY TopLevelWith7SS IS
 PORT(
 	clk, rst : IN STD_LOGIC;
 	anodes : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
+	LedTest: OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
 	display : OUT STD_LOGIC_VECTOR(7 DOWNTO 0));
 END TopLevelWith7SS;
 
 ARCHITECTURE structural of TopLevelWith7SS IS
 SIGNAL bcd_0, bcd_1, bcd_2: STD_LOGIC_VECTOR(3 downto 0);
 SIGNAL seg_0, seg_1, seg_2:STD_LOGIC_VECTOR(6 downto 0);
-SIGNAL rst_internal : STD_LOGIC := '1';
-SIGNAL reset_counter : integer range 0 to 15 := 0;
 SIGNAL outBits: STD_LOGIC_VECTOR(7 downto 0);
 SIGNAL carryBit : STD_LOGIC;
 
@@ -53,6 +52,7 @@ END COMPONENT;
 BEGIN
 
 U107: TopLevelCPU PORT MAP(globalCLK=>clk,RESET=>rst,outputFor7seg=> outBits,carry=> carryBit );
+LedTest <= outBits;
 U108: binaryToBcd9 PORT MAP(binaryNumber(8)=>carryBit,binaryNumber(7 downto 0)=> outBits, BCD_0=>bcd_0, BCD_1=>bcd_1, BCD_2=>bcd_2);
 U109: bcdTOSevensegment PORT MAP(BCD_input=>bcd_0, SEVEN_SEGMENT_OUTPUT=> seg_0);
 U110: bcdTOSevensegment PORT MAP(BCD_input=>bcd_1, SEVEN_SEGMENT_OUTPUT=> seg_1);
