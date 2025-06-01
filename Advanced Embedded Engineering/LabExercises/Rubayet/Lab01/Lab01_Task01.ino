@@ -1,6 +1,6 @@
 #include <SPI.h>
 #include <WiFiNINA.h>
-#include "arduino_secrets.h"
+#include "SECRET.H"
 
 char ssid[] = SECRET_SSID;       
 char pass[] = SECRET_PASS;    
