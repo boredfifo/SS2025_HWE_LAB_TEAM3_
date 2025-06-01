@@ -1,4 +1,4 @@
-´´´´bash
+´´´´ bash
 
 ├── /schematic/             # KiCad schematic files
 ├── /pcb_layout/            # PCB layout design files
