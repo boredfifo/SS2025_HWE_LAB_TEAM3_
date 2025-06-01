@@ -1,4 +1,4 @@
-´´´´ bash
+````bash
 
 ├── /schematic/             # KiCad schematic files
 ├── /pcb_layout/            # PCB layout design files
@@ -6,7 +6,7 @@
 ├── /errors_and_fixes/      # Notes on schematic/layout errors and solutions
 ├── README.md               # You're here!
 
-´´´´
+````
 ### Overview
 This board is designed for FPGA prototyping with the following key features:
 
