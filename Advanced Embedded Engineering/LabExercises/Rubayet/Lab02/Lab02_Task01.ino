@@ -14,10 +14,8 @@ int status = WL_IDLE_STATUS;
 
 WiFiServer server(80);
 
-// Here the input pin is declared to which the sensor module is connected
 #define KY001_Signal_PIN 4
 
-// Libraries are configured
 OneWire oneWire(KY001_Signal_PIN);
 DallasTemperature sensors(&oneWire);
 
