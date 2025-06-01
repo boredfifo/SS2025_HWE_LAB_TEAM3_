@@ -10,13 +10,13 @@
 ### Overview
 This board is designed for FPGA prototyping with the following key features:
 
--  FPGA: Lattice iCE40UP5K-SG48ITR50
+-  **FPGA**: Lattice iCE40UP5K-SG48ITR50
 
-- Power Supply: 3.3V and 1.2V LDO regulators
+- **Power Supply**: 3.3V and 1.2V LDO regulators
 
-- Programming Interface: FT2232HL (USB-to-SPI/UART)
+- **Programming Interface**: FT2232HL (USB-to-SPI/UART)
 
-- Peripherals:
+- **Peripherals**:
 
 - 1. 4-digit 7-segment display (HDSP-B09G)
 
@@ -24,7 +24,7 @@ This board is designed for FPGA prototyping with the following key features:
 
 - 3. DONE LED indicator
 
-- Clock: 16 MHz oscillator
+- **Clock**: 16 MHz oscillator
 
-- Memory: SPI Flash (W25Q128) for configuration
+- **Memory**: SPI Flash (W25Q128) for configuration
 
