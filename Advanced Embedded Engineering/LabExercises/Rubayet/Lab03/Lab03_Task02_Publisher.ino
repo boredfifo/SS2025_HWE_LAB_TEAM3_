@@ -83,22 +83,19 @@ void loop() {
     Serial.println(topic);
     Serial.println(LDR4);
 
-    // send message, the Print interface can be used to set the message contents
-    mqttClient.beginMessage(topic);
-    mqttClient.print(LDR1);
-    mqttClient.endMessage();
+    
+mqttClient.beginMessage("LightIntensity");
+mqttClient.print("{\"LDR1\": ");
+mqttClient.print(LDR1);
+mqttClient.print(", \"LDR2\": ");
+mqttClient.print(LDR2);
+mqttClient.print(", \"LDR3\": ");
+mqttClient.print(LDR3);
+mqttClient.print(", \"LDR4\": ");
+mqttClient.print(LDR4);
+mqttClient.print("}");
+mqttClient.endMessage();
 
-    mqttClient.beginMessage(topic);
-    mqttClient.print(LDR2);
-    mqttClient.endMessage();
-
-    mqttClient.beginMessage(topic);
-    mqttClient.print(LDR3);
-    mqttClient.endMessage();
-
-    mqttClient.beginMessage(topic);
-    mqttClient.print(LDR4);
-    mqttClient.endMessage();
 
     Serial.println();
   }
