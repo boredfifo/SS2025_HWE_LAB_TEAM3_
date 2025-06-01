@@ -2,8 +2,8 @@
 #include <WiFiNINA.h>
 #include "arduino_secrets.h"
 
-char ssid[] = XXXXXXXX;       
-char pass[] = XXXXXXXX;    
+char ssid[] = SECRET_SSID;       
+char pass[] = SECRET_PASS;    
 int keyIndex = 0;                
 
 int led =  LED_BUILTIN;
