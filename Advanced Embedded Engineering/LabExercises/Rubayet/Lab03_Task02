@@ -1,0 +1,3 @@
+ In this part of the labe you will use two Arduino Wifi devices connected to your
+sensors and actors and create a Subscriber/Publisher- network based on MQTT.
+• Use the sensors and actuators you are planning to use in your project!
