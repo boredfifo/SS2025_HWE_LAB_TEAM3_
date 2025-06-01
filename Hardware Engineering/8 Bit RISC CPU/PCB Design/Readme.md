@@ -1,4 +1,5 @@
 ´´´´bach
+
 ├── /schematic/             # KiCad schematic files
 ├── /pcb_layout/            # PCB layout design files
 ├── /block_diagram/         # Block diagram showing system architecture
