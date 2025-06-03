@@ -80,11 +80,5 @@ This is the full version of the project:
 
 ---
 
-## 📸 Demo & Output
-
-Images and short clips of the system in action (tracking sunlight and adjusting angle) are available in the [3D_Model/Renders](./3D_Model/Renders/) folder.
-
----
-
 
 
