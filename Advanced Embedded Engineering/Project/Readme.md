@@ -4,7 +4,8 @@ This repository contains all the files, code, and resources related to our IoT-b
 
 ## Repository Structure
 
-````bash ├── RaspberryPi_MQTT_Setup/
+````bash
+├── RaspberryPi_MQTT_Setup/
 │ └── Instructions to install and configure the MQTT broker on Raspberry Pi
 │
 ├── 3D_Model/
