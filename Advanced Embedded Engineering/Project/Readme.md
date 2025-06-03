@@ -1,6 +1,6 @@
 # IoT Solar Tracking System with MQTT
 
-This repository contains all the files, code, and resources related to our IoT-based Solar Tracking System project using MQTT. The system uses a Raspberry Pi as the MQTT broker and an ESP32/Arduino board to control servo motors and monitor solar intensity via LDR sensors.
+This repository contains all the files, code, and resources related to our IoT-based Solar Tracking System project using MQTT. The system uses a Raspberry Pi as the MQTT broker and an Arduino board to control servo motors and monitor solar intensity via LDR sensors.
 
 ## Repository Structure
 
@@ -52,7 +52,7 @@ This directory includes all design files for the mechanical assembly of the sola
 
 This folder contains the basic version of the MQTT communication setup:
 
-- ESP32/Arduino code to publish dummy sensor data
+- Arduino code to publish dummy sensor data
 - Raspberry Pi (broker) and serial monitor test logs
 - Can be used to test connectivity before adding sensors and motors
 
@@ -74,7 +74,7 @@ This is the full version of the project:
 
 - Arduino IDE / PlatformIO
 - PubSubClient library (for MQTT)
-- WiFiNINA or ESP32 WiFi libraries
+- WiFiNINA WiFi libraries
 - Mosquitto MQTT Broker on Raspberry Pi
 - Servo motor and LDR sensor hardware
 
