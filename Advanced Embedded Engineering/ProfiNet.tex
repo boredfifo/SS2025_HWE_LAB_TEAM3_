@@ -1,21 +1,25 @@
 \documentclass[conference]{IEEEtran}
 \IEEEoverridecommandlockouts
 % The preceding line is only needed to identify funding in the first footnote. If that is unneeded, please comment it out.
-\usepackage{cite}
+%\usepackage{cite}
 \usepackage{amsmath,amssymb,amsfonts}
 \usepackage{algorithmic}
 \usepackage{graphicx}
 \usepackage{textcomp}
 \usepackage{xcolor}
+\usepackage{float}
+\usepackage[backend=bibtex]{biblatex}
+\addbibresource{references.bib}
+
 \def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 \begin{document}
 
-\title{ProfiNet\\
-{\footnotesize \textsuperscript{*}Note: Sub-titles are not captured in Xplore and
-should not be used}
-\thanks{Identify applicable funding agency here. If none, delete this.}
-}
+\title{ProfiNet\\}
+% {\footnotesize \textsuperscript{*}Note: Sub-titles are not captured in Xplore and
+% should not be used}
+% \thanks{Identify applicable funding agency here. If none, delete this.}
+% }
 
 \author{\IEEEauthorblockN{1\textsuperscript{st} Rubayet Kamal}
 \IEEEauthorblockA{\textit{Electronic Engineering} \\
@@ -27,7 +31,7 @@ rubayet.kamal@stud.hshl.de}
 \IEEEauthorblockA{\textit{Electronic Engineering} \\
 \textit{Hochschule Hamm-Lippstadt}\\
 Lippstadt, Germany\\
-email address or ORCID}
+moiz-zaheer.malik@stud.hshl.de}
 \and
 \IEEEauthorblockN{3\textsuperscript{rd} Mofifolowa Ipadeola Akinwande}
 \IEEEauthorblockA{\textit{Electronic Engineering} \\
@@ -39,7 +43,7 @@ mofifoluwa-ipadeola.akinwande@stud.hshl.de}
 \maketitle
 
 \begin{abstract}
-Real-time communication between devices and systems in industrial automation is crucial. In the past, industries relied on fieldbus communications and serial communications to achieve this. However, the integration of Ethernet-based protocols to these communications served as a turning point as they offered more potential, like higher bandwidth, faster switching technology, and easier access. Among these protocols, PROFINET, the successor of PROFIBUS, has emerged as one of the most widely used protocols in the industry, enabling efficient, scalable, and deterministic data exchange. In this paper, we explore the capabilities of PROFINET, compare it to other existing protocols, and highlight why it is the best industrial communication protocol.
+Real-time communication between devices and systems in industrial automation is crucial. In the past, industries relied on fieldbus communications and serial communications to achieve this. However, the integration of Ethernet-based protocols to these communications served as a turning point as they offered more potential, like higher bandwidth, faster switching technology, and easier access. Among these protocols, PROFINET, the successor of PROFIBUS, has emerged as one of the most widely adopted protocols in the industry, enabling efficient, scalable, and deterministic data exchange. In this paper, we explore the capabilities of PROFINET, compare it to other existing protocols, and highlight the factors contributing to its widespread acceptance in modern automation environments.
 
 \end{abstract}
 
@@ -48,222 +52,297 @@ component, formatting, style, styling, insert
 \end{IEEEkeywords}
 
 \section{Introduction}
-This document is a model and instructions for \LaTeX.
-Please observe the conference page limits. 
+Modern industrial automation is changing fast. As production systems grow more complex and dynamic, manufacturers demand higher flexibility, better scalability, and tighter control. Traditional centralized architectures where a few controllers handled all decisions worked fine in simpler setups. But with today’s large scale operations involving thousands of devices, those systems fall short in responsiveness, scalability, and reliability.
 
-\section{Ease of Use}
+This has led to a shift toward decentralized or distributed control systems. Instead of relying on one brain, intelligence is spread across the network. Devices like sensors, actuators, and PLCs now communicate directly, thanks to industrial fieldbus networks. These networks make it possible to exchange data in real time, which is critical for keeping modern production lines running smoothly.
 
-\subsection{Maintaining the Integrity of the Specifications}
+Early fieldbus protocols such as PROFIBUS, Modbus, DeviceNet, and CANopen set the standard for reliable industrial communication. PROFIBUS, in particular, became widely used for its dependable serial RS-485 performance and deterministic timing. But as factories started integrating with IT systems and cloud services a hallmark of Industry 4.0 limitations of serial protocols became clear. They struggled with bandwidth, diagnostics, and interoperability, and couldn’t leverage modern Ethernet infrastructure.
 
-The IEEEtran class file is used to format your paper and style the text. All margins, 
-column widths, line spaces, and text fonts are prescribed; please do not 
-alter them. You may note peculiarities. For example, the head margin
-measures proportionately more than is customary. This measurement 
-and others are deliberate, using specifications that anticipate your paper 
-as one part of the entire proceedings, and not as an independent document. 
-Please do not revise any of the current designations.
+To address these gaps, PROFINET was developed by PROFIBUS and PROFINET International (PI). Built on standard Ethernet (IEEE 802.3), PROFINET extends Ethernet’s capabilities to support the deterministic, real time communication needed in industrial settings. It allows IT and OT systems to share a unified infrastructure for control, diagnostics, and data transfer making it a backbone technology for smart factories and the Industrial Internet of Things (IIoT) \cite{galloway2012industrial}, \cite{neumann2007communication}.
 
-\section{Prepare Your Paper Before Styling}
-Before you begin to format your paper, first write and save the content as a 
-separate text file. Complete all content and organizational editing before 
-formatting. Please note sections \ref{AA}--\ref{SCM} below for more information on 
-proofreading, spelling and grammar.
-
-Keep your text and graphic files separate until after the text has been 
-formatted and styled. Do not number text heads---{\LaTeX} will do that 
-for you.
-
-\subsection{Abbreviations and Acronyms}\label{AA}
-Define abbreviations and acronyms the first time they are used in the text, 
-even after they have been defined in the abstract. Abbreviations such as 
-IEEE, SI, MKS, CGS, ac, dc, and rms do not have to be defined. Do not use 
-abbreviations in the title or heads unless they are unavoidable.
-
-\subsection{Units}
-\begin{itemize}
-\item Use either SI (MKS) or CGS as primary units. (SI units are encouraged.) English units may be used as secondary units (in parentheses). An exception would be the use of English units as identifiers in trade, such as ``3.5-inch disk drive''.
-\item Avoid combining SI and CGS units, such as current in amperes and magnetic field in oersteds. This often leads to confusion because equations do not balance dimensionally. If you must use mixed units, clearly state the units for each quantity that you use in an equation.
-\item Do not mix complete spellings and abbreviations of units: ``Wb/m\textsuperscript{2}'' or ``webers per square meter'', not ``webers/m\textsuperscript{2}''. Spell out units when they appear in text: ``. . . a few henries'', not ``. . . a few H''.
-\item Use a zero before decimal points: ``0.25'', not ``.25''. Use ``cm\textsuperscript{3}'', not ``cc''.)
-\end{itemize}
-
-\subsection{Equations}
-Number equations consecutively. To make your 
-equations more compact, you may use the solidus (~/~), the exp function, or 
-appropriate exponents. Italicize Roman symbols for quantities and variables, 
-but not Greek symbols. Use a long dash rather than a hyphen for a minus 
-sign. Punctuate equations with commas or periods when they are part of a 
-sentence, as in:
-\begin{equation}
-a+b=\gamma\label{eq}
-\end{equation}
-
-Be sure that the 
-symbols in your equation have been defined before or immediately following 
-the equation. Use ``\eqref{eq}'', not ``Eq.~\eqref{eq}'' or ``equation \eqref{eq}'', except at 
-the beginning of a sentence: ``Equation \eqref{eq} is . . .''
-
-\subsection{\LaTeX-Specific Advice}
-
-Please use ``soft'' (e.g., \verb|\eqref{Eq}|) cross references instead
-of ``hard'' references (e.g., \verb|(1)|). That will make it possible
-to combine sections, add equations, or change the order of figures or
-citations without having to go through the file line by line.
-
-Please don't use the \verb|{eqnarray}| equation environment. Use
-\verb|{align}| or \verb|{IEEEeqnarray}| instead. The \verb|{eqnarray}|
-environment leaves unsightly spaces around relation symbols.
-
-Please note that the \verb|{subequations}| environment in {\LaTeX}
-will increment the main equation counter even when there are no
-equation numbers displayed. If you forget that, you might write an
-article in which the equation numbers skip from (17) to (20), causing
-the copy editors to wonder if you've discovered a new method of
-counting.
-
-{\BibTeX} does not work by magic. It doesn't get the bibliographic
-data from thin air but from .bib files. If you use {\BibTeX} to produce a
-bibliography you must send the .bib files. 
-
-{\LaTeX} can't read your mind. If you assign the same label to a
-subsubsection and a table, you might find that Table I has been cross
-referenced as Table IV-B3. 
-
-{\LaTeX} does not have precognitive abilities. If you put a
-\verb|\label| command before the command that updates the counter it's
-supposed to be using, the label will pick up the last counter to be
-cross referenced instead. In particular, a \verb|\label| command
-should not go before the caption of a figure or a table.
-
-Do not use \verb|\nonumber| inside the \verb|{array}| environment. It
-will not stop equation numbers inside \verb|{array}| (there won't be
-any anyway) and it might stop a wanted equation number in the
-surrounding equation.
-
-\subsection{Some Common Mistakes}\label{SCM}
-\begin{itemize}
-\item The word ``data'' is plural, not singular.
-\item The subscript for the permeability of vacuum $\mu_{0}$, and other common scientific constants, is zero with subscript formatting, not a lowercase letter ``o''.
-\item In American English, commas, semicolons, periods, question and exclamation marks are located within quotation marks only when a complete thought or name is cited, such as a title or full quotation. When quotation marks are used, instead of a bold or italic typeface, to highlight a word or phrase, punctuation should appear outside of the quotation marks. A parenthetical phrase or statement at the end of a sentence is punctuated outside of the closing parenthesis (like this). (A parenthetical sentence is punctuated within the parentheses.)
-\item A graph within a graph is an ``inset'', not an ``insert''. The word alternatively is preferred to the word ``alternately'' (unless you really mean something that alternates).
-\item Do not use the word ``essentially'' to mean ``approximately'' or ``effectively''.
-\item In your paper title, if the words ``that uses'' can accurately replace the word ``using'', capitalize the ``u''; if not, keep using lower-cased.
-\item Be aware of the different meanings of the homophones ``affect'' and ``effect'', ``complement'' and ``compliment'', ``discreet'' and ``discrete'', ``principal'' and ``principle''.
-\item Do not confuse ``imply'' and ``infer''.
-\item The prefix ``non'' is not a word; it should be joined to the word it modifies, usually without a hyphen.
-\item There is no period after the ``et'' in the Latin abbreviation ``et al.''.
-\item The abbreviation ``i.e.'' means ``that is'', and the abbreviation ``e.g.'' means ``for example''.
-\end{itemize}
-An excellent style manual for science writers is \cite{b7}.
-
-\subsection{Authors and Affiliations}
-\textbf{The class file is designed for, but not limited to, six authors.} A 
-minimum of one author is required for all conference articles. Author names 
-should be listed starting from left to right and then moving down to the 
-next line. This is the author sequence that will be used in future citations 
-and by indexing services. Names should not be listed in columns nor group by 
-affiliation. Please keep your affiliations as succinct as possible (for 
-example, do not differentiate among departments of the same organization).
-
-\subsection{Identify the Headings}
-Headings, or heads, are organizational devices that guide the reader through 
-your paper. There are two types: component heads and text heads.
-
-Component heads identify the different components of your paper and are not 
-topically subordinate to each other. Examples include Acknowledgments and 
-References and, for these, the correct style to use is ``Heading 5''. Use 
-``figure caption'' for your Figure captions, and ``table head'' for your 
-table title. Run-in heads, such as ``Abstract'', will require you to apply a 
-style (in this case, italic) in addition to the style provided by the drop 
-down menu to differentiate the head from the text.
-
-Text heads organize the topics on a relational, hierarchical basis. For 
-example, the paper title is the primary text head because all subsequent 
-material relates and elaborates on this one topic. If there are two or more 
-sub-topics, the next level head (uppercase Roman numerals) should be used 
-and, conversely, if there are not at least two sub-topics, then no subheads 
-should be introduced.
-
-\subsection{Figures and Tables}
-\paragraph{Positioning Figures and Tables} Place figures and tables at the top and 
-bottom of columns. Avoid placing them in the middle of columns. Large 
-figures and tables may span across both columns. Figure captions should be 
-below the figures; table heads should appear above the tables. Insert 
-figures and tables after they are cited in the text. Use the abbreviation 
-``Fig.~\ref{fig}'', even at the beginning of a sentence.
-
-\begin{table}[htbp]
-\caption{Table Type Styles}
-\begin{center}
-\begin{tabular}{|c|c|c|c|}
-\hline
-\textbf{Table}&\multicolumn{3}{|c|}{\textbf{Table Column Head}} \\
-\cline{2-4} 
-\textbf{Head} & \textbf{\textit{Table column subhead}}& \textbf{\textit{Subhead}}& \textbf{\textit{Subhead}} \\
-\hline
-copy& More table copy$^{\mathrm{a}}$& &  \\
-\hline
-\multicolumn{4}{l}{$^{\mathrm{a}}$Sample of a Table footnote.}
-\end{tabular}
-\label{tab1}
-\end{center}
-\end{table}
-
-\begin{figure}[htbp]
-\centerline{\includegraphics{fig1.png}}
-\caption{Example of a figure caption.}
-\label{fig}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{profibusnet.png}
+    \caption{Typical PROFINET architecture showing integration of controllers, drives, safety systems, and fieldbus proxies \cite{profinetQA}.}
+    \label{fig:profinet_architecture}
 \end{figure}
 
-Figure Labels: Use 8 point Times New Roman for Figure labels. Use words 
-rather than symbols or abbreviations when writing Figure axis labels to 
-avoid confusing the reader. As an example, write the quantity 
-``Magnetization'', or ``Magnetization, M'', not just ``M''. If including 
-units in the label, present them within parentheses. Do not label axes only 
-with units. In the example, write ``Magnetization (A/m)'' or ``Magnetization 
-\{A[m(1)]\}'', not just ``A/m''. Do not label axes with a ratio of 
-quantities and units. For example, write ``Temperature (K)'', not 
-``Temperature/K''.
 
-\section*{Acknowledgment}
+\subsection{Communication Classes in PROFINET} 
+A major strength of PROFINET is its support for three communication classes, tailored for different use cases:
 
-The preferred spelling of the word ``acknowledgment'' in America is without 
-an ``e'' after the ``g''. Avoid the stilted expression ``one of us (R. B. 
-G.) thanks $\ldots$''. Instead, try ``R. B. G. thanks$\ldots$''. Put sponsor 
-acknowledgments in the unnumbered footnote on the first page.
+Non-Real-Time (NRT): Uses TCP/IP or UDP protocols for non critical tasks like configuration, diagnostics, and file transfer. This class operates like standard Ethernet traffic, making it easy to integrate with existing IT systems.
 
-\section*{References}
+Real-Time (RT): Designed for fast, cyclic data exchange between controllers and field devices. RT bypasses the full TCP/IP stack to reduce latency and jitter, achieving cycle times around 1–10 ms good enough for most control applications.
 
-Please number citations consecutively within brackets \cite{b1}. The 
-sentence punctuation follows the bracket \cite{b2}. Refer simply to the reference 
-number, as in \cite{b3}---do not use ``Ref. \cite{b3}'' or ``reference \cite{b3}'' except at 
-the beginning of a sentence: ``Reference \cite{b3} was the first $\ldots$''
+Isochronous Real-Time (IRT): Used where timing is critical, like robotics or motion control. IRT relies on IEEE 1588 Precision Time Protocol (PTP) for tight time sync across the network. It delivers update rates as fast as 250 us, with jitter under 1 us \cite{ferrari2004profinet}, \cite{schumacher2008profinet}.
 
-Number footnotes separately in superscripts. Place the actual footnote at 
-the bottom of the column in which it was cited. Do not put footnotes in the 
-abstract or reference list. Use letters for table footnotes.
+\subsection{Real-Time Communication and PROFINET IO} 
+PROFINET IO uses a provider/consumer model to exchange data cyclically between IO controllers (PLCs) and IO devices (e.g., sensors, actuators). Timing is predictable and performance is reliable.
 
-Unless there are six authors or more give all authors' names; do not use 
-``et al.''. Papers that have not been published, even if they have been 
-submitted for publication, should be cited as ``unpublished'' \cite{b4}. Papers 
-that have been accepted for publication should be cited as ``in press'' \cite{b5}. 
-Capitalize only the first word in a paper title, except for proper nouns and 
-element symbols.
+According to Ferrari et al. \cite{ferrari2004profinet}, PROFINET achieves this by:
 
-For papers published in translation journals, please give the English 
-citation first, followed by the original foreign-language citation \cite{b6}.
+Skipping TCP/IP layers in RT/IRT modes, using Ethernet type-length fields for identifying real-time frames.
 
-\begin{thebibliography}{00}
-\bibitem{b1} G. Eason, B. Noble, and I. N. Sneddon, ``On certain integrals of Lipschitz-Hankel type involving products of Bessel functions,'' Phil. Trans. Roy. Soc. London, vol. A247, pp. 529--551, April 1955.
-\bibitem{b2} J. Clerk Maxwell, A Treatise on Electricity and Magnetism, 3rd ed., vol. 2. Oxford: Clarendon, 1892, pp.68--73.
-\bibitem{b3} I. S. Jacobs and C. P. Bean, ``Fine particles, thin films and exchange anisotropy,'' in Magnetism, vol. III, G. T. Rado and H. Suhl, Eds. New York: Academic, 1963, pp. 271--350.
-\bibitem{b4} K. Elissa, ``Title of paper if known,'' unpublished.
-\bibitem{b5} R. Nicole, ``Title of paper with only first word capitalized,'' J. Name Stand. Abbrev., in press.
-\bibitem{b6} Y. Yorozu, M. Hirano, K. Oka, and Y. Tagawa, ``Electron spectroscopy studies on magneto-optical media and plastic substrate interface,'' IEEE Transl. J. Magn. Japan, vol. 2, pp. 740--741, August 1987 [Digests 9th Annual Conf. Magnetics Japan, p. 301, 1982].
-\bibitem{b7} M. Young, The Technical Writer's Handbook. Mill Valley, CA: University Science, 1989.
-\end{thebibliography}
-\vspace{12pt}
-\color{red}
-IEEE conference templates contain guidance text for composing and formatting conference papers. Please ensure that all template text is removed from your conference paper prior to submission to the conference. Failure to remove the template text from your paper may result in your paper not being published.
+Time Division Multiplexing (TDM) to reserve time slots for specific traffic types.
+
+Dynamic Frame Packing (DFP) to combine multiple messages into a single frame, saving bandwidth.
+
+Precision Time Protocol (PTP) to keep all nodes in sync within sub microsecond accuracy.
+
+Together, these features ensure high determinism essential for applications in automotive, packaging, and materials handling.
+
+\subsection{Network Architecture and the OSI Model} 
+PROFINET aligns with the OSI model, though it streamlines some layers for performance. For instance, it often bypasses the session and presentation layers, focusing instead on fast, direct communication at the application level.
+
+Physical Layer: Uses off-the-shelf Ethernet hardware (e.g., Cat5e/6 cables, switches).
+
+Data Link Layer: Handles MAC addressing, frame control, and error checking.
+
+Application Layer: Manages tasks like device discovery and diagnostics using GSDML files \cite{patzke1998fieldbus}.
+
+\subsection{Additional Features and Industrial Benefits}
+PROFINET goes beyond just fast communication. It includes:
+
+\begin{itemize}
+    \item PROFIsafe for integrating safety features into the same network, removing the need for separate safety systems.
+    \item PROFIenergy for energy-saving modes during downtime, supporting sustainable operations.
+    \item PROFIdrive to standardize control of drives and motion systems across vendors 
+\end{itemize}
+
+
+
+
+\cite{galloway2012industrial}, \cite{jasperneite2007limits}.
+
+It also supports a variety of network topologies line, star, ring, tree and builtin redundancy (MRP, S2) for high availability, which is vital in mission-critical environments.
+
+\section{Application Areas}
+\textbf{PROFINET Application Profiles (APs)} are flexible standards designed to enhance device consistency across different manufacturers. When applied to PROFINET devices, they ensure uniform behavior across brands and industries.
+
+Although the core PROFINET specification has remained stable for many years, development continues in the area of Application Profiles. These profiles include:
+
+\begin{itemize}
+    \item \textbf{PROFIsafe} – for functional safety
+    \item \textbf{PROFIenergy} – for energy management
+    \item \textbf{PROFIdrive} – for drives and motion control
+    \item \textbf{PA Profile} – for continuous process automation
+\end{itemize}
+
+Each of these is an Application Profile—essentially a shared agreement within a specific device family, industry sector, or system integration on how PROFINET data should be used. For example, the device family could be robots or encoders, the industry might include laboratories or railway systems, and integrations could involve technologies like HART or IO-Link.
+
+In total, there are more than two dozen Application Profiles. Each one defines the syntax and structure of data and parameters exchanged between nodes, operating above the physical and communication layers (see fig. \ref{fig:layers})
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=1\linewidth]{Layers.png}
+    \caption{Layers}
+    \label{fig:layers}
+\end{figure}
+
+While the base PROFINET specification ensures that devices can connect and communicate, APs go a step further: they enable \textbf{interoperability} and \textbf{interchangeability} between devices from different vendors \cite{profinet_profiles}. However, APs standardize only the core features, leaving room for optional, vendor-specific properties. This flexibility supports ongoing innovation and adaptation to market needs.
+
+Importantly, Application Profiles are optional—they are not required for all PROFINET devices. When implemented, however, they prescribe specific features to ensure predictable and consistent behavior. Both general-purpose and specialized profiles exist, addressing needs from functional safety to energy efficiency.
+
+Subsections~\ref{subsec:profisafe}, \ref{subsec: PROFIenergy}, \ref{subsec: PROFIdrive}, and \ref{subsec: pAProfile} discuss some of these Application Profiles in detail.
+
+
+\subsection{PROFIsafe}
+\label{subsec:profisafe}
+
+Functional safety has become essential in modern automation systems, where nearly every machine includes safety mechanisms like emergency stop buttons or light curtains. PROFIsafe is the leading technology for transmitting safety-relevant data in both discrete manufacturing and process automation \cite{profinet_profisafe}. With over 6.95 million installed nodes, it has established itself as a reliable and widely adopted solution.
+
+PROFIsafe enhances safety communication by replacing traditional hardwired safety circuits with a flexible and cost-effective approach. Instead of routing numerous wires to safety relays, PROFIsafe enables a single cable to carry both standard and safety data using a safety logic controller. 
+
+%Figure~\texttt{XXX} illustrates a comparison of safety architectures with and without PROFIsafe.
+
+Operating as an additional protocol layer above PROFINET or PROFIBUS, PROFIsafe treats the underlying communication system as a "black channel"—a concept pioneered by PI. This abstraction ensures that safety data integrity is maintained regardless of the transport medium, including wireless channels.
+
+To mitigate risks such as message repetition, deletion, insertion, resequencing, or corruption, PROFIsafe employs mechanisms like:
+\begin{itemize}
+    \item Consecutive numbering and timeouts for transmission control
+    \item Codename checks for authenticity
+    \item Data consistency checks for integrity
+\end{itemize}
+
+These techniques ensure that communication between safety controllers (F-Hosts) and safety devices (F-Devices) complies with functional safety standards up to SIL3 (IEC 61508). However, implementing PROFIsafe alone does not automatically make a device SIL3-compliant—the device architecture and overall system design also play critical roles.
+
+PROFIsafe can be implemented via:
+\begin{itemize}
+    \item Software development according to the specification
+    \item ASICs and protocol stacks with adaptable driver software
+    \item Pre-certified starter kits that simplify integration and include tools, documentation, and support
+\end{itemize}
+
+It covers the full communication path—from sensors to controllers to actuators—and integrates safety and standard communication on the same network. Its use is not limited to wired solutions; the black channel principle allows PROFIsafe to operate over wireless links as well.
+
+\textbf{The PROFIsafe Policy} governs implementation quality within the PROFINET/PROFIBUS community, emphasizing:
+\begin{itemize}
+    \item Accurate public communication about the technology
+    \item Careful and responsible product development
+    \item High-quality training and certification practices
+    \item Preservation of safety, environmental protection, and public trust
+\end{itemize}
+
+Due to its compatibility with standard fieldbus networks and its ability to coexist with non-safety messages on the same infrastructure, PROFIsafe has become the international standard (IEC 61784-3-3) for fieldbus-based safety communication \cite{profinet_profisafe}.
+
+
+
+\subsection{PROFIenergy}
+\label{subsec: PROFIenergy}
+As industries aim to reduce costs and comply with stricter environmental regulations, managing energy consumption in production environments has become essential. Traditionally, this involved manual shutdowns or custom energy control systems, which were often inefficient, costly, and difficult to maintain.
+
+\textbf{PROFIenergy} solves this challenge by offering a standardized, interoperable interface for energy management via existing automation networks such as PROFINET. This eliminates the need for additional hardware and allows for intelligent, automated control of energy-consuming devices (ECUs). Control devices like PLCs can issue PROFIenergy commands to signal production pauses—such as breaks, holidays, or unscheduled stoppages—prompting devices to enter predefined energy-saving modes. When production resumes, the PLC reactivates devices in a defined and reliable sequence, much like the sleep and wake functions of a laptop.
+
+PROFIenergy supports various use cases, including:
+\begin{itemize}
+    \item Short pauses (e.g., up to an hour)
+    \item Extended pauses (e.g., overnight or weekend shutdowns)
+    \item Unscheduled stops
+    \item Load monitoring and demand response
+\end{itemize}
+
+The profile can be implemented on any PROFINET device that supports power consumption monitoring, standby modes, or Wake-on-LAN (WoL). It also provides access to data compliant with IEC 61557-12 and integrates seamlessly with other PROFINET application profiles.
+
+In addition to its use on the OT (Operational Technology) level, PROFIenergy functions are also defined as an OPC UA information model (Part 30141), enabling integration into IT-level systems and fulfilling IT-OT convergence requirements. This allows deployment on OPC UA servers, edge devices, or directly within production-level IT systems.
+
+\textbf{Benefits of PROFIenergy:}
+\begin{itemize}
+    \item Helps meet ISO 50001 and EN 17267 energy efficiency standards \cite{profinet_profienergy}.
+    \item Enables active control of power consumption through standby and power-off functions.
+    \item Requires no extra hardware—uses existing automation networks
+    \item Supports both OT-level PROFINET devices and IT-level OPC UA systems.
+\end{itemize}
+
+With over 6.95 million PROFIsafe nodes already installed, PROFIBUS \& PROFINET International (PI) continues to lead with PROFIenergy in making automation systems greener \cite{profinet_profienergy}. Developed collaboratively with device manufacturers, machine builders, and plant operators, PROFIenergy is the first global standard for energy-saving in automation. It ensures that PROFINET field devices from different vendors can reliably enter and exit energy-saving modes in a coordinated, vendor-independent manner—supporting both sustainability and operational efficiency.
+
+
+\subsection{PROFIdrive}
+\label{subsec: PROFIdrive}
+\textbf{PROFIdrive} is a mature and widely adopted drive control profile that supports a broad range of applications and industries. As modern manufacturing heavily relies on drives and motors, PROFIdrive standardizes the communication between drive systems and controllers across both PROFIBUS and PROFINET networks. This simplifies parameter handling and increases integration efficiency.
+
+The profile accommodates diverse use cases, from simple open-loop drives (e.g., fans, pumps, and conveyors) to advanced multi-axis synchronous motion required in packaging machines and robotics. PROFIdrive supports both open-loop and closed-loop systems, offering flexibility for single-axis positioning or tightly synchronized motion control. With PROFINET, it delivers cycle times ranging from milliseconds down to microseconds, making it suitable for time-critical applications.
+
+Given that drives can contribute significantly to energy consumption and pose safety risks due to hazardous motion, PROFIdrive is designed to integrate seamlessly with \textbf{PROFIsafe} for functional safety and \textbf{PROFIenergy} for power management. It is structured into six scalable application classes, allowing modular and granular integration based on specific use cases.
+
+The profile is standardized under:
+\begin{itemize}
+    \item IEC 61800-7 (Generic interface and use of profiles for power drive systems)
+    \item GB/T 25740 (China)
+\end{itemize}
+It is maintained by \textbf{PROFIBUS \& PROFINET International (PI)}, which ensures global support, certification, and continuous development \cite{profinet_profidrive}.
+
+A significant advantage of PROFIdrive is its complete implementation in the upper layers (OSI layers 5 to 7) between Session and Application layer as shown in fig. \ref{fig:OSI Layer}, ensuring future-proof operation independent of changes in underlying communication technologies. PROFIdrive also supports the VIK/NAMUR drive interface (VE34/NE122), enabling device replacement without engineering changes through predefined GSD files—highlighting its vendor-independent, standardized approach \cite{profinet_profidrive}.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\linewidth]{OSI Layer.png}
+    \caption{OSI Layer}
+    \label{fig:OSI Layer}
+\end{figure}
+
+Moreover, a community-driven open-source implementation project supports device vendors in adopting PROFIdrive efficiently. PI provides comprehensive support, certification services, and invites industry players to participate in the ongoing development of the profile.
+
+\textbf{Benefits of PROFIdrive:}
+\begin{itemize}
+    \item Ensures full interoperability and exchangeability—including safety functions.
+    \item Futureproof architecture with high-level OSI layer implementation.
+    \item Globally standardized (IEC 61800-7 and GB/T 25740) \cite{profinet_profidrive}.
+    \item Supported worldwide with strong community and vendor backing.
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{applications.png}
+    \caption{Illustration of PROFINET Application Profiles applied across various stages of an industrial automation process \cite{profinetProfiles}.}
+    \label{fig:profinet_profiles}
+\end{figure}
+
+
+\subsection{PA Profile }
+\label{subsec: pAProfile}
+\textbf{PA Profile 4} is a PROFINET profile tailored for Process Automation (PA), addressing the specific demands of process industries such as chemical, pharmaceutical, and oil \& gas. Process applications are characterized by long cycle times, stringent reliability requirements, frequent modifications during operation, and extensive use of complex sensors and actuators—often involving tens of thousands of I/O signals.
+
+To meet these demands, PROFINET for Process Automation includes two key components: \textbf{PA Profile 4} and \textbf{RIO for PA (Remote IO)}. These profiles offer features that enable seamless and efficient integration of field devices into Ethernet-based automation systems.
+
+\textbf{Key Features:}
+\begin{enumerate}
+    \item \textbf{Fieldbus Integration via Proxy:} 
+    Using the PROFINET proxy concept, communication protocols such as PROFIBUS PA can be transparently integrated into PROFINET. This allows for seamless connectivity even in intrinsically safe zones.
+
+    \item \textbf{Configuration in Run (CiR):} 
+    This feature enables “bumpless” system updates by creating a secondary Application Relation (AR) while the system is running, allowing for configuration changes without shutting down the process.
+
+    \item \textbf{Redundancy:}
+    PROFINET facilitates redundancy at multiple levels—networks, controllers, and devices—ensuring continuous operation in critical environments.
+
+    \item \textbf{Time Synchronization and Time Stamping:}
+    All devices are synchronized to a master clock, enabling precise process monitoring, event sequencing, and trend analysis.
+\end{enumerate}
+
+\textbf{PA Profile 4 – PROFIprocess} builds upon these fundamentals to further simplify field device management—especially during commissioning, maintenance, and replacement. It incorporates \textbf{‘core parameters’} defined in \textbf{NAMUR recommendation NE131}, which standardizes essential device data such as default values and operating parameters for flow, level, pressure, temperature, and actuators \cite{profinet_profiprocess}.
+
+\textbf{NE131} aims to streamline device handling across the lifecycle—from commissioning to operation and replacement—regardless of vendor. This leads to consistent behavior across devices and enhances engineering, procurement, and maintenance efficiency.
+
+Additionally, \textbf{PA Profile 4} aligns with \textbf{NAMUR NE107}, which standardizes diagnostic messages \cite{profinet_profiprocess}. It defines how diagnostic categories and messages should be displayed, leading to harmonized diagnostics and faster fault resolution.
+
+\textbf{Benefits of PA Profile 4:}
+\begin{itemize}
+    \item Addresses core customer needs in process automation.
+    \item Reduces training effort through standardized device behavior.
+    \item Backed by PNO (Profibus \& Profinet International) and member companies \cite{profinet_profiprocess}.
+    \item Enhances reputation and trust in standardized Profiles.
+    \item Supported by high-quality training programs and seminars.
+\end{itemize}
+
+
+\section{Comparison}
+The selection of an industrial communication protocol is informed by the specific needs and goals of an organization or manufacturer, given the wide array of options available - including both open and proprietary standards. Among these protocols, ProfiNET emerges as a widely accepted choice. This section aims to provide a comparison between ProfiNET and other leading protocols, emphasizing ProfiNET's strengths and exploring areas of vulnerability. 
+
+\subsection{ProfiNET vs Ethernet/IP}
+Ethernet/IP, like ProfiNET, was born out of the desire to integrate the Ethernet network, due to its high popularity and accessibility, with existing communication standards — adapting it with additional layers to make it suitable for control applications. Like ProfiNET, it uses the standard Ethernet with an additional application layer for industrial automation. Ethernet/IP uses standard Ethernet protocols like TCP/IP with an industrial application layer called Control and Information Protocol (CIP). This layer can provide real-time and other informational message structures tailored for industrial automation environments. An advantage of CIP is that it is also used by other protocols like DeviceNet and ControlNet, enabling interoperability by sharing libraries and profiles with devices that use these protocols\cite{Acromag2020EthernetIP}. In its basic operation, Ethernet/IP utilizes the full OSI model, including the network (IP) and transport layers (TCP/UDP), making it compatible with existing Ethernet hardware, etc. While it can offer real-time capabilities, its determinism can vary based on its implementation over UDP/IP or TCP/IP.
+
+ProfiNET, on the other hand, stands out over Ethernet/IP in data transmission efficiency and determinism. ProfiNET offers two modes for real-time communication - ProfiNET RT (Real-Time) and ProfiNET IRT (Isochronous Real-Time). These modes were designed to optimize communication determinism by bypassing some of the layers (network and transport) in the OSI model\cite{ProfinetCommunicationChannels}. This architecture allows the cycle time of ProfiNET to be more precise in applications that require high real-time performance.For example, in standard real-time data exchange,  bus cycle times are typically less than 10ms, while in ProfiNET IRT data, exchanges can occur within a few dozen microseconds\cite{Eitel2020EtherNetVsPROFINET}.
+
+In terms of global usage, ProfiNET sees widespread adoption in Europe, driven by Siemens and its integration into many European automation platforms. Ethernet/IP, developed by Rockwell Automation, is more common in North America. This divergence simply reflects regional standardization practices.
+
+
+\subsection{ProfiNET vs EtherCAT}
+EtherCAT(Ethernet for Control Automation Technology) also builds on the Ethernet protocol. It sets the standard for high-speed, real-time Ethernet applications\cite{Rostan2010EtherCAT}, because it effectively uses the Ethernet´s physical and data-link layers while bypassing the overhead of the higher OSI model layers. Its most notable feature is in the way Ethernet packet frames are sent between devices. In EtherCAT, a "processing on the fly" method where in a network of devices, the EtherCAT master node sends one frame each cycle that addresses and contains data for all devices on the network. As the frame passes through each device (or slave), it reads the data addressed to it while simultaneously writing the response before passing it along to another device\cite{DewesoftEtherCAT2023}. This method allows all devices in the network to be addressed in one cycle, ensuring minimal latency and enabling ultra-fast communication, often with bus cycle times in the microsecond range\cite{Rostan2010EtherCAT}.
+
+ProfiNET, by contrast, follows a more conventional Ethernet communication model. It uses standard Ethernet frames to exchange data between devices, typically communicating with one device at a time. Each message is sent directly from the controller to the individual device, and the device responds in turn. This method of communication does not allow the kind of parallel data handling that EtherCAT achieves. While ProfiNET IRT can achieve as high a precision as EtherCAT, configuring it usually requires additional hardware and careful newtork configuration \cite{WuXie2019} which can potentially increase costs.
+Therefore, while both protocols can reach high-performance levels, EtherCAT inherently supports faster, more efficient communication patterns, particularly suited for critical real time-systems like robotics and motion control\cite{BeckhoffETG2023}. ProfiNET, although more traditional in its frame handling, integrates well within Siemens automation ecosystems and is widely used in broader industrial settings\cite{Eitel2020EtherNetVsPROFINET}.
+
+\subsection{ProfiNET vs Sercos III}
+Sercos III (Serial Real-time Communication System, version 3) is another Ethernet-based protocol developed to meet the strict real-time requirements of motion control and automation systems. Like EtherCAT, it also uses the  "processing on the fly" method , where devices input and output data into a frame on the "fly". However, unlike EtherCAT (which uses one frame for all devices), it uses two frames, one for sending data from the master to slaves and another for receiving data input. This method means it can also achieve cycle times as low as 31 microseconds\cite{hibbard2010sercos} which is similar to that attainable by EtherCAT.
+
+Network topology, another important consideration, describes how devices in a network are arranged and connected. Ethernet based protocols can typically support multiple topologies such as ring, line and star. ProfiNET is flexible in this regard and can support all of these depending on the applications need and amount of resources available\cite{pi2019topology}. However, Sercos III is particularly optimized for ring topology, where devices are connected in a close loop. Unlike most Ethernet-based protocols that require multiple external switches or hubs to achieve real-time capabilities , Sercos III devices feature two Ethernet ports and an Internal switch allowing them to be daisy chained without needing any additional infrastructure\cite{hibbard2010sercos}. In this configuration, Sercos III has a built-in redundancy where if a wire is disconnected or damaged communication reroutes without data loss\cite{sercosRedundancy}. In contrast, ProfiNET achieves similar redundancies by applying extra protocols such as the Media Redundancy Protocol (MRP), which have to be configured separately\cite{pi2019topology}. This means that even though ProfiNET IRT(the fastest profinet mode) can offer deterministic timing and high cycle times, according to comparative studies, it is reported that it is at least one order of magnitude slower than Sercos III\cite{kingstarEtherCAT2020}.
+
+\section{Implementation examples}
+Hilscher is a company that specializes in manufacturing Industrial communication processors, notably the netX series. These System-on-Chip (SoC) solutions are designed to support a wide range of industrial communication protocols- including PROFINET, and more- through configurable firmware. 
+The netX chips are commonly embedded into various industrial devices such as drives, I/O modules, controllers and sensors. One such example that uses not only netX chips but employs PROFINET as its main communication standard is the H16200 single channel weight processor developed by Hardy Process Solutions.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4\linewidth]{h16200.png}
+    \caption{HI 6200 Series weight processor from Hardy Process Solutions, featuring PROFINET communication enabled by Hilscher netX SoC \cite{hi6200hardy}.}
+    \label{fig:hi6200}
+\end{figure}
+Another example is the CIFX M223090AE-RE PC card developed by Hilscher that can be configured as a PROFINET IO device and contains a netX 90 processor.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{PC.png}
+    \caption{Hilscher CIFX M223090AE-RE mini PC card, based on the netX 90 communication processor, used for PROFINET IO-Device integration in industrial systems \cite{hilscherCIFX}.}
+    \label{fig:cifx_card}
+\end{figure}
+
+\section{Conclusion}
+At its current stage of industrial adoption, PROFINET stands out as a robust and widely implemented communication standard for automation systems. It offers not only high performance but also ease of integration and management across diverse industrial applications. Features like Isochronous Real-time (IRT) make it particularly suitable for time-critical processes.
+
+Additionally, ProfiNET's Application Profiles -such as PROFIdrive, Profisafe, and PROFIenergy- further enhance its flexibility, enabling specialized solutions across sectors, including manufacturing and safety systems.
+
+As industries move toward greater connectivity through technologies like cloud computing and edge devices, PROFINET continues to evolve to meet new demands. Future developments such as Time-Sensitive Networking(TSN) support will further strengthen its role in smart industrial environments. 
+
+\printbibliography
 
 \end{document}
