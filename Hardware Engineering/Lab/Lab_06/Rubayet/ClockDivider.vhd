@@ -18,7 +18,7 @@ BEGIN
         IF RESET = '1' THEN
             count <= 0;
             temporary_Clock <= '0';
-        ELSIF Clock = '1' and Clock'event THEN  -- Rising edge detection
+        ELSIF Clock = '1' and Clock'event THEN 
             IF count = (N / 2) - 1 THEN
                 temporary_Clock <= not temporary_Clock;
                 count <= 0;
