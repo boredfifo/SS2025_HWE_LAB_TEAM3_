@@ -1,6 +1,6 @@
 ENTITY ClockDivider IS
     generic (
-        N : natural := 4  -- Divide factor (must be ≥ 2)
+        N : natural := 4  
     );
     port (
         Clock    : in  bit;
