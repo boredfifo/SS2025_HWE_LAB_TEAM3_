@@ -1,0 +1,78 @@
+#include <SPI.h>
+#include <WiFiNINA.h>
+#include "SECRET.H"
+
+// WiFi Credentials
+char wifiName[] = SECRET_SSID;
+char wifiPassword[] = SECRET_PASS;
+
+int wifiStatus = WL_IDLE_STATUS;
+const int ledPin = LED_BUILTIN;
+
+WiFiServer webService(80);
+
+void setup() {
+  Serial.begin(9600);
+  while (!Serial);
+
+  Serial.println("Launching SoftAP Web Control");
+
+  pinMode(ledPin, OUTPUT);
+
+  if (WiFi.status() == WL_NO_MODULE) {
+    Serial.println("WiFi module not detected!");
+    while (true);
+  }
+
+  // Configure Access Point
+  if (WiFi.beginAP(wifiName, keyIndex) != WL_CONNECTED) {
+    Serial.println("Failed to create Access Point");
+    while (true);
+  }
+
+  delay(2000);
+  webService.begin();
+
+  IPAddress apIP = WiFi.localIP();
+  Serial.print("AP running at: ");
+  Serial.println(apIP);
+}
+
+void loop() {
+  WiFiClient client = webService.available();
+
+  if (client) {
+    Serial.println("Client connected");
+    String request = "";
+
+    while (client.connected()) {
+      if (client.available()) {
+        char c = client.read();
+        request += c;
+
+        if (c == '\n') {
+          if (request.indexOf("GET /ON") != -1) {
+            digitalWrite(ledPin, HIGH);
+          }
+          if (request.indexOf("GET /OFF") != -1) {
+            digitalWrite(ledPin, LOW);
+          }
+
+          // Simple HTTP Response
+          client.println("HTTP/1.1 200 OK");
+          client.println("Content-Type: text/html");
+          client.println();
+          client.println("<html><body><h2>LED Control</h2>");
+          client.println("<a href='/ON'>Turn ON</a><br>");
+          client.println("<a href='/OFF'>Turn OFF</a><br>");
+          client.println("</body></html>");
+          break;
+        }
+      }
+    }
+
+    delay(1);
+    client.stop();
+    Serial.println("Client disconnected");
+  }
+}
