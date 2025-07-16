@@ -2,7 +2,7 @@
 #include <WiFiNINA.h>
 #include "SECRET.H"
 
-// WiFi Credentials
+
 char wifiName[] = SECRET_SSID;
 char wifiPassword[] = SECRET_PASS;
 
@@ -24,7 +24,7 @@ void setup() {
     while (true);
   }
 
-  // Configure Access Point
+ 
   if (WiFi.beginAP(wifiName, keyIndex) != WL_CONNECTED) {
     Serial.println("Failed to create Access Point");
     while (true);
