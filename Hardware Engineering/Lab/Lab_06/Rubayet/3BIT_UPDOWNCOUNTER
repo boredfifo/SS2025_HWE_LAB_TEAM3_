@@ -1,0 +1,75 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.NUMERIC_STD.ALL;
+
+entity UpDownCounterFSM is
+    Port (
+        clock      : in  std_logic;
+        reset    : in  std_logic;
+        up_down  : in  std_logic;           
+        count    : out std_logic_vector(2 downto 0)  
+    );
+end UpDownCounterFSM;
+
+ARCHITECTURE Behavioural of UpDownCounterFSM is
+
+    type state_type is range 0 to 7;
+    signal current_state, next_state : state_type;
+
+BEGIN
+
+    process(current_state, up_down)
+    BEGIN
+        case current_state is
+            WHEN 0 => 
+                IF up_down = '1' then next_state <= 1;
+                else next_state <= 7;
+                end IF;
+            WHEN 1 =>
+                IF up_down = '1' then next_state <= 2;
+                else next_state <= 0;
+                end IF;
+            WHEN 2 =>
+                IF up_down = '1' then next_state <= 3;
+                else next_state <= 1;
+                end IF;
+            WHEN 3 =>
+                IF up_down = '1' then next_state <= 4;
+                else next_state <= 2;
+                end IF;
+            WHEN 4 =>
+                IF up_down = '1' then next_state <= 5;
+                else next_state <= 3;
+                end IF;
+            WHEN 5 =>
+                IF up_down = '1' then next_state <= 6;
+                else next_state <= 4;
+                end IF;
+            WHEN 6 =>
+                IF up_down = '1' then next_state <= 7;
+                else next_state <= 5;
+                end IF;
+            WHEN 7 =>
+                IF up_down = '1' then next_state <= 0;
+                else next_state <= 6;
+                end IF;
+        end case;
+    end process;
+
+    
+    process(clock, reset)
+    BEGIN
+        IF reset = '1' then
+            current_state <= 0;
+        elsif rising_edge(clock) then
+            current_state <= next_state;
+        end IF;
+    end process;
+
+    
+    process(current_state)
+    BEGIN
+        count <= std_logic_vector(to_unsigned(current_state, 3));
+    end process;
+
+end Behavioural;
