@@ -15,7 +15,7 @@ This project demonstrates a small-scale IoT system combining solar tracking with
 
 - 2x **Arduino Uno** (Solar Tracker + RGB LED Controller)
 - **Raspberry Pi** with Mosquitto MQTT broker
-- **Solar Panel** (powers the RGB Arduino)
+- (2-3)x **Solar Panel** (powers the RGB Arduino)
 - 1x **Servo Motor** (horizontal tracking)
 - 2x **LDRs** (left and right light detection)
 - **RGB LED**
@@ -50,7 +50,7 @@ This project demonstrates a small-scale IoT system combining solar tracking with
 
 ##  Future Improvements
 
-- Switch to **ESP32** for integrated WiFi and more GPIO pins.
+- Switch to **Arduino board** for integrated WiFi and more GPIO pins.
 - Add **battery management** to store and utilize solar energy.
 - Build a **web dashboard** for sensor monitoring and RGB control.
 - Include **power output**, **temperature**, or **voltage** sensors.
