@@ -58,11 +58,12 @@ This project demonstrates a small-scale IoT system combining solar tracking with
 ##  Developed By
 
 **Moiz Zaheer Malik** 
+
 **Rubayet Kamal** 
+
 **Mofifoluwa Akinwande** 
 
 
 ---
 
-> A simple yet complete IoT system demonstrating real-world integration of mechanical design, embedded programming, and wireless communication.
-
+> 
