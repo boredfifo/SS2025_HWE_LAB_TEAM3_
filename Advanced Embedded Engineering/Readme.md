@@ -50,7 +50,7 @@ This project demonstrates a small-scale IoT system combining solar tracking with
 
 ##  Future Improvements
 
-- Switch to **Arduino board** for integrated WiFi and more GPIO pins.
+- Switch to **ESP32** for integrated WiFi and more GPIO pins.
 - Add **battery management** to store and utilize solar energy.
 - Build a **web dashboard** for sensor monitoring and RGB control.
 - Include **power output**, **temperature**, or **voltage** sensors.
