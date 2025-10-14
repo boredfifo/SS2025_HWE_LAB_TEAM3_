@@ -1,5 +1,7 @@
 # IoT-Based Solar Tracking and RGB LED Control System
 
+<img width="438" height="369" alt="Screenshot 2025-10-15 001141" src="https://github.com/user-attachments/assets/b0bfa276-a316-467e-97e8-e8f7c8e28381" />
+
 This project demonstrates a small-scale IoT system combining solar tracking with MQTT-based RGB LED control using two Arduino Uno boards and a Raspberry Pi. It was developed as part of an Advanced Embedded Systems course at Hochschule Hamm-Lippstadt.
 
 ##  Project Overview
